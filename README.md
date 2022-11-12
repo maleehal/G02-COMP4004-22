@@ -15,3 +15,7 @@
 - Email : cb009454@students.apiit.lk
 - Contact No : 0767707067
  
+## Member 3 details
+- Name : Kavindu Karunaratne
+- Email : cb010103@students.apiit.lk
+- Contact No : 0762971888
