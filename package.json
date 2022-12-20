@@ -1,4 +1,21 @@
 {
+  "name": "g02-comp4004-22",
+  "version": "1.0.0",
+  "description": "- Name : Maleesha Halambaarachchy\r - Email : cb009145@students.apiit.lk\r - Contact No : 0775825211",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maleehal/G02-COMP4004-22.git"
+  },
+  "author": "Group-02",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maleehal/G02-COMP4004-22/issues"
+  },
+  "homepage": "https://github.com/maleehal/G02-COMP4004-22#readme",
   "dependencies": {
     "mongoose": "^6.8.1"
   }
