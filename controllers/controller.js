@@ -9,11 +9,13 @@ const customerSignIn = async (req,res) =>{
 
 const customerLogOut = async (req,res) =>{
     
+    
     res.status(200).send("customer has logout")
 }
 
 const customerLogIn = async (req,res) =>{
     res.status(200).send("customer has Logged in")
+    
 }
 
 
