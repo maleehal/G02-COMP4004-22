@@ -18,6 +18,7 @@
   "homepage": "https://github.com/maleehal/G02-COMP4004-22#readme",
   "dependencies": {
     "@types/node": "^18.11.17",
+    "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^5.13.15",

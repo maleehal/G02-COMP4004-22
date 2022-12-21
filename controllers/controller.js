@@ -7,7 +7,18 @@ const customerSignIn = async (req,res) =>{
     res.status(201).json({task:"succesful"})
 }
 
-module.exports = {customerSignIn}
+const customerLogOut = async (req,res) =>{
+    
+    res.status(200).send("customer has logout")
+}
+
+const customerLogIn = async (req,res) =>{
+    res.status(200).send("customer has Logged in")
+}
+
+
+
+module.exports = {customerSignIn , customerLogIn , customerLogOut}
 
 
 
