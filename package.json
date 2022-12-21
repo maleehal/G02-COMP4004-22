@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/maleehal/G02-COMP4004-22#readme",
   "dependencies": {
+    "express": "^4.18.2",
     "mongoose": "^6.8.1"
   }
 }
