@@ -4,7 +4,7 @@
   "description": "- Name : Maleesha Halambaarachchy\r - Email : cb009145@students.apiit.lk\r - Contact No : 0775825211",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/maleehal/G02-COMP4004-22#readme",
   "dependencies": {
+    "@types/node": "^18.11.17",
     "express": "^4.18.2",
-    "mongoose": "^6.8.1"
+    "mongoose": "^6.8.1",
+    "nodemon": "^2.0.20"
   }
 }
