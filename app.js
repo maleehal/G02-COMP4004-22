@@ -14,6 +14,8 @@ app.use(express.json());
 
 app.use('/api/v1/customer', customerRoutes);
 
+const port = 3000
+
 
 
 const start = async () => {
