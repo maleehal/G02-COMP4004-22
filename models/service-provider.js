@@ -32,6 +32,7 @@ const service_providerSchema = new mongoose.Schema({
     },
 
     expertise: {
+        type:Array
 
     },
 
@@ -58,7 +59,8 @@ const service_providerSchema = new mongoose.Schema({
     
     status: {
         type: String,
-        default: {type: String, default: "pending"},
+        default:  "Pending",
+        enum:["Pending","Completed","Accepted","Rejected"]
     },
 })
 
