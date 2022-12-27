@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/search.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="item-1"> <img src="/images/logo 1.png" alt=""></div>
+        <div class="item-2"><h1>Event Hustler</h1> </div>
+        <div class="item-3" ><button class="search-btn"><i class ="fa fa-search" style="font-size: 28px;"></i></button></div>
+        <div class="item-4"> <img src="/images/image 2.png" alt="" srcset=""></div>
+    </nav>
+
+    <input type="text" name="" id="seach-bar" placeholder="Search...">
+    <button id="search-btn" >search</button>
+    <select name="" id="filter-bar" >
+        <option value="all">All</option>
+        <option value="Traditional">Traditional</option>
+        <option value="Corporate">Corporate</option>
+        <option value="Religous">Religous</option>
+        <option value="Festive">Festive</option>
+    </select>
+
+    <div class="customer-list" id="customer-list">
+        <!-- <div class="customer-cards">
+            <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
+            <div class="provider-info">
+                <div class="provider-name">Billy jones</div>
+                <div class="provider-email">Billyjones@gmail.com</div>
+            </div>
+            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
+
+        </div>
+
+        <div class="customer-cards">
+            <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
+            <div class="provider-info">
+                <div class="provider-name">Billy jones</div>
+                <div class="provider-email">Billyjones@gmail.com</div>
+            </div>
+            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
+
+        </div>
+
+        <div class="customer-cards">
+            <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
+            <div class="provider-info">
+                <div class="provider-name">Billy jones</div>
+                <div class="provider-email">Billyjones@gmail.com</div>
+            </div>
+            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
+
+        </div>
+
+        <div class="customer-cards">
+            <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
+            <div class="provider-info">
+                <div class="provider-name">Billy jones</div>
+                <div class="provider-email">Billyjones@gmail.com</div>
+            </div>
+            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
+
+        </div>
+
+        <div class="customer-cards">
+            <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
+            <div class="provider-info">
+                <div class="provider-name">Billy jones</div>
+                <div class="provider-email">Billyjones@gmail.com</div>
+            </div>
+            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
+
+        </div>
+
+        <div class="customer-cards">
+            <div class="provider-profile"><img src="images/image 2.png" alt=""></div>
+            <div class="provider-info">
+                <div class="provider-name">Billy jones</div>
+                <div class="provider-email">Billyjones@gmail.com</div>
+            </div>
+            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
+
+        </div>
+
+        <div class="customer-cards">
+            <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
+            <div class="provider-info">
+                <div class="provider-name">Billy jones</div>
+                <div class="provider-email">Billyjones@gmail.com</div>
+            </div>
+            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
+
+        </div>
+
+        <div class="customer-cards">
+            <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
+            <div class="provider-info">
+                <div class="provider-name">Billy jones</div>
+                <div class="provider-email">Billyjones@gmail.com</div>
+            </div>
+            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
+
+        </div>
+
+        <div class="customer-cards">
+            <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
+            <div class="provider-info">
+                <div class="provider-name">Billy jones</div>
+                <div class="provider-email">Billyjones@gmail.com</div>
+            </div>
+            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
+
+        </div> -->
+
+       
+
+        
+
+        
+    </div>
+    
+    
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+    let serviceProviders = []
+    const searchBar = document.getElementById("seach-bar")
+    const searchBtn = document.getElementById("search-btn")
+    const filterBar = document.getElementById("filter-bar")
+    const customerList = document.getElementById("customer-list")
+    
+
+    filterBar.addEventListener("change",() =>{
+        const filterKey= filterBar.value;
+        if (filterKey === "all"){
+            displayContent(serviceProviders)
+            return
+
+        }
+        const filteredArray = serviceProviders.filter((provider) =>{
+            if(provider.expertise.includes(filterKey)){
+                return provider
+            }
+        })
+        displayContent(filteredArray)
+
+    
+    })
+
+    const displayContent = (array) =>{
+        const filteredProviders = [...array]
+        let Content = filteredProviders.map((provider) =>{
+            return content = `
+                          <div class="customer-cards">
+                            <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
+                            <div class="provider-info">
+                                <div class="provider-name">${provider.name}</div>
+                                <div class="provider-email">${provider.email}</div>
+                            </div>
+                            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
+
+                        </div>`
+
+        }).join("")
+        customerList.innerHTML = Content
+
+
+    }
+
+
+
+    const getAllCustomers = async () =>{
+        const {data:{providers}} = await axios.get("/api/v1/service-provider/getallproviders")
+        serviceProviders = [...providers]
+        console.log(serviceProviders)
+        displayContent(serviceProviders)
+        
+
+    }
+    
+    getAllCustomers()
+
+    searchBtn.addEventListener("click", () =>{
+        let searchResults = [];
+        let searchKey = searchBar.value.toLowerCase()
+        searchResults = serviceProviders.filter( provider =>{
+            if(provider.name.toLowerCase().startsWith(searchKey)){
+                return provider
+            }
+        })
+       
+        displayContent(searchResults)
+        })
+    
+
+
+</script>
+</html>
