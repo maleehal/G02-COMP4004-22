@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+    <title>My events</title>
+</head>
+
+<header>
+    <%- include('partials/header'); %>
+</header>
+
+<body>
+   <div class="spb1">
+        <button class="spb1i" onclick="openBooking(event, 'Ongoing')">Ongoing</button>
+        <button class="spb1i" onclick="openBooking(event, 'Completed')">Completed</button>
+        <button class="spb1i" onclick="openBooking(event, 'Rejected')">Rejected</button>
+   </div>
+
+   <div id="Ongoing" class="spb2">
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Event</th>
+                <th>Service Provider</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </table>
+   </div>
+    <div id="Completed" class="spb2">
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Event</th>
+                <th>Service Provider</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </table>
+    </div>
+    <div id="Rejected" class="spb2">
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Event</th>
+                <th>Service Provider</th>
+                <th>Reason</th>
+            </tr>
+        </table>
+    </div>
+</body>
+
+<footer>
+    <%- include('partials/footer'); %>
+</footer>
+
+<script>
+    spb2 = document.getElementsByClassName("spb2");
+    for(i = 0; i < spb2.length; i++){
+        spb2[i].style.display = "none";
+    }
+
+    function openBooking(evt, eventStatus){
+        var i, spb2, spb1i;
+
+        spb2 = document.getElementsByClassName("spb2");
+        for(i = 0; i < spb2.length; i++){
+            spb2[i].style.display = "none";
+        }
+        spb1i = document.getElementsByClassName("spb1i");
+        for(i = 0; i < spb1i.length; i++){
+            spb1i[i].className = spb1i[i].className.replace(" active", "");
+        }
+        document.getElementById(eventStatus).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+</html>
