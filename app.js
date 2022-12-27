@@ -31,6 +31,22 @@ app.get("/search", (req,res)=>{
   res.render("search")
 })
 
+app.get("/booking", (req,res)=>{
+  res.render("booking")
+})
+
+app.get("/customer_schedule", (req,res)=>{
+  res.render("customer_schedule")
+})
+
+app.get("/service_provider", (req,res)=>{
+  res.render("service_provider")
+})
+
+app.get("/service_provider_schedule", (req,res)=>{
+  res.render("service_provider_schedule")
+})
+
 // app.get("/signup-customer", (req,res)=>{
 //   res.render("signup-customer")
 // })
