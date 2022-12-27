@@ -12,10 +12,12 @@ const bookingSchema = new mongoose.Schema({
         ref: "service-provider"
     },
     Status: {
-        type: String
+        type: String,
+        enum:["Pending","Completed","Accepted","Rejected"]
     },
     Date: {
-        type: Date
+        type: Date,
+        
     },
     Time: {
         type: Date

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const {isEmail} = require("validator")
+const bcrypt = require("bcrypt")
 
 
 const service_providerSchema = new mongoose.Schema({
@@ -21,8 +22,6 @@ const service_providerSchema = new mongoose.Schema({
     telephone: {
         type: Number,
         unique: true,
-        min: 10,
-        max: 10,
         required: [true, "Please enter a phone number."]
 
     },
@@ -47,21 +46,44 @@ const service_providerSchema = new mongoose.Schema({
         required:[true,"This field is required"]
     },
 
-    description: {
-        type: String,
-        required: [true,"This field is required"]
-    },
+    // description: {
+    //     type: String,
+    //     required: [true,"This field is required"]
+    // },
     
-    about: {
-        type: String,
-        required: [true,"This field is required"]
-    },
+    // about: {
+    //     type: String,
+    //     required: [true,"This field is required"]
+    // },
     
     status: {
         type: String,
         default:  "Pending",
-        enum:["Pending","Completed","Accepted","Rejected"]
+        
     },
 })
 
-module.exports = mongoose.model("Service_provider",service_providerSchema)
+service_providerSchema.pre('save', async function(next){
+    const salt = await bcrypt.genSalt();
+    this.password = await  bcrypt.hash(this.password,salt)
+    next()
+})
+
+
+service_providerSchema.statics.login = async function(username , password){
+    const serviceProvider = await this.findOne({username});
+    if (serviceProvider){
+        const auth = await bcrypt.compare(password, serviceProvider.password)
+        if(auth){
+            return serviceProvider;
+            
+        }
+        throw Error("Incorrect passsword")
+
+    }
+    throw Error("Incorrect username");
+}
+
+const serviceProvider = mongoose.model("Service-provider",service_providerSchema)
+
+module.exports = serviceProvider

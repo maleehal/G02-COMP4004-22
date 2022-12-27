@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&display=swap');
+*{
+    font-family: "Raleway";
+    font-weight: bolder;
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2px;
+    padding: 1%;
+  
+  
+    height:auto;
+    border-bottom: 2px solid black;
+}
+
+.item-3{
+    margin-left: auto;
+}
+
+.item-2{
+    margin-left: 24px;
+}
+
+.item-1 img{
+    width: 100%;
+    height: auto;
+}
+.search-btn{
+    background-color: purple;
+    color: white;
+    border: none;
+    border-radius: 20px;
+  
+}
+
+.item-4 img{
+    width: 60%;
+    height: auto;
+    margin: auto;
+    display: block;
+ 
+
+}
+.item-4{
+    width: 10%;
+}
+
+.customer-list{
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+    width: auto;
+  
+    gap: 16px;
+    padding: 1%;
+}
+
+.customer-cards{
+  
+    border-radius: 24px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 250px;
+    display: flex;
+    align-items:center;
+    justify-content: space-around;
+
+}
+
+.customer-cards  div{
+  
+    width: fit-content;
+    height: auto;
+    padding: 1%;
+
+
+}
+.provider-profile img{
+    width:80% ;
+    height: auto;
+}
+
+.provider-name{
+    font-size: 24px;
+    font-weight: bolder;
+}
+.provider-email{
+    font-size: 16px;
+    font-weight: bolder;
+    color: gray;
+}
+
+.fa-star{
+    color: rgba(229, 189, 46, 0.851);
+    font-size: 84px;
+}
+
+#filter-bar{
+   color:  rgb(130, 45, 184);
+    background-color: white;
+    padding: 0.1%;
+    border-radius: 24px;
+    border: none;
+}
+
+#filter-bar:hover{
+    background-color: purple;
+    color: white;
+    transition: 1s all ease;
+    transform: scale(1.03);
+}
+
+#filter-bar option :hover{
+  
+    border-radius: 24px;
+    border: none;
+    background: none;
+}
+
+#search-btn{
+    background-color: white;
+    border-radius: 24px;
+    font-size: 22px;
+    border:1px solid purple;
+    color: purple;
+    cursor: pointer;
+}
+
+#search-btn:hover{
+    background-color: purple;
+    border-radius: 24px;
+    font-size: 22px;
+    color: white;
+    cursor: pointer;
+    transition: all 1s ease;
+}
+
+#seach-bar{
+    border-radius: 24px;
+    height: 24px;
+   border: grey solid 1px ;
+   padding-left: 9px;
+}
+
+#seach-bar:focus{
+    border-radius: 24px;
+    height: 24px;
+   border: grey solid 1px ;
+   padding-left: 9px;
+   width: 100xp;
+}

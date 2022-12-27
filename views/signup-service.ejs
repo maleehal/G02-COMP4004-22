@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/new.css">
+    <title>Document</title>
+</head>
+<body class="sign-up-service-body">
+    <div class="flex-box-container">
+        <!-- div section for main image -->
+        <div class="profile-pic">
+
+           
+            <h2>Sign Up</h2> <br>
+           <img src="/images/facebook.png"  alt="">
+        
+           <h2>Event hustler</h2>
+           
+        </div>
+        <!-- div section for Form input data elements -->
+        <div class="form-section">
+            <h2 style="text-align: center;">Create Account</h2><br>
+            <form id="sign-up-form">
+
+            <!-- 1st tab -->
+
+            <div class="tab">
+                <div class="form-content">
+                    <label for="">Name/Business</label><br>
+                <input type="text" name="name" id="name" oninput="this.className = ''"><br>
+    
+                <label for="">Email</label><br>
+                <input type="email" name="email" id="email" oninput="this.className = ''"><br>
+    
+                <label for="">Telephone Number</label><br>
+                <input type="number" name="telephone" id="telephone" oninput="this.className = ''"><br>
+                <div class="grid">
+                    <div>
+                        <input type="checkbox" name="event-types" id="" value="Personal">
+                    </div>
+                    <div>
+                        <label for="">Personal</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="event-types" id="" value="Traditonal">
+                    </div>
+                    <div>
+                        <label for="">Traditional</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="event-types" id="" value="Religous">
+                    </div>
+                    <div>
+                        <label for="">Religous</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="event-types" id="" value="Corporate">
+                    </div>
+                    <div>
+                        <label for="">Corporate</label>
+                    </div>
+                 </div>
+    
+               
+                </div>
+            </div>
+
+            <!-- 2nd tab -->
+            <div class="tab">
+                <div class="form-content">
+                    <label for="">Username</label><br>
+                <input type="text" name="username" id="username" oninput="this.className = ''"><br>
+    
+                <label for="">Password</label><br>
+                <input type="password" name="password" id="password" oninput="this.className = ''"><br>
+    
+                <label for="">Confirm Password</label><br>
+                <input type="password" name="repassword" id="re-password" oninput="this.className = ''"><br>
+                </div>
+    
+                
+            </div>
+            <br>
+          
+
+
+            <!-- button sectuin -->
+
+            <div class="button-container">
+                
+                  <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                  <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                  <button type="submit" id="submit-btn">Submit</button>
+                
+              </div>
+
+             <!-- <input type="checkbox" name="" id="">ifoshfisj
+             <input type="checkbox" name="" id="">
+             <input type="checkbox" name="" id="">
+             <input type="checkbox" name="" id=""> -->
+
+             
+              
+
+        </form>
+
+
+
+            
+            </div>
+        </div>
+    
+    
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script >
+    let currentTab  = 0;
+const nextBtn = document.getElementById("nextBtn")
+const prevtBtn = document.getElementById("prevBtn")
+const form = document.getElementById("sign-up-form")
+const submitBtn =document.getElementById("submit-btn")
+const checkBoxes = Array.from(document.getElementsByName("event-types"))
+
+
+
+
+showTab(currentTab)
+
+function showTab(tabIndex){
+    console.log("5")
+    const tabs = document.getElementsByClassName("tab");
+    tabs[tabIndex].style.display = "block";
+    if (tabIndex == 0) {
+        prevtBtn.style.display = "none";
+      } else {
+        prevtBtn.style.display = "inline";
+        submitBtn.style.display = "inline"
+      }
+      if (tabIndex == (tabs.length - 1)) {
+        nextBtn.style.display = "none"
+      } else {
+        nextBtn.style.display = "inline"
+        nextBtn.innerHTML = "Next";
+        submitBtn.style.display = "none"
+      }
+    
+}
+
+function nextPrev(tabIndex) {
+    // This function will figure out which tab to display
+    let tabs = document.getElementsByClassName("tab");
+    // Exit the function if any field in the current tab is invalid:
+    if (tabIndex == 1 && !validateForm()) return false;
+    // Hide the current tab:
+    tabs[currentTab].style.display = "none";
+    // Increase or decrease the current tab by 1:
+    currentTab = currentTab + tabIndex;
+    // if you have reached the end of the form...
+    if (currentTab >= tabs.length) {
+      console.log("submitted")
+      // ... the form gets submitted:
+      // document.getElementById("regForm").submit();
+      // return false;
+    }
+    // Otherwise, display the correct tab:
+    showTab(currentTab);
+  }
+  
+
+  function validateForm() {
+    // This function deals with validation of the form fields
+    var tabs, inputField, textBoxIndex, valid = true;
+    tabs = document.getElementsByClassName("tab");
+    inputField = tabs[currentTab].getElementsByTagName("input");
+    // A loop that checks every input field in the current tab:
+    for (textBoxIndex = 0; textBoxIndex < inputField.length; textBoxIndex++) {
+      // If a field is empty...
+      if (inputField[textBoxIndex].value == "") {
+        // add an "invalid" class to the field:
+        inputField[textBoxIndex].className += " invalid";
+        // and set the current valid status to false
+        valid = false;
+      }
+    }
+    // If the valid status is true, mark the step as finished and valid:
+    return valid; // return the valid status
+  }
+
+ 
+
+  form.addEventListener("submit",async (event) =>{
+    event.preventDefault();
+    console.log("form submitted")
+    const name = form.name.value
+    const email= form.email.value
+    const telephone = form.telephone.value
+    const username = form.username.value
+    const password = form.password.value
+    const repassword = form.repassword.value
+    const flag = "SERVICE-PROVIDER"
+    let expertise = []
+
+    expertise = getCheckboxValues()
+    console.log("the flag is" ,flag)
+
+  
+    try {
+      const {data} = await axios.post("/api/v1/service-provider/signup",{name,email,telephone,username,password,expertise,flag})
+      if (data.provider){
+        location.assign("/api/v1/service-provider/login")
+      }
+      
+    } catch (error) {
+      console.log(error)
+      
+    }
+
+    
+  })
+
+  const getCheckboxValues = () =>{
+    let Array1 =[]
+    checkBoxes.forEach((field) =>{
+      if (field.checked){
+        Array1.push(field.value)
+      }
+      
+    })
+      return Array1
+  }
+</script>
+</html>

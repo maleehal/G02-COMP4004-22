@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/new.css">
+    <title>Document</title>
+</head>
+<body class="sign-up-service-body">
+
+    <div class="flex-box-container">
+        <!-- div section for main image -->
+        <div class="profile-pic">
+            
+
+           
+            <h2>Sign Up</h2> 
+           <img src="/images/facebook.png"  alt="">
+           <h2>Event Hustler</h2>
+        </div>
+        <!-- div section for Form input data elements -->
+        <div class="form-section">
+            <form id="regForm">
+            <h2>Sign In To Account</h2><br>
+            <div class="form-content">
+                <label for="">Username</label><br>
+            <input type="text" name="username" id="" oninput="this.className = ''"><br>
+
+            <label for="">Password</label><br>
+            <input type="password" name="password" id="" oninput="this.className = ''"><br>
+            <button type="submit" class="log-in-button">Log in</button><br>
+
+            Don't have an account? <a href="/startup">Sign Up</a>
+
+           
+            </div>
+        </form>
+
+           
+
+            
+            </div>
+        </div>
+    
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+    const form = document.getElementById("regForm")
+
+    form.addEventListener("submit",async (event) => {
+        event.preventDefault()
+        const username = form.username.value;
+        const password = form.password.value;
+        try {
+            const {data} = await axios.post("/api/v1/service-provider/login",{username,password})
+            if(data.provider){
+                location.assign("/")
+            }
+           
+
+            
+        } catch (error) {
+            
+        }
+
+    })
+</script>
+</html>

@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&display=swap');
+body{
+    background: url(../images/event-managment-banner.webp) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+   
+}
+
+*{
+    font-family: "Raleway";
+
+}
+.flex-box-container{
+display: flex;
+width: 50%;
+
+
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+h1{
+    text-align: center;
+}
+
+.flex-box-container div{
+    padding: 2%;
+    flex: 50%;  
+;
+    
+}
+
+.img-container{
+    text-align: center;
+}
+img{
+    width: 10%;
+    height: auto;
+    margin: 2%;
+}
+
+button{
+    font-family: "Raleway";
+    margin: auto;
+    display: block;
+    background: black;
+    border-radius: 16px;
+    color: white;
+    padding: 2%;
+    width: 130px;
+    border: none;
+    font-size: 22px;
+    font-weight: bold;
+}
+button:hover{
+    transform: scale(1.15);
+    transition: all 2s ease;
+    cursor: pointer;
+}
+
+
+.section-1 {
+    background-color: rgb(255, 255, 255,0.87);
+    
+    border-radius: 50px 0px 0px 50px;
+}
+
+.section-2 {
+    background-color: white;
+    border-radius: 0px 50px 50px 0px;
+
+    
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&display=swap');
+
+@media only screen and (max-width:800px){
+    .flex-box-container{
+        flex-direction: column;
+    }
+
+    .section-1 {
+        background-color: rgb(255, 255, 255,0.87);
+        
+        border-radius: 50px 50px 0px 0px;
+    }
+    
+    .section-2 {
+        background-color: white;
+        border-radius: 0px 0px 50px 50px;
+    
+        
+    }
+}

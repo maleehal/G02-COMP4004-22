@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&display=swap');
+
+.sign-up-service-body{
+    font-family: "Raleway";
+    background-color: purple;
+    background: url(../images/cr121\ 1.png) ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    
+}
+
+.sign-up-customer-body{
+  font-family: "Raleway";
+  background-color: purple;
+  background: url(../images/magical-sunset-beach-proposal-with-marquee-letters-and-sparklers-scaled\ 1.png) ;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  
+}
+
+.flex-box-container{
+display: flex;
+height:auto;
+
+}
+
+img{
+    width: 50%;
+    height: auto;
+}
+
+.button-container{
+    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+
+}
+
+button {
+    margin: 1%;
+    background-color:purple;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 22px;
+    cursor: pointer;
+    border-radius: 24px;
+  }
+
+
+ .profile-pic{
+    flex: 32%;
+    background: rgba(255, 255, 255, 0.87);
+    border-radius: 50px 0px 0px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+ }
+
+ .form-section{
+    flex: 68%;
+    background-color: white;
+    background: #FFFFFF;
+border-radius: 0px 50px 50px 0px;
+padding: 2%;
+    
+ }
+.form-content{
+    font-size: 20px;
+    
+   
+   width: 75%;
+   margin: auto;
+    
+}
+
+
+ input{
+    padding: 8px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid white;
+  background-color: #f1e6e6;
+
+ }
+ 
+
+ .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;  
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  
+  .step.active {
+    opacity: 1;
+  }
+  
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color: #04AA6D;
+  }
+
+  .tab {
+    display: none;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&display=swap');
+
+  .log-in-button{
+    border-radius: 20px;
+    margin: auto;
+    display: block;
+    margin-top: 5%;
+    font-size: 24px;
+    width: 40%;
+    
+  }
+
+  a{
+    text-decoration: none;
+    color: Black;
+    font-weight: bolder;
+  }
+
+  .grid{
+  
+    display: grid;
+    grid-template-columns: 10% 90%;
+    
+  
+
+  }
