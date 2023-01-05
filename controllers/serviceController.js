@@ -67,6 +67,17 @@ const signUpService = async (req,res) =>{
     }
 }
 
+// const updateServiceDescription = async (req,res) =>{
+//     console.log("came here")
+//     const {descriptionData,id} = req.body
+//     console.log(req.params)
+//     console.log(id)
+//     console.log(descriptionData)
+//     const Updateprovider = await ServiceProvider.findByIdAndUpdate(id,{description:descriptionData},{runValidators:true})
+//     console.log(Updateprovider)
+
+
+// }
 const serviceLogIn = async (req,res) =>{
     const {username , password} = req.body
     try {
@@ -90,3 +101,4 @@ const displayLogInPage = (req,res) =>{
 }
 
 module.exports = {getAllproviders , displayLogInPage , displaySignUpPage , signUpService, serviceLogIn}
+

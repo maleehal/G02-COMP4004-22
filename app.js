@@ -3,10 +3,12 @@ const express = require("express")
 const customerRoutes = require('./routes/CustomerRoute');
 const serviceRoutes = require('./routes/ServiceRoute');
 const connectDB = require('./database/connect');
+
 const cookieParser = require("cookie-parser");
 const middleware = require("./middleware/middleware")
 const mongoose = require("mongoose")
 const ServiceProvider = require("./models/service-provider")
+
 require('dotenv').config();
 
 const app = express()

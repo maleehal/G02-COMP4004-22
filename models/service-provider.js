@@ -50,15 +50,15 @@ const service_providerSchema = new mongoose.Schema({
         default:0,
     },
 
-    // description: {
-    //     type: String,
-    //     required: [true,"This field is required"]
-    // },
+    description: {
+        type: String,
+        default:"Include your description here."
+    },
     
-    // about: {
-    //     type: String,
-    //     required: [true,"This field is required"]
-    // },
+    about: {
+        type: String,
+        default:"Include about."
+    },
     
     status: {
         type: String,

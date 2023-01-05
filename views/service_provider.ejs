@@ -15,24 +15,32 @@
 
    <div class="sp3">
         <div class="sp3-1"><img class="profile" src="/images/logo.png" alt="logo"></div>
-        <div class="sp3-1"><h1>Unicorn</h1></div>
+        <div class="sp3-1">
+            <%=provider.name%>
+            <%=provider.email%>
+            <%= provider.telephone %> 
+        </div>
+        <div class="sp3-1"></div>
+        <div class="sp3-1"></div>
+        <div class="sp3-1">
+            <div class="bt">
+                <button><img src="/images/Picture1.png" alt="Schedule"></button>
+                <button id="edit"><img src="/images/Picture2.png" alt="Edit"></button>
+            </div>
+        </div>
    </div>
 
    <div class="sp2">
-        <div class="sp2-1">
+        <div class="sp2-1" id="desc-block">
             <h2>Description</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
+            <p id="description"> 
+                <%=provider.description%>
+            </p> 
         </div>
         <div class="sp2-1">
             <h2>About Provider</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            <p id="about">
+                <%=provider.about%>
             </p>
         </div>
         <div class="sp2-1">
@@ -74,5 +82,60 @@
 <footer>
     <%- include('partials/footer'); %>
 </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
+<script>
+    let description = document.getElementById("description")
+    let about = document.getElementById("about")
+    let edit = document.getElementById("edit")
+    const params = window.location.href
+    const id = new URL(params)
+    const path = id.pathname.split("/")
+    let newid = path[2]
+    console.log(newid)
+    
+
+    document.getElementById("edit").addEventListener("click", async() =>{
+        if (description.style.display != "none" ){
+            description.parentElement.appendChild(document.createElement("input")).setAttribute("id","description-input")
+            document.getElementById("description-input").setAttribute("value",description.innerText);
+            description.style.display = "none";
+
+            about.parentElement.appendChild(document.createElement("input")).setAttribute("id","about-input")
+            document.getElementById("about-input").setAttribute("value",about.innerText);
+            about.style.display = "none";  
+        }else{
+            description.innerText = document.getElementById("description-input").value
+            description.style.display = "block";
+            description.parentElement.removeChild(document.getElementById("description-input"))
+            const descriptionData = description.innerText
+            // const data = await axios.patch(`/service_provider/${newid}`,{descriptionData})
+
+            about.innerText = document.getElementById("about-input").value
+            about.style.display = "block";
+            about.parentElement.removeChild(document.getElementById("about-input"))
+            const aboutData = about.innerText
+            const data = await axios.patch(`/service_provider/${newid}`,{aboutData,descriptionData})
+        }
+
+        // if (about.style.display != "none" ){
+        //     about.parentElement.appendChild(document.createElement("input")).setAttribute("id","about-input")
+        //     document.getElementById("about-input").setAttribute("value",about.innerText);
+        //     about.style.display = "none";    
+        // }else{
+        //     about.innerText = document.getElementById("about-input").value
+        //     about.style.display = "block";
+        //     about.parentElement.removeChild(document.getElementById("about-input"))
+        //     const aboutData = about.innerText
+        //     const data = await axios.patch(`/service_provider/${newid}`,{aboutData})
+        // }
+        
+    })
+    
+
+
+    
+</script>
 
 </html>
