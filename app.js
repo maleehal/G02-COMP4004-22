@@ -3,15 +3,22 @@ const express = require("express")
 const customerRoutes = require('./routes/CustomerRoute');
 const serviceRoutes = require('./routes/ServiceRoute');
 const connectDB = require('./database/connect');
+
+const cookieParser = require("cookie-parser");
+const middleware = require("./middleware/middleware")
 const mongoose = require("mongoose")
-const ServiceProvider = require("./models/service-provider");
+const ServiceProvider = require("./models/service-provider")
+
 require('dotenv').config();
 
 const app = express()
 
+const {checkUser,serviceProviderAuth} = require("./middleware/middleware")
+
 
 app.use(express.static('public'));
 app.use(express.json());
+app.use(cookieParser())
 
 app.set('view engine', 'ejs');
 // ROUTES
@@ -26,11 +33,28 @@ app.get("/signup-service", (req,res)=>{
 })
 
 app.get("/startup", (req,res)=>{
+ 
   res.render("startup")
 })
 
-app.get("/search", (req,res)=>{
-  res.render("search")
+app.get("/search",async  (req,res)=>{
+  const {searchkey , filter} = req.query;
+  console.log("came")
+  let providers
+  if (filter){
+    console.log("came again")
+    providers  = await ServiceProvider.find({expertise:`${filter}`})
+    console.log(providers)
+  }
+  if (searchkey){
+    console.log("came to die")
+    providers = await ServiceProvider.find({username:new RegExp(`^${searchkey}`,"i")})
+    
+    console.log(providers)
+  }
+  res.render("search",{providers})
+
+
 })
 
 app.get("/booking", (req,res)=>{
@@ -41,23 +65,16 @@ app.get("/customer_schedule", (req,res)=>{
   res.render("customer_schedule")
 })
 
-app.get("/service_provider/:id", async (req,res)=>{
-  const {id} = req.params
-  const provider = await ServiceProvider.findOne({_id:id})
-  res.render("service_provider", {
-    provider:provider
-  });
-});
+app.get("/service_provider/:id", (req,res)=>{
+  res.render("service_provider")
+})
 
-app.patch("/service_provider/:id", async (req,res)=>{
-  const {descriptionData,aboutData} = req.body
-  const {id} = req.params
-  const Updateprovider = await ServiceProvider.findByIdAndUpdate(id,{description:descriptionData, about:aboutData},{runValidators:true})
-});
-
-
-app.get("/service_provider_schedule", (req,res)=>{
+app.get("/service_provider_schedule",serviceProviderAuth, (req,res)=>{
   res.render("service_provider_schedule")
+})
+
+app.get("/pending",(req,res)=>{
+  res.render("pending")
 })
 
 // app.get("/signup-customer", (req,res)=>{
@@ -65,8 +82,9 @@ app.get("/service_provider_schedule", (req,res)=>{
 // })
 
 // app.get("/login-customer",(req,res) => res.render("login-customer"))
-app.get("/login-service",(req,res) => res.render("login-service"))
-app.get('/', (req, res) => {res.render('home')});
+// app.get("/login-service",(req,res) => res.render("login-service"))
+
+app.get('/',checkUser,(req, res) => {res.render('home')});
 
 
 

@@ -45,6 +45,10 @@ const service_providerSchema = new mongoose.Schema({
         type: String,
         required:[true,"This field is required"]
     },
+    rating:{
+        type:Number,
+        default:0,
+    },
 
     description: {
         type: String,
@@ -75,7 +79,13 @@ service_providerSchema.statics.login = async function(username , password){
     if (serviceProvider){
         const auth = await bcrypt.compare(password, serviceProvider.password)
         if(auth){
-            return serviceProvider;
+            // return serviceProvider;
+            if (serviceProvider.status === "Verified"){
+                return serviceProvider;
+            }
+            else{
+                throw Error("Account not Verified")
+            }
             
         }
         throw Error("Incorrect passsword")

@@ -51,15 +51,23 @@
         event.preventDefault()
         const username = form.username.value;
         const password = form.password.value;
+
         try {
             const {data} = await axios.post("/api/v1/service-provider/login",{username,password})
             if(data.provider){
                 location.assign("/")
             }
+            if (data.errors){
+                if (data.errors.verification === "Account not Verified"){
+                    console.log("came here")
+                    location.assign("/pending")
+                }
+            }
            
 
             
         } catch (error) {
+            console.log(error)
             
         }
 
