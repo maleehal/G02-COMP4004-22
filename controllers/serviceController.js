@@ -3,23 +3,27 @@ const jwt = require("jsonwebtoken")
 const cookieParser = require("cookie-parser")
 const ServiceProvider = require("../models/service-provider")
 
+
 const maxAge = 3 * 24  * 60 * 60
 
 
 
 const createToken = (id) => {
-    return jwt.sign({ id },"Customer",{
+    return jwt.sign({ id },"ServiceProvider",{
         expiresIn:maxAge
     })
 }
 
 const handleErrors = (error) =>{
-    let errors = { username : "",password : "" }
+    let errors = { username : "",password : "" ,verification:"" }
     if(error.message === 'Incorrect username'){
-        errors.username = "that email is not registered"
+        errors.username = "that username is not registered"
     }
     if(error.message === 'Incorrect passsword'){
         errors.password = "incorrect passsword"
+    }
+    if(error.message === 'Account not Verified'){
+        errors.verification = "Account not Verified"
     }
     if (error.code === 11000){
         errors.username = 'This username has already been Registered'
@@ -39,7 +43,7 @@ const handleErrors = (error) =>{
 
 const getAllproviders = async (req,res) =>{
     try {
-        const providers = await ServiceProvider.find({}).select("name email expertise")
+        const providers = await ServiceProvider.find({status:"Verified"}).select("name email expertise")
         res.status(200).send({providers}) 
         
     } catch (error) {
@@ -65,16 +69,15 @@ const signUpService = async (req,res) =>{
 
 const serviceLogIn = async (req,res) =>{
     const {username , password} = req.body
-    console.log("came to service login")
     try {
         const provider= await ServiceProvider.login(username,password)
         const token = createToken(provider._id)
         res.cookie("jwt",token,{httpOnly:true,maxAge:maxAge*1000})
         res.status(200).send({provider:provider._id})  
     } catch (error) {
-        console.log(error)
         const errors = handleErrors(error)
-        res.status(400).send({errors}) 
+        console.log(errors)
+        res.status(200).send({errors}) 
     }   
 }
 

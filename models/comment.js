@@ -16,8 +16,9 @@ const commentSchema =new mongoose.Schema({
         type :String,
     },
     
-    date: {
-        type:date,
+    commentedat: {
+        type:Date,
+        default:Date.now,
     }
 })
 
