@@ -19,8 +19,9 @@
         <button class="spb1i" onclick="openBooking(event, 'Completed')">Completed</button>
         <button class="spb1i" onclick="openBooking(event, 'Rejected')">Rejected</button>
    </div>
-
-   <div id="Ongoing" class="spb2">
+   
+   <% bookings.forEach(booking => { %>
+    <div id="Ongoing" class="spb2">
         <table border="1">
             <tr>
                 <th>ID</th>
@@ -29,29 +30,54 @@
                 <th>Started Date</th>
                 <th>Ending Date</th>
             </tr>
+
+            <% if (booking.status =="Ongoing") { %>
+                <tr>
+                    <td> <%= booking._id %>  </td>
+                    <td>Event</td>
+                    <td><%= booking.c_id %></td>
+                    <td><%= booking.date %></td>
+                    <td>
+                        <button>Accept</button>
+                        <button>Reject</button>
+                    </td>
+                </tr>
+
+            <% } %>    
         </table>
    </div>
+
    <div id="Pending" class="spb2">
-        <table border="1">
-            <tr>
-                <th>ID</th>
-                <th>Event</th>
-                <th>Customer</th>
-                <th>Appoinment Date</th>
-                <th>Accept/Regect</th>
-            </tr>
-            <tr>
-                <td>ID</td>
-                <td>Event</td>
-                <td>Customer</td>
-                <td>Appoinment Date</td>
-                <td>
-                    <button>Accept</button>
-                    <button>Reject</button>
-                </td>
-            </tr>
-        </table>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Event</th>
+            <th>Customer</th>
+            <th>Appoinment Date</th>
+            <th>Accept/Regect</th>
+        </tr>
+            
+        </tr>
+        
+        <% } else if ({:condition}) { %>
+         
+            <% if (booking.status =="Pending") { %>
+                <tr>
+                    <td> <%= booking._id %>  </td>
+                    <td>Event</td>
+                    <td><%= booking.c_id %></td>
+                    <td><%= booking.date %></td>
+                    <td>
+                        <button>Accept</button>
+                        <button>Reject</button>
+                    </td>
+                </tr>
+
+            <% } %>             
+        <% }) %> 
+    </table>
     </div>
+
     <div id="Completed" class="spb2">
         <table border="1">
             <tr>
@@ -61,6 +87,21 @@
                 <th>Started Date</th>
                 <th>Ended Date</th>
             </tr>
+            <% bookings.forEach(booking => { %>
+                <% if (booking.status =="Pending") { %>
+                    <tr>
+                        <td> <%= booking._id %>  </td>
+                        <td>Event</td>
+                        <td><%= booking.c_id %></td>
+                        <td><%= booking.date %></td>
+                        <td>
+                            <button>Accept</button>
+                            <button>Reject</button>
+                        </td>
+                    </tr>
+    
+                <% } %>             
+            <% }) %>
         </table>
     </div>
     <div id="Rejected" class="spb2">
@@ -73,6 +114,96 @@
             </tr>
         </table>
     </div>
+
+    <% }) %>
+
+   
+     
+    
+   <div id="Ongoing" class="spb2">
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Event</th>
+                <th>Customer</th>
+                <th>Started Date</th>
+                <th>Ending Date</th>
+            </tr>
+
+            <% bookings.forEach(booking => { %>
+                <% if (booking.status =="Ongoing") { %>
+                    <tr>
+                        <td> <%= booking._id %>  </td>
+                        <td>Event</td>
+                        <td><%= booking.c_id %></td>
+                        <td><%= booking.date %></td>
+                        <td>
+                            <button>Accept</button>
+                            <button>Reject</button>
+                        </td>
+                    </tr>
+    
+                <% } %>             
+            <% }) %>
+        </table>
+   </div>
+
+   <div id="Pending" class="spb2">
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Event</th>
+                <th>Customer</th>
+                <th>Appoinment Date</th>
+                <th>Accept/Regect</th>
+            </tr>
+                
+            </tr>
+            
+            <% bookings.forEach(booking => { %>
+                <% if (booking.status =="Pending") { %>
+                    <tr>
+                        <td> <%= booking._id %>  </td>
+                        <td>Event</td>
+                        <td><%= booking.c_id %></td>
+                        <td><%= booking.date %></td>
+                        <td>
+                            <button>Accept</button>
+                            <button>Reject</button>
+                        </td>
+                    </tr>
+    
+                <% } %>             
+            <% }) %> 
+        </table>
+    </div>
+    <div id="Completed" class="spb2">
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Event</th>
+                <th>Customer</th>
+                <th>Started Date</th>
+                <th>Ended Date</th>
+            </tr>
+            <% bookings.forEach(booking => { %>
+                <% if (booking.status =="Pending") { %>
+                    <tr>
+                        <td> <%= booking._id %>  </td>
+                        <td>Event</td>
+                        <td><%= booking.c_id %></td>
+                        <td><%= booking.date %></td>
+                        <td>
+                            <button>Accept</button>
+                            <button>Reject</button>
+                        </td>
+                    </tr>
+    
+                <% } %>             
+            <% }) %>
+        </table>
+    </div>
+    
 </body>
 
 <footer>
@@ -99,5 +230,11 @@
         document.getElementById(eventStatus).style.display = "block";
         evt.currentTarget.className += " active";
     }
+
+    const params = window.location.href
+    const id = new URL(params)
+    const path = id.pathname.split("/")
+    let newid = path[2]
+
 </script>
 </html>

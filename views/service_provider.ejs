@@ -24,7 +24,7 @@
         <div class="sp3-1"></div>
         <div class="sp3-1">
             <div class="bt">
-                <button><img src="/images/Picture1.png" alt="Schedule"></button>
+                <button id="schedule"><img src="/images/Picture1.png" alt="Schedule"></button>
                 <button id="edit"><img src="/images/Picture2.png" alt="Edit"></button>
             </div>
         </div>
@@ -89,6 +89,7 @@
     let description = document.getElementById("description")
     let about = document.getElementById("about")
     let edit = document.getElementById("edit")
+    let schedule = document.getElementById("schedule")
     const params = window.location.href
     const id = new URL(params)
     const path = id.pathname.split("/")
@@ -110,7 +111,6 @@
             description.style.display = "block";
             description.parentElement.removeChild(document.getElementById("description-input"))
             const descriptionData = description.innerText
-            // const data = await axios.patch(`/service_provider/${newid}`,{descriptionData})
 
             about.innerText = document.getElementById("about-input").value
             about.style.display = "block";
@@ -118,24 +118,11 @@
             const aboutData = about.innerText
             const data = await axios.patch(`/service_provider/${newid}`,{aboutData,descriptionData})
         }
-
-        // if (about.style.display != "none" ){
-        //     about.parentElement.appendChild(document.createElement("input")).setAttribute("id","about-input")
-        //     document.getElementById("about-input").setAttribute("value",about.innerText);
-        //     about.style.display = "none";    
-        // }else{
-        //     about.innerText = document.getElementById("about-input").value
-        //     about.style.display = "block";
-        //     about.parentElement.removeChild(document.getElementById("about-input"))
-        //     const aboutData = about.innerText
-        //     const data = await axios.patch(`/service_provider/${newid}`,{aboutData})
-        // }
-        
+    })   
+    document.getElementById("schedule").addEventListener("click", async() =>{
+        location.assign(`/service_provider_schedule/${newid}`)
     })
     
 
-
-    
 </script>
-
 </html>
