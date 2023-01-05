@@ -4,26 +4,32 @@ const {isEmail} = require("validator")
 
 const bookingSchema = new mongoose.Schema({
     s_id: {
-        type: mongoose.SchemaType.ObjectId,
-        ref: "customer"
-    },
-    c_id: {
-        type: mongoose.SchemaType.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "service-provider"
     },
-    Status: {
+    c_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "customer"
+    },
+    status: {
         type: String,
+        default:"Pending",
         enum:["Pending","Completed","Accepted","Rejected"]
     },
-    Date: {
+    date: {
+        
         type: Date,
-        required:[true,"this field is required"]
+        default:Date.now,
+        // required:[true,"this field is required"]
         
     },
-    Time: {
-        type: Date,
-        required:[true,"this field is required"]
-    }
+    // Time: {
+    //     type: Date,
+    //     required:[true,"this field is required"]
+    // }
 })
 
-module.exports = mongoose.model("booking",bookingSchema)
+const Booking = mongoose.model("booking",bookingSchema)
+
+module.exports = Booking
+

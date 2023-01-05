@@ -100,5 +100,7 @@ const displayLogInPage = (req,res) =>{
     res.render("login-service")
 }
 
+
+
 module.exports = {getAllproviders , displayLogInPage , displaySignUpPage , signUpService, serviceLogIn}
 
