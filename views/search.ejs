@@ -27,102 +27,25 @@
     </select>
 
     <div class="customer-list" id="customer-list">
-        <!-- <div class="customer-cards">
+        <% providers.forEach((provider ) => { %>
+            <div class="customer-cards">
             <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
             <div class="provider-info">
-                <div class="provider-name">Billy jones</div>
-                <div class="provider-email">Billyjones@gmail.com</div>
+                <div class="provider-name"><%=provider.name%></div>
+                <div class="provider-email"><%=provider.email%></div>
             </div>
             <div class="rating"><span class="fa fa-star"></span>5 stars</div>
 
         </div>
 
-        <div class="customer-cards">
-            <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
-            <div class="provider-info">
-                <div class="provider-name">Billy jones</div>
-                <div class="provider-email">Billyjones@gmail.com</div>
-            </div>
-            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
-
-        </div>
-
-        <div class="customer-cards">
-            <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
-            <div class="provider-info">
-                <div class="provider-name">Billy jones</div>
-                <div class="provider-email">Billyjones@gmail.com</div>
-            </div>
-            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
-
-        </div>
-
-        <div class="customer-cards">
-            <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
-            <div class="provider-info">
-                <div class="provider-name">Billy jones</div>
-                <div class="provider-email">Billyjones@gmail.com</div>
-            </div>
-            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
-
-        </div>
-
-        <div class="customer-cards">
-            <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
-            <div class="provider-info">
-                <div class="provider-name">Billy jones</div>
-                <div class="provider-email">Billyjones@gmail.com</div>
-            </div>
-            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
-
-        </div>
-
-        <div class="customer-cards">
-            <div class="provider-profile"><img src="images/image 2.png" alt=""></div>
-            <div class="provider-info">
-                <div class="provider-name">Billy jones</div>
-                <div class="provider-email">Billyjones@gmail.com</div>
-            </div>
-            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
-
-        </div>
-
-        <div class="customer-cards">
-            <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
-            <div class="provider-info">
-                <div class="provider-name">Billy jones</div>
-                <div class="provider-email">Billyjones@gmail.com</div>
-            </div>
-            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
-
-        </div>
-
-        <div class="customer-cards">
-            <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
-            <div class="provider-info">
-                <div class="provider-name">Billy jones</div>
-                <div class="provider-email">Billyjones@gmail.com</div>
-            </div>
-            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
-
-        </div>
-
-        <div class="customer-cards">
-            <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
-            <div class="provider-info">
-                <div class="provider-name">Billy jones</div>
-                <div class="provider-email">Billyjones@gmail.com</div>
-            </div>
-            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
-
-        </div> -->
-
-       
-
+            
+            
+       <% }); %>
         
-
         
     </div>
+
+    
     
     
 </body>
@@ -135,19 +58,21 @@
     const customerList = document.getElementById("customer-list")
     
 
-    filterBar.addEventListener("change",() =>{
+    filterBar.addEventListener("change",async () =>{
         const filterKey= filterBar.value;
-        if (filterKey === "all"){
-            displayContent(serviceProviders)
-            return
+        // if (filterKey === "all"){
+        //     displayContent(serviceProviders)
+        //     return
 
-        }
-        const filteredArray = serviceProviders.filter((provider) =>{
-            if(provider.expertise.includes(filterKey)){
-                return provider
-            }
-        })
-        displayContent(filteredArray)
+        // }
+        // const filteredArray = serviceProviders.filter((provider) =>{
+        //     if(provider.expertise.includes(filterKey)){
+        //         return provider
+        //     }
+        // })
+        // displayContent(filteredArray)
+        location.assign(`/search?filter=${filterKey}`)
+        // const response = await axios.get(`/search?filter=${filterKey}`)
 
     
     })
@@ -174,27 +99,30 @@
 
 
 
-    const getAllCustomers = async () =>{
-        const {data:{providers}} = await axios.get("/api/v1/service-provider/getallproviders")
-        serviceProviders = [...providers]
-        console.log(serviceProviders)
-        displayContent(serviceProviders)
+    // const getAllCustomers = async () =>{
+    //     const {data:{providers}} = await axios.get("/api/v1/service-provider/getallproviders")
+    //     serviceProviders = [...providers]
+    //     console.log(serviceProviders)
+    //     displayContent(serviceProviders)
         
 
-    }
+    // }
     
-    getAllCustomers()
+    // getAllCustomers()
 
-    searchBtn.addEventListener("click", () =>{
-        let searchResults = [];
+    searchBtn.addEventListener("click", async () =>{
+        // let searchResults = [];
         let searchKey = searchBar.value.toLowerCase()
-        searchResults = serviceProviders.filter( provider =>{
-            if(provider.name.toLowerCase().startsWith(searchKey)){
-                return provider
-            }
-        })
+        // searchResults = serviceProviders.filter( provider =>{
+        //     if(provider.name.toLowerCase().startsWith(searchKey)){
+        //         return provider
+        //     }
+        // })
        
-        displayContent(searchResults)
+        // displayContent(searchResults)
+        // }
+        location.assign(`/search?searchkey=${searchKey}`)
+        // const response = await axios.get(`/search?searchkey=${searchKey}`)
         })
     
 

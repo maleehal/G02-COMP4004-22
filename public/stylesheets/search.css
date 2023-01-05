@@ -49,11 +49,14 @@ nav{
 
 .customer-list{
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns:33% 33% 33%;
+
+    gap: 16px;
+    
 
     width: auto;
   
-    gap: 16px;
+ 
     padding: 1%;
 }
 

@@ -17,7 +17,15 @@ nav{
 
 .item-3{
     margin-left: auto;
+    width: fit-content;
 }
+
+a{
+
+    color:white;
+}
+
+
 
 .item-2{
     margin-left: 24px;
@@ -28,10 +36,13 @@ nav{
     height: auto;
 }
 .search-btn{
-    background-color: purple;
+    background-color: rgb(195, 19, 195);
     color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
+    height: 50px;
+    width: 50px;
+     
   
 }
 

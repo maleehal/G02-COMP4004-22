@@ -1,0 +1,18 @@
+.box{
+    border: 2px solid black;
+    width: fit-content;
+    margin: auto;
+    text-align:  center;
+    border-radius: 24px;
+    padding: 2%;
+    background-color: rgb(247, 237, 239);
+}
+
+button{
+    background-color: purple;
+    color: white;
+    padding: 1%;
+    border-radius: 24px;
+    font-size: 22px;
+    border: none;
+}
