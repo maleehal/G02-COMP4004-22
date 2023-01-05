@@ -17,10 +17,12 @@ const bookingSchema = new mongoose.Schema({
     },
     Date: {
         type: Date,
+        required:[true,"this field is required"]
         
     },
     Time: {
-        type: Date
+        type: Date,
+        required:[true,"this field is required"]
     }
 })
 

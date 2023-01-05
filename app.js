@@ -3,6 +3,8 @@ const express = require("express")
 const customerRoutes = require('./routes/CustomerRoute');
 const serviceRoutes = require('./routes/ServiceRoute');
 const connectDB = require('./database/connect');
+const mongoose = require("mongoose")
+const ServiceProvider = require("./models/service-provider");
 require('dotenv').config();
 
 const app = express()
@@ -39,9 +41,20 @@ app.get("/customer_schedule", (req,res)=>{
   res.render("customer_schedule")
 })
 
-app.get("/service_provider", (req,res)=>{
-  res.render("service_provider")
-})
+app.get("/service_provider/:id", async (req,res)=>{
+  const {id} = req.params
+  const provider = await ServiceProvider.findOne({_id:id})
+  res.render("service_provider", {
+    provider:provider
+  });
+});
+
+app.patch("/service_provider/:id", async (req,res)=>{
+  const {descriptionData,aboutData} = req.body
+  const {id} = req.params
+  const Updateprovider = await ServiceProvider.findByIdAndUpdate(id,{description:descriptionData, about:aboutData},{runValidators:true})
+});
+
 
 app.get("/service_provider_schedule", (req,res)=>{
   res.render("service_provider_schedule")

@@ -1,0 +1,41 @@
+:root{
+    --tcolor: #7D3C98;
+    --bshadow: 10px;
+}
+body{
+    padding: 2% black;
+}
+/* header */
+.sp1{
+    display: grid;
+    grid-template-columns: 5% 15% 65% 5% 5% 5%;
+    align-items: center;
+    
+}
+.sp1-1{
+    align-items: center;
+    text-align: center;
+}
+.sp1 img, .profile{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+/* footer */
+.foot{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;  
+}
+.foot ul {
+    list-style-type: none;
+}
+.foot-1{
+    align-items: center;
+    text-align: center;
+}
+.foot img, .profile{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
