@@ -3,7 +3,7 @@ const  {displayProviderProfile, updateProviderDetails,displayProviderSchedule} =
 
 const router = express.Router()
 
-router.route("/service-provider/:id").get(displayProviderProfile).patch(updateProviderDetails)
+router.route("/service_provider/:id").get(displayProviderProfile).patch(updateProviderDetails)
 router.route("/service_provider_schedule/:id").get(displayProviderSchedule)
 
 module.exports = router
