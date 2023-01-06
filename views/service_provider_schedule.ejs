@@ -20,108 +20,11 @@
         <button class="spb1i" onclick="openBooking(event, 'Rejected')">Rejected</button>
    </div>
    
-   <% bookings.forEach(booking => { %>
-    <div id="Ongoing" class="spb2">
-        <table border="1">
-            <tr>
-                <th>ID</th>
-                <th>Event</th>
-                <th>Customer</th>
-                <th>Started Date</th>
-                <th>Ending Date</th>
-            </tr>
-
-            <% if (booking.status =="Ongoing") { %>
-                <tr>
-                    <td> <%= booking._id %>  </td>
-                    <td>Event</td>
-                    <td><%= booking.c_id %></td>
-                    <td><%= booking.date %></td>
-                    <td>
-                        <button>Accept</button>
-                        <button>Reject</button>
-                    </td>
-                </tr>
-
-            <% } %>    
-        </table>
-   </div>
-
-   <div id="Pending" class="spb2">
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Event</th>
-            <th>Customer</th>
-            <th>Appoinment Date</th>
-            <th>Accept/Regect</th>
-        </tr>
-            
-        </tr>
-        
-        <% } else if ({:condition}) { %>
-         
-            <% if (booking.status =="Pending") { %>
-                <tr>
-                    <td> <%= booking._id %>  </td>
-                    <td>Event</td>
-                    <td><%= booking.c_id %></td>
-                    <td><%= booking.date %></td>
-                    <td>
-                        <button>Accept</button>
-                        <button>Reject</button>
-                    </td>
-                </tr>
-
-            <% } %>             
-        <% }) %> 
-    </table>
-    </div>
-
-    <div id="Completed" class="spb2">
-        <table border="1">
-            <tr>
-                <th>ID</th>
-                <th>Event</th>
-                <th>Customer</th>
-                <th>Started Date</th>
-                <th>Ended Date</th>
-            </tr>
-            <% bookings.forEach(booking => { %>
-                <% if (booking.status =="Pending") { %>
-                    <tr>
-                        <td> <%= booking._id %>  </td>
-                        <td>Event</td>
-                        <td><%= booking.c_id %></td>
-                        <td><%= booking.date %></td>
-                        <td>
-                            <button>Accept</button>
-                            <button>Reject</button>
-                        </td>
-                    </tr>
     
-                <% } %>             
-            <% }) %>
-        </table>
-    </div>
-    <div id="Rejected" class="spb2">
-        <table border="1">
-            <tr>
-                <th>ID</th>
-                <th>Event</th>
-                <th>Customer</th>
-                <th>Reason</th>
-            </tr>
-        </table>
-    </div>
-
-    <% }) %>
-
    
-     
-    
-   <div id="Ongoing" class="spb2">
-        <table border="1">
+   
+    <div id="Ongoing" class="spb2">
+        <table>
             <tr>
                 <th>ID</th>
                 <th>Event</th>
@@ -129,7 +32,6 @@
                 <th>Started Date</th>
                 <th>Ending Date</th>
             </tr>
-
             <% bookings.forEach(booking => { %>
                 <% if (booking.status =="Ongoing") { %>
                     <tr>
@@ -141,44 +43,41 @@
                             <button>Accept</button>
                             <button>Reject</button>
                         </td>
-                    </tr>
-    
-                <% } %>             
-            <% }) %>
+                    </tr>  
+                <% } %>
+            <% }) %>   
         </table>
-   </div>
+    </div>
 
-   <div id="Pending" class="spb2">
-        <table border="1">
-            <tr>
-                <th>ID</th>
-                <th>Event</th>
-                <th>Customer</th>
-                <th>Appoinment Date</th>
-                <th>Accept/Regect</th>
-            </tr>
-                
-            </tr>
+    <div id="Pending" class="spb2">
+        <table>
             
+                <tr>
+                    <th>ID</th>
+                    <th>Event</th>
+                    <th>Customer</th>
+                    <th>Appoinment Date</th>
+                    <th>Accept</th>
+                    <th>Reject</th>
+                </tr>
+                
             <% bookings.forEach(booking => { %>
-                <% if (booking.status =="Pending") { %>
+                <% if (booking.status =="Pending") { %> 
                     <tr>
                         <td> <%= booking._id %>  </td>
                         <td>Event</td>
                         <td><%= booking.c_id %></td>
                         <td><%= booking.date %></td>
-                        <td>
-                            <button>Accept</button>
-                            <button>Reject</button>
-                        </td>
+                        <td><button>Accept</button></td>
+                        <td><button>Reject</button></td>
                     </tr>
-    
-                <% } %>             
-            <% }) %> 
+                <% } %>
+            <% }) %>
         </table>
     </div>
+
     <div id="Completed" class="spb2">
-        <table border="1">
+        <table>
             <tr>
                 <th>ID</th>
                 <th>Event</th>
@@ -186,8 +85,9 @@
                 <th>Started Date</th>
                 <th>Ended Date</th>
             </tr>
+
             <% bookings.forEach(booking => { %>
-                <% if (booking.status =="Pending") { %>
+                <% if (booking.status =="Completed") { %> 
                     <tr>
                         <td> <%= booking._id %>  </td>
                         <td>Event</td>
@@ -198,11 +98,36 @@
                             <button>Reject</button>
                         </td>
                     </tr>
-    
-                <% } %>             
+                <% } %>
             <% }) %>
         </table>
     </div>
+    <div id="Rejected" class="spb2">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Event</th>
+                <th>Customer</th>
+                <th>Reason</th>
+            </tr>
+
+            <% bookings.forEach(booking => { %>
+                <% if (booking.status =="Rejected") { %>
+                    <tr>
+                        <td> <%= booking._id %>  </td>
+                        <td>Event</td>
+                        <td><%= booking.c_id %></td>
+                        <td><%= booking.date %></td>
+                        <td>
+                            <button>Accept</button>
+                            <button>Reject</button>
+                        </td>
+                    </tr>
+                <% } %>
+            <% }) %>   
+        </table>
+    </div>
+    
     
 </body>
 
@@ -230,11 +155,6 @@
         document.getElementById(eventStatus).style.display = "block";
         evt.currentTarget.className += " active";
     }
-
-    const params = window.location.href
-    const id = new URL(params)
-    const path = id.pathname.split("/")
-    let newid = path[2]
 
 </script>
 </html>
