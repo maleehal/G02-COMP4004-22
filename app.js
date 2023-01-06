@@ -7,9 +7,6 @@ const connectDB = require('./database/connect');
 
 const cookieParser = require("cookie-parser");
 const middleware = require("./middleware/middleware")
-const mongoose = require("mongoose")
-
-const ServiceProvider = require("./models/service-provider");
 const Booking = require("./models/booking");
 
 require('dotenv').config();
@@ -42,33 +39,25 @@ app.get("/startup", (req,res)=>{
   res.render("startup")
 })
 
-app.get("/search",async  (req,res)=>{
-  const {searchkey , filter} = req.query;
-  console.log("came")
-  let providers
-  if (filter){
-    console.log("came again")
-    providers  = await ServiceProvider.find({expertise:`${filter}`})
-    console.log(providers)
-  }
-  if (searchkey){
-    console.log("came to die")
-    providers = await ServiceProvider.find({username:new RegExp(`^${searchkey}`,"i")})
+// app.get("/search",async  (req,res)=>{
+//   const {searchkey , filter} = req.query;
+//   console.log("came")
+//   let providers
+//   if (filter){
+//     console.log("came again")
+//     providers  = await ServiceProvider.find({expertise:`${filter}`})
+//     console.log(providers)
+//   }
+//   if (searchkey){
+//     console.log("came to die")
+//     providers = await ServiceProvider.find({username:new RegExp(`^${searchkey}`,"i")})
     
-    console.log(providers)
-  }
-  res.render("search",{providers})
+//     console.log(providers)
+//   }
+//   res.render("search",{providers})
 
 
-})
-
-app.get("/booking", (req,res)=>{
-  res.render("booking")
-})
-
-app.get("/customer_schedule", (req,res)=>{
-  res.render("customer_schedule")
-})
+// })
 
 
 // testing
@@ -79,13 +68,13 @@ app.post("/createProvider", async (req,res)=>{
 })
 
 
-app.get("/signup-customer", (req,res)=>{
-  res.render("signup-customer")
-})
+// app.get("/signup-customer", (req,res)=>{
+//   res.render("signup-customer")
+// })
 
-app.get("/login-customer",(req,res) => res.render("login-customer"))
-app.get("/login-service",(req,res) => res.render("login-service"))
-app.get('/', (req, res) => {res.render('home')});
+// app.get("/login-customer",(req,res) => res.render("login-customer"))
+// app.get("/login-service",(req,res) => res.render("login-service"))
+// app.get('/', (req, res) => {res.render('home')});
 
 
 

@@ -10,6 +10,21 @@ const displayProviderProfile = async (req,res) =>{
     });
 }
 
+const displaySearchPage = async (req,res) =>{
+   res.render("search")}
+
+const displayBookingPage = async (req,res) =>{
+    res.render("booking")
+}
+
+const displayHomePage = async (req,res) =>{
+    res.render("home")
+}
+
+const displayCustomerSchedulePage = async (req,res) =>{
+   res.render("customer_schedule")
+}
+
 const updateProviderDetails = async (req,res)=>{
     const {descriptionData,aboutData} = req.body
     const {id} = req.params
@@ -17,13 +32,7 @@ const updateProviderDetails = async (req,res)=>{
 };
 
 const displayProviderSchedule = async (req,res)=>{
-    const {id} = req.params
-    console.log(id)
-    const bookings = await Booking.find({s_id:id,status:"Pending"})
-    console.log(bookings)
-    res.render("service_provider_schedule", {
-      bookings:bookings
-    })
+    res.render("service_provider_schedule")
 };
 
-module.exports = {displayProviderProfile, updateProviderDetails, displayProviderSchedule}
+module.exports = {displayProviderProfile, updateProviderDetails, displayProviderSchedule ,displayBookingPage ,displaySearchPage , displayCustomerSchedulePage,displayHomePage}
