@@ -1,43 +1,35 @@
 const ServiceProvider = require("../models/service-provider")
 const Booking = require("../models/booking")
+const jwt = require("jsonwebtoken")
+const cookieParser = require("cookie-parser")
 
-const displayProviderProfile = async (req,res) =>{
-    const {id} = req.params
-    const provider = await ServiceProvider.findOne({_id:id})
-    res.render("service_provider", {
-        provider:provider
-    });
+
+// const displayProviderProfile = async (req,res) =>{
+//     const {id} = req.params
+//     const provider = await ServiceProvider.findOne({_id:id})
+//     res.render("service_provider", {
+//         provider:provider
+//     });
+// }
+
+const displayProviderProfile = async (req,res) =>{ 
+    res.render("service_provider");  
 }
-
-const displaySearchPage = async (req,res) =>{
-   res.render("search")}
-
-const displayBookingPage = async (req,res) =>{
-    res.render("booking")
-}
-
-const displayHomePage = async (req,res) =>{
-    res.render("home")
-}
-
-const displayCustomerSchedulePage = async (req,res) =>{
-   res.render("customer_schedule")
-}
-
-const updateProviderDetails = async (req,res)=>{
-    const {descriptionData,aboutData} = req.body
-    const {id} = req.params
-    const Updateprovider = await ServiceProvider.findByIdAndUpdate(id,{description:descriptionData, about:aboutData},{runValidators:true})
-};
 
 const displayProviderSchedule = async (req,res)=>{
-
-    const {id} = req.params
-    const bookings = await Booking.find({s_id:id})
-    res.render("service_provider_schedule", {
-      bookings:bookings
-    })
-
+    const token = req.cookies.jwt
+    jwt.verify(token, "ServiceProvider", async (error, decodedtoken)=>{
+        if(error){
+            console.log(error)
+        }else{
+            const id = decodedtoken.id
+            const bookings = await Booking.find({s_id:id})
+            res.render("service_provider_schedule", {
+                bookings:bookings
+            })
+        }
+    })    
 };
 
-module.exports = {displayProviderProfile, updateProviderDetails, displayProviderSchedule ,displayBookingPage ,displaySearchPage , displayCustomerSchedulePage,displayHomePage}
+module.exports = {displayProviderProfile, displayProviderSchedule}
+

@@ -8,9 +8,7 @@ nav{
     flex-direction: row;
     align-items: center;
     gap: 2px;
-    padding: 1%;
-  
-  
+    padding: 1%;  
     height:auto;
     border-bottom: 2px solid black;
 }
@@ -31,54 +29,32 @@ nav{
     background-color: purple;
     color: white;
     border: none;
-    border-radius: 20px;
-  
-}
-
-.item-4 img{
-    width: 60%;
-    height: auto;
-    margin: auto;
-    display: block;
- 
-
-}
-.item-4{
-    width: 10%;
+    border-radius: 20px;  
 }
 
 .customer-list{
     display: grid;
     grid-template-columns:33% 33% 33%;
-
     gap: 16px;
-    
-
     width: auto;
-  
- 
     padding: 1%;
 }
 
 .customer-cards{
-  
     border-radius: 24px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     height: 250px;
     display: flex;
     align-items:center;
     justify-content: space-around;
-
 }
 
 .customer-cards  div{
-  
     width: fit-content;
     height: auto;
     padding: 1%;
-
-
 }
+ 
 .provider-profile img{
     width:80% ;
     height: auto;
@@ -115,7 +91,6 @@ nav{
 }
 
 #filter-bar option :hover{
-  
     border-radius: 24px;
     border: none;
     background: none;

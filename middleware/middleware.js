@@ -66,7 +66,7 @@ const serviceProviderAuth = (req,res,next) =>{
 
 
 const checkUser =  (req,res,next) =>{
-    console.log("chckl user")
+    //console.log("chckl user")
     const token = req.cookies.jwt;
     let user
     if(token){
@@ -79,10 +79,12 @@ const checkUser =  (req,res,next) =>{
                         next()
                     }
                     else{
+                        const flag = "sp"
                         let user = await ServiceProvider.findById(decodeedToken.id)
                         const flag ="sp"
                         res.locals.flag = flag;
                         res.locals.user= user;
+                        res.locals.flag = flag;
                         next()
                     }
                 }
