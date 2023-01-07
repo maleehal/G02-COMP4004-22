@@ -68,6 +68,11 @@ app.get("/booking", (req,res)=>{
 
 app.get("/customer_schedule", (req,res)=>{
   res.render("customer_schedule")
+  console.log('hello')
+})
+
+app.get("/admin", (req,res)=>{
+  res.render("admin")
 })
 
 
