@@ -153,3 +153,26 @@ nav{
    padding-left: 9px;
    width: 100xp;
 }
+
+.provider-info{
+ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.provider-info button{
+   color: white;
+   background-image: linear-gradient(to right, rgb(197, 71, 201) , rgb(237, 138, 227));
+   border: none;
+   font-size: large;
+   font-weight: bolder;
+   padding: 10px;
+   border-radius: 24px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}

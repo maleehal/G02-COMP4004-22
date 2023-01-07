@@ -80,6 +80,8 @@ const checkUser =  (req,res,next) =>{
                     }
                     else{
                         let user = await ServiceProvider.findById(decodeedToken.id)
+                        const flag ="sp"
+                        res.locals.flag = flag;
                         res.locals.user= user;
                         next()
                     }
@@ -88,6 +90,9 @@ const checkUser =  (req,res,next) =>{
             }
             else{
                 let user = await Customer.findById(decodeedToken.id)
+                const flag ="cu"
+                res.locals.flag = flag;
+
                 res.locals.user = user;
                 next()
             }

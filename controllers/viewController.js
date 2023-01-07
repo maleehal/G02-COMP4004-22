@@ -2,7 +2,6 @@ const ServiceProvider = require("../models/service-provider")
 const Booking = require("../models/booking")
 
 const displayProviderProfile = async (req,res) =>{
-    console.log("hj")
     const {id} = req.params
     const provider = await ServiceProvider.findOne({_id:id})
     res.render("service_provider", {
@@ -32,7 +31,13 @@ const updateProviderDetails = async (req,res)=>{
 };
 
 const displayProviderSchedule = async (req,res)=>{
-    res.render("service_provider_schedule")
+
+    const {id} = req.params
+    const bookings = await Booking.find({s_id:id})
+    res.render("service_provider_schedule", {
+      bookings:bookings
+    })
+
 };
 
 module.exports = {displayProviderProfile, updateProviderDetails, displayProviderSchedule ,displayBookingPage ,displaySearchPage , displayCustomerSchedulePage,displayHomePage}

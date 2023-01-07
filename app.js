@@ -63,8 +63,7 @@ app.get("/startup", (req,res)=>{
 // testing
 app.post("/createProvider", async (req,res)=>{
   const {s_id , c_id} = req.body
-  const newBooking = await Booking.create({c_id , s_id})
-  
+  const newBooking = await Booking.create({c_id , s_id})  
 })
 
 

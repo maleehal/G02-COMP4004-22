@@ -100,13 +100,18 @@ body{
     color: var(--tcolor);
 }
 .spb2 table{
-    width: 50%;
+    border: var(--tcolor) 1px solid;
+    width: 90%;
     height: auto;
     font-size: 20px;
     text-align: center;
-    margin-left: 20%;
-    margin-bottom: 20%;
+    margin: auto;
 }
+.spb2 table td, .spb2 table th{
+    border: var(--tcolor) 1px solid;
+    padding: 7px;
+}
+
 .foot{
     display: grid;
     grid-template-columns: auto auto auto;
