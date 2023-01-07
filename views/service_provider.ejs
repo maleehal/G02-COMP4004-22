@@ -14,18 +14,20 @@
 <body>
 
    <div class="sp3">
-        <div class="sp3-1"><img class="profile" src="/images/logo.png" alt="logo"></div>
+        <div class="sp3-1"><button class="item-4"><img class="search1" src="/images/image 2.png" alt="profile"></button></div>
         <div class="sp3-1">
-            <%=provider.name%>
-            <%=provider.email%>
-            <%= provider.telephone %> 
+            <%=user.name%>
+            <%=user.email%>
+            <%= user.telephone %> 
         </div>
         <div class="sp3-1"></div>
         <div class="sp3-1"></div>
         <div class="sp3-1">
             <div class="bt">
-                <button id="schedule"><img src="/images/Picture1.png" alt="Schedule"></button>
-                <button id="edit"><img src="/images/Picture2.png" alt="Edit"></button>
+                <% if (flag === "sp") { %>
+                    <button id="schedule"><img src="/images/Picture1.png" alt="Schedule"></button>
+                    <button id="edit"><img src="/images/Picture2.png" alt="Edit"></button>
+                <% } %>    
             </div>
         </div>
    </div>
@@ -34,13 +36,13 @@
         <div class="sp2-1" id="desc-block">
             <h2>Description</h2>
             <p id="description"> 
-                <%=provider.description%>
+                <%=user.description%>
             </p> 
         </div>
         <div class="sp2-1">
             <h2>About Provider</h2>
             <p id="about">
-                <%=provider.about%>
+                <%=user.about%>
             </p>
         </div>
         <div class="sp2-1">
@@ -67,15 +69,17 @@
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
         </div>
-        <div class="sp2-1">
-            <h2>Book an Appoinment</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            <a href="/booking"><button>Book Appoinment</button></a>
-        </div>
+        <% if (flag === "cu") { %>
+            <div class="sp2-1">
+                <h2>Book an Appoinment</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <a href="/booking"><button>Book Appoinment</button></a>
+            </div>
+        <% } %> 
    </div>
 </body>
 
@@ -90,11 +94,6 @@
     let about = document.getElementById("about")
     let edit = document.getElementById("edit")
     let schedule = document.getElementById("schedule")
-    const params = window.location.href
-    const id = new URL(params)
-    const path = id.pathname.split("/")
-    let newid = path[2]
-    console.log(newid)
     
 
     document.getElementById("edit").addEventListener("click", async() =>{
@@ -116,11 +115,11 @@
             about.style.display = "block";
             about.parentElement.removeChild(document.getElementById("about-input"))
             const aboutData = about.innerText
-            const data = await axios.patch(`/service_provider/${newid}`,{aboutData,descriptionData})
+            const data = await axios.patch(`/api/v1/service-provider/updateProviderDetails`,{aboutData,descriptionData})
         }
     })   
     document.getElementById("schedule").addEventListener("click", async() =>{
-        location.assign(`/service_provider_schedule/${newid}`)
+        location.assign(`/service_provider_schedule`)
     })
     
 

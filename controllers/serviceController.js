@@ -2,6 +2,7 @@
 const jwt = require("jsonwebtoken")
 const cookieParser = require("cookie-parser")
 const ServiceProvider = require("../models/service-provider")
+const Booking = require("../models/booking")
 
 
 const maxAge = 3 * 24  * 60 * 60
@@ -75,9 +76,8 @@ const signUpService = async (req,res) =>{
 //     console.log(descriptionData)
 //     const Updateprovider = await ServiceProvider.findByIdAndUpdate(id,{description:descriptionData},{runValidators:true})
 //     console.log(Updateprovider)
-
-
 // }
+
 const serviceLogIn = async (req,res) =>{
     const {username , password} = req.body
     try {
@@ -100,7 +100,38 @@ const displayLogInPage = (req,res) =>{
     res.render("login-service")
 }
 
+const updateProviderDetails = async (req,res)=>{
+    const token = req.cookies.jwt
+    jwt.verify(token, "ServiceProvider", async (error, decodedtoken)=>{
+        if(error){
+            console.log(error)
+        }else{
+            const id = decodedtoken.id
+            const {descriptionData,aboutData} = req.body
+            const Updateprovider = await ServiceProvider.findByIdAndUpdate(id,{description:descriptionData, about:aboutData},{runValidators:true})    
+        }
+    })
+};
+
+const acceptAppoinments = async (req,res)=>{
+    const {dataID ,changed} = req.body
+    try {
+        const acceptAppoinment = await Booking.findByIdAndUpdate(dataID,{status:changed},{runValidators:true})
+    }catch(error){
+        console.log(error)
+    }
+};
+
+const rejectAppoinments = async (req,res)=>{
+    const {dataID ,changed} = req.body
+    try {
+        const rejectAppoinment = await Booking.findByIdAndUpdate(dataID,{status:changed},{runValidators:true})
+    }catch(error){
+        console.log(error)
+    }
+};
 
 
-module.exports = {getAllproviders , displayLogInPage , displaySignUpPage , signUpService, serviceLogIn}
+
+module.exports = {getAllproviders , displayLogInPage , displaySignUpPage , signUpService, serviceLogIn, updateProviderDetails, acceptAppoinments, rejectAppoinments}
 

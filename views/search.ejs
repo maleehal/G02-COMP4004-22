@@ -8,13 +8,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
 </head>
+<header>
+    <%- include('partials/header'); %>
+</header>
 <body>
-    <nav>
+    <!-- <nav>
         <div class="item-1"> <img src="/images/logo 1.png" alt=""></div>
         <div class="item-2"><h1>Event Hustler</h1> </div>
         <div class="item-3" ><button class="search-btn"><i class ="fa fa-search" style="font-size: 28px;"></i></button></div>
         <div class="item-4"> <img src="/images/image 2.png" alt="" srcset=""></div>
-    </nav>
+    </nav> -->
 
     <input type="text" name="" id="seach-bar" placeholder="Search...">
     <button id="search-btn" >search</button>
@@ -24,23 +27,14 @@
         <option value="Corporate">Corporate</option>
         <option value="Religous">Religous</option>
         <option value="Festive">Festive</option>
+       
     </select>
 
     <div class="customer-list" id="customer-list">
-        <% providers.forEach((provider ) => { %>
-            <div class="customer-cards">
-            <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
-            <div class="provider-info">
-                <div class="provider-name"><%=provider.name%></div>
-                <div class="provider-email"><%=provider.email%></div>
-            </div>
-            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
+        
 
-        </div>
-
-            
-            
-       <% }); %>
+           
+     
         
         
     </div>
@@ -49,6 +43,10 @@
     
     
 </body>
+<footer>
+    <%- include('partials/footer'); %>
+</footer>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script>
     let serviceProviders = []
@@ -60,18 +58,18 @@
 
     filterBar.addEventListener("change",async () =>{
         const filterKey= filterBar.value;
-        // if (filterKey === "all"){
-        //     displayContent(serviceProviders)
-        //     return
+        if (filterKey === "all"){
+            displayContent(serviceProviders)
+            return
 
-        // }
-        // const filteredArray = serviceProviders.filter((provider) =>{
-        //     if(provider.expertise.includes(filterKey)){
-        //         return provider
-        //     }
-        // })
-        // displayContent(filteredArray)
-        location.assign(`/search?filter=${filterKey}`)
+        }
+        const filteredArray = serviceProviders.filter((provider) =>{
+            if(provider.expertise.includes(filterKey)){
+                return provider
+            }
+        })
+        displayContent(filteredArray)
+        // location.assign(`/search?filter=${filterKey}`)
         // const response = await axios.get(`/search?filter=${filterKey}`)
 
     
@@ -86,6 +84,7 @@
                             <div class="provider-info">
                                 <div class="provider-name">${provider.name}</div>
                                 <div class="provider-email">${provider.email}</div>
+                                <button> <a href="/api/v1/service-provider/service_provider/${provider._id}">View provider</a></button>
                             </div>
                             <div class="rating"><span class="fa fa-star"></span>5 stars</div>
 
@@ -99,29 +98,28 @@
 
 
 
-    // const getAllCustomers = async () =>{
-    //     const {data:{providers}} = await axios.get("/api/v1/service-provider/getallproviders")
-    //     serviceProviders = [...providers]
-    //     console.log(serviceProviders)
-    //     displayContent(serviceProviders)
+    const getAllCustomers = async () =>{
+        const {data:{providers}} = await axios.get("/api/v1/service-provider/getallproviders")
+        serviceProviders = [...providers]
+        console.log(serviceProviders)
+        displayContent(serviceProviders)
         
 
-    // }
+    }
     
-    // getAllCustomers()
+    getAllCustomers()
 
     searchBtn.addEventListener("click", async () =>{
         // let searchResults = [];
         let searchKey = searchBar.value.toLowerCase()
-        // searchResults = serviceProviders.filter( provider =>{
-        //     if(provider.name.toLowerCase().startsWith(searchKey)){
-        //         return provider
-        //     }
-        // })
+        searchResults = serviceProviders.filter( provider =>{
+            if(provider.name.toLowerCase().startsWith(searchKey)){
+                return provider
+            }
+        })
        
-        // displayContent(searchResults)
-        // }
-        location.assign(`/search?searchkey=${searchKey}`)
+        displayContent(searchResults)
+        // location.assign(`/search?searchkey=${searchKey}`)
         // const response = await axios.get(`/search?searchkey=${searchKey}`)
         })
     

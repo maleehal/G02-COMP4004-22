@@ -1,9 +1,10 @@
 const express = require("express")
-const  {displayProviderProfile, updateProviderDetails,displayProviderSchedule} = require('../controllers/viewController.js')
+const {checkUser, serviceProviderAuth} = require("../middleware/middleware")
+const  {displayProviderProfile, displayProviderSchedule} = require('../controllers/viewController.js')
 
 const router = express.Router()
 
-router.route("/service_provider/:id").get(displayProviderProfile).patch(updateProviderDetails)
-router.route("/service_provider_schedule/:id").get(displayProviderSchedule)
+router.route("/service_provider").get(checkUser ,displayProviderProfile)
+router.route("/service_provider_schedule").get(serviceProviderAuth,displayProviderSchedule)
 
 module.exports = router

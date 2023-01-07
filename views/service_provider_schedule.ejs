@@ -27,22 +27,15 @@
         <table>
             <tr>
                 <th>ID</th>
-                <th>Event</th>
                 <th>Customer</th>
-                <th>Started Date</th>
-                <th>Ending Date</th>
+                <th>Date</th>
             </tr>
             <% bookings.forEach(booking => { %>
                 <% if (booking.status =="Ongoing") { %>
                     <tr>
                         <td> <%= booking._id %>  </td>
-                        <td>Event</td>
                         <td><%= booking.c_id %></td>
                         <td><%= booking.date %></td>
-                        <td>
-                            <button>Accept</button>
-                            <button>Reject</button>
-                        </td>
                     </tr>  
                 <% } %>
             <% }) %>   
@@ -54,7 +47,6 @@
             
                 <tr>
                     <th>ID</th>
-                    <th>Event</th>
                     <th>Customer</th>
                     <th>Appoinment Date</th>
                     <th>Accept</th>
@@ -64,12 +56,11 @@
             <% bookings.forEach(booking => { %>
                 <% if (booking.status =="Pending") { %> 
                     <tr>
-                        <td> <%= booking._id %>  </td>
-                        <td>Event</td>
+                        <td id="book_id" > <%= booking._id %>  </td>
                         <td><%= booking.c_id %></td>
                         <td><%= booking.date %></td>
-                        <td><button>Accept</button></td>
-                        <td><button>Reject</button></td>
+                        <td><button onclick="acceptbook(this)" id="accept" data-id="<%= booking._id %>">Accept</button></td>
+                        <td><button onclick="rejectbook(this)" id="reject" data-id="<%= booking._id %>">Reject</button></td>    
                     </tr>
                 <% } %>
             <% }) %>
@@ -80,23 +71,16 @@
         <table>
             <tr>
                 <th>ID</th>
-                <th>Event</th>
                 <th>Customer</th>
-                <th>Started Date</th>
-                <th>Ended Date</th>
+                <th>Date</th>
             </tr>
 
             <% bookings.forEach(booking => { %>
                 <% if (booking.status =="Completed") { %> 
                     <tr>
                         <td> <%= booking._id %>  </td>
-                        <td>Event</td>
                         <td><%= booking.c_id %></td>
                         <td><%= booking.date %></td>
-                        <td>
-                            <button>Accept</button>
-                            <button>Reject</button>
-                        </td>
                     </tr>
                 <% } %>
             <% }) %>
@@ -106,22 +90,16 @@
         <table>
             <tr>
                 <th>ID</th>
-                <th>Event</th>
                 <th>Customer</th>
-                <th>Reason</th>
+                <th>Date</th>
             </tr>
 
             <% bookings.forEach(booking => { %>
                 <% if (booking.status =="Rejected") { %>
                     <tr>
                         <td> <%= booking._id %>  </td>
-                        <td>Event</td>
                         <td><%= booking.c_id %></td>
-                        <td><%= booking.date %></td>
-                        <td>
-                            <button>Accept</button>
-                            <button>Reject</button>
-                        </td>
+                        <td><%= booking.date %></td> 
                     </tr>
                 <% } %>
             <% }) %>   
@@ -135,7 +113,11 @@
     <%- include('partials/footer'); %>
 </footer>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
 <script>
+
     spb2 = document.getElementsByClassName("spb2");
     for(i = 0; i < spb2.length; i++){
         spb2[i].style.display = "none";
@@ -154,6 +136,18 @@
         }
         document.getElementById(eventStatus).style.display = "block";
         evt.currentTarget.className += " active";
+    }
+    
+    async function acceptbook(acc){
+        var dataID = acc.getAttribute("data-id");
+        var changed = "Ongoing";
+        const data = await axios.patch(`/api/v1/service-provider/acceptAppoinments`,{dataID, changed})
+    }    
+    
+    async function rejectbook(acc){
+        var dataID = acc.getAttribute("data-id");
+        var changed = "Rejected";
+        const data = await axios.patch(`/api/v1/service-provider/rejectAppoinments`,{dataID, changed})
     }
 
 </script>
