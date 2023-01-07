@@ -9,8 +9,6 @@ nav{
     flex-direction: row;
     align-items: center;
     gap: 2px;
-  
-  
     height:auto;
     border-bottom: 2px solid black;
 }
@@ -21,11 +19,8 @@ nav{
 }
 
 a{
-
     color:white;
 }
-
-
 
 .item-2{
     margin-left: 24px;
@@ -35,30 +30,15 @@ a{
     width: 100%;
     height: auto;
 }
+
 .search-btn{
     background-color: rgb(195, 19, 195);
     color: white;
     border: none;
     border-radius: 10px;
     height: 50px;
-    width: 50px;
-     
-  
+    width: 50px; 
 }
-
-.item-4 img{
-    width: 60%;
-    height: auto;
-    margin: auto;
-    display: block;
-
-}
-.item-4{
-    width: 10%;
-}
-
-
-
 
 .box-container-2{
     position: relative;
@@ -104,54 +84,44 @@ a{
     border-radius: 20px;
 }
 
-
 /*section 2 css */
 
 .container-1 h1{
     position: relative;
     top:25px;
-    
-  }
+}
   
-  .container-sub-1{
+.container-sub-1{
     border: 2px solid black;
-      display:flex;
-      justify-content: center;
-      justify-content: space-around;
-      gap: 60px;
-      height:400px;
-      padding: 100px;
-  }
-  
-  
-  .container-sub-1-1{
-      padding: 1%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-     
-      box-shadow: 4px 4px 4px 4px rgb(162, 170, 169);
-      
+    display:flex;
+    justify-content: center;
+    justify-content: space-around;
+    gap: 60px;
+    height:400px;
+    padding: 100px;
+}
+ 
+.container-sub-1-1{
+padding: 1%;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+box-shadow: 4px 4px 4px 4px rgb(162, 170, 169);
+background: linear-gradient(to right,#ffffff 0%,#ffffff 50%,#000000 50%,#000000 100%,);
+width: 250px;
+height: 400px;
+border-radius: 20px;
+gap: 25px;
+}
 
-      background: linear-gradient(to right,#ffffff 0%,#ffffff 50%,#000000 50%,#000000 100%,);
-      width: 250px;
-      height: 400px;
-      border-radius: 20px;
-      gap: 25px;
-  }
-
-  .container-sub-1-1 img{
-    width: 60%;
-    height: auto;
-  }
-  
-  
-  
+.container-sub-1-1 img{
+width: 60%;
+height: auto;
+}
 
 /*section 3 css*/
 .container-sub{
-    
     width: auto;
     height: 400px;
     display:flex;
@@ -166,6 +136,7 @@ a{
     width: 500px;
     height: 300px;
 }
+
 .partyimg{
     height: 300px; 
     width: 500px;

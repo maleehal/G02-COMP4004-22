@@ -1,39 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&display=swap');
+
 :root{
     --tcolor: #7D3C98;
     --bshadow: 10px;
 }
+
+*{
+    font-family: "Raleway";
+    font-weight: bolder;
+}
+
 body{
     padding: 2% black;
 }
+
 /* header */
+
 .sp1{
     display: grid;
-    grid-template-columns: 5% 15% 65% 5% 5% 5%;
+    grid-template-columns: 5% 15% 60% 5% 5% 10%;
     align-items: center;
-    
 }
+
 .sp1-1{
     align-items: center;
     text-align: center;
 }
-.sp1 img, .profile{
-    width: 50px;
-    height: 50px;
+
+.logo{
+    width: 70px;
+    height: auto;
     border-radius: 100%;
 }
+
+.search-btn{
+    background-color: rgb(195, 19, 195);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+    width: 50px;  
+}
+
+#search-btn:hover{
+    background-color: purple;
+    border-radius: 24px;
+    font-size: 22px;
+    color: white;
+    cursor: pointer;
+    transition: all 1s ease;
+}
+
+.search-btn img{
+    width: 40px;
+    height: 40px;
+    color: white;
+}
+
+.item-4{
+    background: none;
+    border: none;
+}
+
+.item-4 img{
+    width: 60%;
+    height: auto;  
+}
+
+/* #seach-bar{
+    border-radius: 24px;
+    height: 24px;
+   border: grey solid 1px ;
+   padding-left: 9px;
+}
+
+#seach-bar:focus{
+    border-radius: 24px;
+    height: 24px;
+   border: grey solid 1px ;
+   padding-left: 9px;
+   width: 100xp;
+} */
+
 /* footer */
+
 .foot{
     display: grid;
     grid-template-columns: auto auto auto;
     align-items: center;  
 }
+
 .foot ul {
     list-style-type: none;
 }
+
 .foot-1{
     align-items: center;
     text-align: center;
 }
+
 .foot img, .profile{
     width: 50px;
     height: 50px;
