@@ -87,6 +87,10 @@ app.get("/login-service",(req,res) => res.render("login-service"))
 app.get('/', (req, res) => {res.render('home')});
 
 
+app.get("/rc", (req,res) => {
+  res.render("rc")
+})
+
 
 
 // connect database

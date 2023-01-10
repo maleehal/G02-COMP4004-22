@@ -1,0 +1,102 @@
+:root {
+    --color-primary: #9702B0;
+    --color-secondary: #C89DCC;
+    --color-white: #fff;
+    --color-black: #000;
+    --color-background: #FAF9F6;
+    --color-star: #FFE234;
+    --color-page-background: linear-gradient(180deg, rgba(151, 2, 176, 0.63) 0%, #E4008D 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    display: grid;
+    height: 100%;
+    place-items: center;
+    text-align: center;
+    background: var(--color-page-background);
+}
+
+.container {
+    width: 400px;
+    background: var(--color-background);
+    padding: 20px 30px;
+    /* border: 1px solid var(--color-background); */
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container .heading .text {
+    font-size: 25px;
+    color: var(--color-black);
+    font-weight: 500;
+}
+
+.container .star-widget input{
+    display: none;
+}
+
+.star-widget label{
+    font-size: 40px;
+    color: var(--color-white);
+    padding: 10px;
+    float: right;
+    transition: all 0.2s ease;
+}
+
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label{
+    color: var(--color-star);
+}
+input:checked ~ label{
+    color: var(--color-star);
+}
+
+input#rate-1:checked ~ form header::before{
+    content: "I just hate it";
+}
+input#rate-2:checked ~ form header::before{
+    content: "I don't like it";
+}
+input#rate-3:checked ~ form header::before{
+    content: "It is okay";
+}
+input#rate-4:checked ~ form header::before{
+    content: "I do like it";
+}
+input#rate-5:checked ~ form header::before{
+    content: "I love it";
+}
+
+form header {
+    width: 100%;
+    font-size: 25px;
+    color: var(--color-black);
+    font-weight: 500;
+    margin: 5px 0 20px 0;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+form .textarea textarea {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: 1px solid var(--color-secondary);
+    background: var(--color-white);
+    padding: 10px;
+    font-size: 16px;
+    resize: none;
+}
+
+/* form .btn {
+
+} */
