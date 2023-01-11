@@ -12,6 +12,22 @@
 </header>
 
 <body>
+    <div class="sp3">
+        <div class="sp3-1"><button class="item"><img class="search1" src="/images/image 2.png" alt="profile"></button></div>
+        <div class="sp3-1">
+            <%=user.name%>
+            <%=user.email%>
+            <%= user.telephone %> 
+        </div>
+        <div class="sp3-1"></div>
+        <div class="sp3-1"></div>
+        <div class="sp3-1">
+            <div class="bt">     
+                <button id="logout"><a href="api/v1/customer/logout"><img src="/images/logout.png" alt="logout"></a></button>   
+            </div>
+        </div>
+   </div>
+   
    <div class="spb1">
         <button class="spb1i" onclick="openBooking(event, 'Ongoing')">Ongoing</button>
         <button class="spb1i" onclick="openBooking(event, 'Completed')">Completed</button>
@@ -22,11 +38,18 @@
         <table border="1">
             <tr>
                 <th>ID</th>
-                <th>Event</th>
                 <th>Service Provider</th>
                 <th>Date</th>
-                <th>Time</th>
             </tr>
+            <% bookings.forEach(booking => { %>
+                <% if (booking.status =="Ongoing") { %>
+                    <tr>
+                        <td> <%= booking._id %>  </td>
+                        <td><%= booking.s_id %></td>
+                        <td><%= booking.date %></td>
+                    </tr>  
+                <% } %>
+            <% }) %> 
         </table>
    </div>
     <div id="Completed" class="spb2">
@@ -36,8 +59,17 @@
                 <th>Event</th>
                 <th>Service Provider</th>
                 <th>Date</th>
-                <th>Time</th>
             </tr>
+            <% bookings.forEach(booking => { %>
+                <% if (booking.status =="Completed") { %>
+                    <tr>
+                        <td><%= booking._id %></td>
+                        <td><%= booking.event %></td>
+                        <td><%= booking.s_id %></td>
+                        <td><%= booking.date %></td>
+                    </tr>  
+                <% } %>
+            <% }) %> 
         </table>
     </div>
     <div id="Rejected" class="spb2">
@@ -46,8 +78,18 @@
                 <th>ID</th>
                 <th>Event</th>
                 <th>Service Provider</th>
-                <th>Reason</th>
+                <th>Date</th>
             </tr>
+            <% bookings.forEach(booking => { %>
+                <% if (booking.status =="Rejected") { %>
+                    <tr>
+                        <td><%= booking._id %></td>
+                        <td><%= booking.event %></td>
+                        <td><%= booking.s_id %></td>
+                        <td><%= booking.date %></td>
+                    </tr>  
+                <% } %>
+            <% }) %> 
         </table>
     </div>
 </body>

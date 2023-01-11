@@ -7,26 +7,21 @@ const cookieParser = require("cookie-parser")
 const displayStartup = async (req,res)=>{
     res.render("startup")
 }
-
-const displaySignupService = async (req,res)=>{
+const displayServiceSignUp  = async (req,res)=>{
     res.render("signup-service")
 }
-
+const displayServiceLogin = async (req,res)=>{
+    res.render("login-service")
+}
 const displayPending = async (req,res) =>{
     res.render("pending")
 }
-
-const displaySignupCustomer = async (req,res)=>{
+const displayCustomerSignUp = async (req,res) =>{
     res.render("signup-customer")
 }
-
-const displayLoginCustomer = async (req,res)=>{ 
+const displayCustomerLogin = async (req,res) =>{
     res.render("login-customer")
 }
-const displayLoginService = async (req,res)=>{
-    res.render("login-service")
-}
-
 const displayHome = async (req,res)=>{
     res.render('home')
 }
@@ -79,15 +74,21 @@ const booking = async (req,res) =>{
 }
 
 const customerSchedule = async (req,res) =>{
-res.render("customer_schedule")
-}
-
-const displayAdmin = async (req,res) =>{
-    res.render("admin")
+    const token = req.cookies.jwt
+    jwt.verify(token, "Customer", async (error, decodedtoken)=>{
+        if(error){
+            console.log(error)
+        }else{
+            const id = decodedtoken.id
+            const bookings = await Booking.find({c_id:id})
+            res.render("customer_schedule", {
+                bookings:bookings
+            })
+        }
+    })
 }
 
 module.exports = {
-    displayStartup, displaySignupService, displaySignupCustomer, displayLoginService, displayLoginCustomer, displayHome, 
-    displayProviderProfile, displayProviderSchedule, displaypageToCustomer, customerSchedule, search, booking, displayAdmin,
-    displayPending
+    displayStartup, displayServiceSignUp, displayServiceLogin, displayPending, displayCustomerSignUp, displayCustomerLogin, displayHome, 
+    displayProviderProfile, displayProviderSchedule, displaypageToCustomer, customerSchedule, search, booking
 }

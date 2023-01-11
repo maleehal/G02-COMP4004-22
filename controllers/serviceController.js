@@ -157,6 +157,6 @@ const getBuisnessPerformance = async (req,res)=>{
 };
 
 module.exports = {
-    getAllproviders , displayLogInPage , displaySignUpPage , signUpService, serviceLogIn, updateProviderDetails, 
+    getAllproviders , signUpService, serviceLogIn, updateProviderDetails, 
     acceptAppoinments, rejectAppoinments, getOngoingDates, defaultCompletedAppoinment, completedAppoinments, getBuisnessPerformance
 }

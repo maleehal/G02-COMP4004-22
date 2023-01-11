@@ -2,27 +2,6 @@ const jwt = require("jsonwebtoken")
 const Customer = require("../models/customer");
 const ServiceProvider = require("../models/service-provider");
 
-// const requireAuth = (req,res,next) =>{
-//     const token = req.cookies.jwt;
-//     if (token){
-//         jwt.verify(token,"gaymomma",(err,decodeedToken)=>{
-//             if(err){
-//                 console.log(err.message)
-//                 res.redirect("/login")
-
-//             }
-//             else{
-//                 console.log(decodeedToken)
-//                 next()
-//             }
-//         })
-
-//     }
-//     else{
-//         res.redirect("/login")
-//     }
-
-// }
 
 const customerAuth = (req,res,next) =>{
     console.log("ran customer auth")
@@ -33,7 +12,6 @@ const customerAuth = (req,res,next) =>{
                 res.redirect("/startup")
             }
             else{
-                //console.log("went inside")
                 next()
             }
         })
@@ -100,20 +78,13 @@ const checkUser =  (req,res,next) =>{
             }
         }
         )
-        
-        
-
     }
     else{
         res.locals.user = null;
         next()
 
-    }
-   
+    } 
 }
-
-
-
 
 
 module.exports = {serviceProviderAuth,customerAuth,checkUser}

@@ -58,6 +58,7 @@
                 location.assign("/")
             }
             if (data.errors){
+                
                 if (data.errors.verification === "Account not Verified"){
                     console.log("came here")
                     location.assign("/pending")
