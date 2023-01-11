@@ -18,7 +18,7 @@ router.route("/search").get(checkUser,search)
 router.route("/service_provider").get(checkUser,displayProviderProfile)
 router.route("/service_provider_schedule").get(checkUser,serviceProviderAuth,displayProviderSchedule)
 router.route("/service_provider/:id").get(checkUser,displaypageToCustomer)
-router.route("/booking").get(checkUser,booking)
+router.route("/booking/:id").get(checkUser,booking)
 router.route("/customer_schedule").get(checkUser, customerAuth, customerSchedule)
 router.route("/admin").get(checkUser,displayAdmin)
 
