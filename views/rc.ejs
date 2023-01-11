@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="stylesheets/rc.css">
+    <link rel="stylesheet" href="/stylesheets/rc.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
 <body>
@@ -16,20 +16,20 @@
             <div class="text">Please rate the Service Provider</div>
         </div>
         <div class="star-widget">
-            <input type="radio" name="rate" id="rate-5">
+            <input type="radio" name="rate" id="rate-5" data-rate="5">
             <label for="rate-5" class="fas fa-star"></label>
-            <input type="radio" name="rate" id="rate-4">
+            <input type="radio" name="rate" id="rate-4" data-rate="4">
             <label for="rate-4" class="fas fa-star"></label>
-            <input type="radio" name="rate" id="rate-3">
+            <input type="radio" name="rate" id="rate-3" data-rate="3">
             <label for="rate-3" class="fas fa-star"></label>
-            <input type="radio" name="rate" id="rate-2">
+            <input type="radio" name="rate" id="rate-2" data-rate="2">
             <label for="rate-2" class="fas fa-star"></label>
-            <input type="radio" name="rate" id="rate-1">
+            <input type="radio" name="rate" id="rate-1" data-rate="1">
             <label for="rate-1" class="fas fa-star"></label>
             <form action="#">
-                <header></header>
+                <header></header
                 <div class="textarea">
-                    <textarea name="" id="" cols="30" rows="0" placeholder="Describe your experience ..."></textarea>
+                    <textarea name="" id="comment" cols="30" rows="0" placeholder="Describe your experience ..."></textarea>
                 </div>
                 <div class="btn">
                     <button type="button">Next</button>
@@ -37,16 +37,44 @@
             </form>
         </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script>
+        const param = window.location.href
+        const require = param.split("/")
+        const s_id = require[require.length - 1]
         const btn = document.querySelector("button");
         const widget = document.querySelector(".star-widget");
-        const comments = document.querySelector(".post");
+        // const comments = document.querySelector(".post");
+        const comment = document.getElementById("comment")
 
         btn.addEventListener("click", ()=> {
             widget.style.display = "none";
-            comments.style.display = "block";
+            // comments.style.display = "block";
             return false;
         });
+
+        btn.addEventListener("click", async () => {
+            const content  = comment.value
+            const ratingList = Array.from(document.getElementsByName("rate"))
+            let rating;
+
+            ratingList.forEach((radiobBtn) => {
+                if(radiobBtn.checked){
+                     rating = radiobBtn.dataset.rate
+                }   
+            });
+try {
+    const newComment = await axios.post("/api/v1/customer/comment", {rating, content,s_id})
+    
+} catch (error) {
+    console.log(error)
+    
+}
+            
+        })
+
+
 
     </script>
 </body>

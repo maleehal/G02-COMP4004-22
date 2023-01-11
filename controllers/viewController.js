@@ -67,6 +67,10 @@ const displayProviderSchedule = async (req,res)=>{
     })    
 };
 
+const viewRc = async (req,res) =>{ 
+    res.render("rc");  
+}
+
 const displaypageToCustomer = async (req,res) =>{
     const {id} = req.params
     const serviceProvider = await ServiceProvider.findById(id)
@@ -89,5 +93,5 @@ const displayAdmin = async (req,res) =>{
 module.exports = {
     displayStartup, displaySignupService, displaySignupCustomer, displayLoginService, displayLoginCustomer, displayHome, 
     displayProviderProfile, displayProviderSchedule, displaypageToCustomer, customerSchedule, search, booking, displayAdmin,
-    displayPending
+    displayPending, viewRc
 }

@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser")
 // const ServiceProvider = require("../models/service-provider")
 const Customer = require("../models/customer")
 const Booking = require("../models/booking")
+const Comment = require("../models/comment")
 
 const maxAge = 3 * 24  * 60 * 60
 
@@ -123,6 +124,28 @@ const createBooking = async (req, res) => {
     }
 }
 
+const createComment = async (req,res) =>{
+    console.log("hi")
+    const {rating,content,s_id} = req.body
+    token = req.cookies.jwt
+    console.log(rating,content,s_id)
+    try {
+        jwt.verify(token,"Customer",async (err,decodeedToken)=>{
+            if(err){
+              console.log(ërror)
+            }
+            else{ 
+                //console.log("went inside")
+                const c_id = decodeedToken.id
+                await Comment.create({s_id,c_id,rating,content})
+            }
+        })
+        // const newBooking = await Booking.create({firstname,event,date})
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 
 
@@ -132,7 +155,8 @@ const createBooking = async (req, res) => {
 
 
 
-module.exports = {customerSignIn , customerLogIn , customerLogOut ,displayLogInPage ,displaySignUpPage, createBooking}
+
+module.exports = {customerSignIn , customerLogIn , customerLogOut ,displayLogInPage ,displaySignUpPage, createBooking,createComment}
 
 
 
