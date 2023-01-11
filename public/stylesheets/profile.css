@@ -11,23 +11,14 @@
 }
 
 body{
+    background: url(../images/water.webp) ;
+    background-repeat: no-repeat;
+    background-size: cover;
     padding: 2% black;
 }
-.sp1{
-    display: grid;
-    grid-template-columns: 5% 15% 65% 5% 5% 5%;
-    align-items: center;
-    
-}
-.sp1-1{
-    align-items: center;
-    text-align: center;
-}
-.sp1 img, .profile{
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-}
+
+/* service provider */
+
 .sp2{
     display: grid;
     grid-template-columns: 50% 50%;
@@ -47,13 +38,16 @@ body{
     border-radius: 10%;
     color: antiquewhite; 
 }
+
 #description, #about{
     word-wrap: break-word;
 }
+
 #description-input, #about-input{
     width: 100%;
     height: 50%;
 }
+
 .sp3{
     display: grid;
     grid-template-columns: 7% 7% 80% 7% 5% 7%;
@@ -62,23 +56,54 @@ body{
     padding-right: 5%;  
     font-size: 25px;  
 }
-.sp3 img{
-    height: 75px;
-    width: 75px;
+
+.item, #schedule, #edit, #logout{
+    background: none;
+    border: none;
 }
+
+
+.item img{
+    width: 80px;
+    height: auto;  
+}
+
 .bt img{
     width: 36px;
     height: auto;
     margin: 5%;
 }
+
 .bt{
     text-align: center;
 }
 
+/* service provider schedule */
+.BP{
+    width: 40%;
+    margin: auto;
+    margin-bottom: 10px;
+    border: var(--tcolor) 5px solid;
+}
+.BP h1{
+    text-align: center;
+}
+.BP table, .BP td{
+    margin: auto;
+    font-size: large;
+    padding: 7px;
+}
+.note{
+    width: 60%;
+    margin: auto;
+    margin-bottom: 10px;
+    text-align: center;
+    border: var(--tcolor) 5px solid;
+}
 .spb1{
     overflow: hidden;  
-    margin-left: 30%;  
-    margin-bottom: 5%;
+    margin: auto;
+    text-align: center;
 }
 .spb1 button{
     background-color: var(--tcolor);
@@ -91,17 +116,20 @@ body{
     transition: 0.3s;
     font-size: 20px;
     border-radius: 10%;
-    margin: 1%;
-    
+    margin: 1%;  
 }
+
 .spb1 button:hover{
     background-color: white;
     color: var(--tcolor);
 }
+
 .spb1 button.active{
     background-color: white;
     color: var(--tcolor);
+    border: var(--tcolor) 1px solid;
 }
+
 .spb2 table{
     border: var(--tcolor) 1px solid;
     width: 90%;
@@ -110,28 +138,44 @@ body{
     text-align: center;
     margin: auto;
 }
+
 .spb2 table td, .spb2 table th{
     border: var(--tcolor) 1px solid;
     padding: 7px;
 }
 
-.foot{
-    display: grid;
-    grid-template-columns: auto auto auto;
-    align-items: center;  
+#accept, #complete{
+    background-color: green;
+    color: white;
+    font-size: 15px;
+    padding: 8px;
+    border: none;
+    border-radius: 20px;  
 }
-.foot ul {
-    list-style-type: none;
+
+#accept:hover, #complete:hover{
+    font-size: 13px;
+    background-color: white;
+    color: green; 
+    border: green 1px solid;
 }
-.foot-1{
-    align-items: center;
-    text-align: center;
+
+#reject{
+    background-color: red;
+    color: white;
+    font-size: 15px;
+    padding: 8px;
+    border: none;
+    border-radius: 20px;  
 }
-.foot img, .profile{
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
+
+#reject:hover{
+    font-size: 13px;
+    background-color: white;
+    color: red; 
+    border: red 1px solid;
 }
+
 /* booking */
 #don{
     width: 60%;

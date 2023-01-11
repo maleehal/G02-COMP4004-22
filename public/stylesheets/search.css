@@ -25,12 +25,12 @@ nav{
     width: 100%;
     height: auto;
 }
-.search-btn{
+/* .search-btn{
     background-color: purple;
     color: white;
     border: none;
     border-radius: 20px;  
-}
+} */
 
 .customer-list{
     display: grid;
@@ -99,7 +99,7 @@ nav{
 #search-btn{
     background-color: white;
     border-radius: 24px;
-    font-size: 22px;
+    font-size: 15px;
     border:1px solid purple;
     color: purple;
     cursor: pointer;
@@ -107,16 +107,13 @@ nav{
 
 #search-btn:hover{
     background-color: purple;
-    border-radius: 24px;
-    font-size: 22px;
     color: white;
-    cursor: pointer;
     transition: all 1s ease;
 }
 
 #seach-bar{
     border-radius: 24px;
-    height: 24px;
+    height: 30px;
    border: grey solid 1px ;
    padding-left: 9px;
 }

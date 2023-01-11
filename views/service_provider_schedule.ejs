@@ -12,6 +12,31 @@
 </header>
 
 <body>
+    <div class="BP">
+        <h1>Buisness Performance</h1>
+        <table>
+            <tr>
+                <td>Ongoing Appoinments</td>
+                <td>:</td>
+                <td id="OA"></td>
+            </tr>
+            <tr>
+                <td>Pending Appoinments</td>
+                <td>:</td>
+                <td id="PA"></td>
+            </tr>
+            <tr>
+                <td>Completed Appoinments</td>
+                <td>:</td>
+                <td id="CA"></td>
+            </tr>
+            <tr>
+                <td>Rejected Appoinments</td>
+                <td>:</td>
+                <td id="RA"></td>
+            </tr>
+        </table>
+    </div>
 
    <div class="spb1">
         <button class="spb1i" onclick="openBooking(event, 'Ongoing')">Ongoing</button>
@@ -19,16 +44,19 @@
         <button class="spb1i" onclick="openBooking(event, 'Completed')">Completed</button>
         <button class="spb1i" onclick="openBooking(event, 'Rejected')">Rejected</button>
    </div>
-   
-    
-   
-   
+
     <div id="Ongoing" class="spb2">
         <table>
+            <div class="note">
+                <h1>Note</h1>
+                <p>Maske sure to verify the attended appoinments within 24 hours. If not they will be considered as rejected appoinments</p>
+            </div>
+            
             <tr>
                 <th>ID</th>
                 <th>Customer</th>
                 <th>Date</th>
+                <th>Confirm</th>
             </tr>
             <% bookings.forEach(booking => { %>
                 <% if (booking.status =="Ongoing") { %>
@@ -37,6 +65,8 @@
                         <td><%= booking.c_id %></td>
                         <td><%= booking.date %></td>
 
+                        <td><button onclick="completedbook(this)" id="complete" data-id="<%= booking._id %>">Done</button></td>
+
                     </tr>  
                 <% } %>
             <% }) %>   
@@ -44,27 +74,25 @@
     </div>
 
     <div id="Pending" class="spb2">
-        <table>
-            
-                <tr>
-                    <th>ID</th>
 
+        <table>  
+            <tr>
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Appoinment Date</th>
+                <th>Accept</th>
+                <th>Reject</th>
+            </tr>
 
-                    <th>Customer</th>
-                    <th>Appoinment Date</th>
-                    <th>Accept</th>
-                    <th>Reject</th>
-                </tr>
-                
             <% bookings.forEach(booking => { %>
-                <% if (booking.status =="Pending") { %> 
+                <% if (booking.status =="Pending") { %>
                     <tr>
-                        <td id="book_id" > <%= booking._id %>  </td>
+                        <td> <%= booking._id %>  </td>
                         <td><%= booking.c_id %></td>
                         <td><%= booking.date %></td>
                         <td><button onclick="acceptbook(this)" id="accept" data-id="<%= booking._id %>">Accept</button></td>
-                        <td><button onclick="rejectbook(this)" id="reject" data-id="<%= booking._id %>">Reject</button></td>    
-                    </tr>
+                        <td><button onclick="rejectbook(this)" id="reject" data-id="<%= booking._id %>">Reject</button></td>
+                    </tr>  
                 <% } %>
             <% }) %>
         </table>
@@ -101,7 +129,7 @@
             </tr>
 
             <% bookings.forEach(booking => { %>
-                <% if (booking.status =="Rejected") { %>
+                <% if (booking.status =="Rejected") { %>  
                     <tr>
                         <td> <%= booking._id %>  </td>
 
@@ -112,15 +140,12 @@
                 <% } %>
             <% }) %>   
         </table>
-    </div>
-    
-    
+    </div>  
 </body>
 
 <footer>
     <%- include('partials/footer'); %>
 </footer>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
@@ -146,7 +171,8 @@
         evt.currentTarget.className += " active";
     }
 
-    
+
+
     async function acceptbook(acc){
         var dataID = acc.getAttribute("data-id");
         var changed = "Ongoing";
@@ -160,5 +186,31 @@
     }
 
 
+    async function completedbook(acc){
+        var dataID = acc.getAttribute("data-id");
+        var changed = "Completed";
+        const data = await axios.patch(`/api/v1/service-provider/rejectAppoinments`,{dataID, changed})
+    }
+    
+    async function viewBuisnessPerformance(){
+        const {data:{numberOfOngoingProvider, numberOfPendingProvider, numberOfCompletedProvider, numberOfRejectedProvider}} = await axios.get("/api/v1/service-provider/getBuisnessPerformance")
+        document.getElementById("OA").innerHTML = numberOfOngoingProvider;
+        document.getElementById("PA").innerHTML = numberOfPendingProvider;
+        document.getElementById("CA").innerHTML = numberOfCompletedProvider;
+        document.getElementById("RA").innerHTML = numberOfRejectedProvider;   
+    }
+    viewBuisnessPerformance()
+
+    // async function viewBuisnessPerformance(acc) {
+    //     var dataID = acc.getAttribute("data-id");
+    //     const data = await axios.patch(`/api/v1/service-provider/getBuisnessPerformance`,{dataID})
+    //     const datab = await axios.get(`/api/v1/service-provider/getBuisnessPerformance`,{status})
+    //     console.log(datab)
+
+    //     document.getElementById("myHeader").innerHTML = "Have a nice day!";
+    // }
+    
+                    
+  
 </script>
 </html>

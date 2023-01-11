@@ -8,10 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
 </head>
+
 <header>
     <%- include('partials/header'); %>
 </header>
+
 <body>
+    
+    
     <!-- <nav>
         <div class="item-1"> <img src="/images/logo 1.png" alt=""></div>
         <div class="item-2"><h1>Event Hustler</h1> </div>
@@ -82,7 +86,7 @@
                                 <div class="provider-name">${provider.name}</div> 
                                 <div class="provider-email">${provider.email}</div>
 
-                                <button> <a href="/api/v1/service-provider/service_provider/${provider._id}">View provider</a></button>
+                                <button> <a href="/service_provider/${provider._id}">View provider</a></button>
 
                             </div>
                            
@@ -103,8 +107,6 @@
         serviceProviders = [...providers]
         console.log(serviceProviders)
         displayContent(serviceProviders)
-        
-
     }
     
     getAllCustomers()

@@ -33,7 +33,7 @@ const customerAuth = (req,res,next) =>{
                 res.redirect("/startup")
             }
             else{
-                console.log("went inside")
+                //console.log("went inside")
                 next()
             }
         })
@@ -69,6 +69,8 @@ const checkUser =  (req,res,next) =>{
     //console.log("chckl user")
     const token = req.cookies.jwt;
     let user
+    
+    //let user
     if(token){
         jwt.verify(token,"Customer",async(err,decodeedToken)=>{
             if(err){
@@ -76,6 +78,7 @@ const checkUser =  (req,res,next) =>{
                     if(err){
                         res.redirect("/api/v1/customer/login")
                         res.locals.user = null;
+                        res.locals.user= user;
                         next()
                     }
                     else{
@@ -90,9 +93,9 @@ const checkUser =  (req,res,next) =>{
             }
             else{
                 let user = await Customer.findById(decodeedToken.id)
-                const flag ="cu"
+                
+                const flag = "cu"
                 res.locals.flag = flag;
-
                 res.locals.user = user;
                 next()
             }

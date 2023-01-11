@@ -14,7 +14,7 @@
 <body>
 
    <div class="sp3">
-        <div class="sp3-1"><button class="item-4"><img class="search1" src="/images/image 2.png" alt="profile"></button></div>
+        <div class="sp3-1"><button class="item"><img class="search1" src="/images/image 2.png" alt="profile"></button></div>
         <div class="sp3-1">
             <%=user.name%>
             <%=user.email%>
@@ -27,6 +27,7 @@
                 <% if (flag === "sp") { %>
                     <button id="schedule"><img src="/images/Picture1.png" alt="Schedule"></button>
                     <button id="edit"><img src="/images/Picture2.png" alt="Edit"></button>
+                    <button id="logout"><img src="/images/logout.png" alt="logout"></button>
                 <% } %>    
             </div>
         </div>
@@ -60,22 +61,14 @@
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
+            <% if (flag === "cu") { %>
+                <a href="/rc/<%= user._id %>"><button>Rate me</button></a>
+            <% } %> 
+
+           
         </div>
         <div class="sp2-1" id="comment-section">
             <h2>Comments</h2>
-            <div class="comment">
-                <div class="comment-header">
-                    <img src="/images/image 2.png" alt="">
-                    <div><h1>Bulath malli</h1> 
-                      <h2>Rating | 2 Weeks ago</h2>  
-
-                    </div>
-                </div>
-                <div class="comment-content">excelent service and i would come again</div> <br>
-               
-
-
-            </div>
 
             <div class="comment">
                 <div class="comment-header">
@@ -119,9 +112,20 @@
 
             </div>
 
-            
-            
-          
+            <div class="comment">
+                <div class="comment-header">
+                    <img src="/images/image 2.png" alt="">
+                    <div><h1>Bulath malli</h1> 
+                      <h2>Rating | 2 Weeks ago</h2>  
+
+                    </div>
+                </div>
+                <div class="comment-content">excelent service and i would come again</div> <br>
+               
+
+
+            </div>
+
         </div>
         <% if (flag === "cu") { %>
             <div class="sp2-1">
@@ -131,7 +135,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
-                <a href="/booking"><button>Book Appoinment</button></a>
+                <a href="/booking/<%= user._id %>"><button>Book Appoinment</button></a>
             </div>
         <% } %> 
    </div>
@@ -144,11 +148,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
 <script>
+    
     let description = document.getElementById("description")
     let about = document.getElementById("about")
     let edit = document.getElementById("edit")
     let schedule = document.getElementById("schedule")
     
+    document.getElementById("p").innerHTML = "happy";
 
     document.getElementById("edit").addEventListener("click", async() =>{
         if (description.style.display != "none" ){
@@ -175,7 +181,6 @@
     document.getElementById("schedule").addEventListener("click", async() =>{
         location.assign(`/service_provider_schedule`)
     })
-    
 
 </script>
 </html>
