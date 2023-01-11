@@ -61,13 +61,16 @@
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
+            <% if (flag === "cu") { %>
+                <a href="/rc/<%= user._id %>"><button>Rate me</button></a>
+            <% } %> 
+
+           
         </div>
         <div class="sp2-1">
             <h2>Comments</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            <p id="p">
+                
             </p>
         </div>
         <% if (flag === "cu") { %>
@@ -78,7 +81,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
-                <a href="/booking"><button>Book Appoinment</button></a>
+                <a href="/booking/<%= user._id %>"><button>Book Appoinment</button></a>
             </div>
         <% } %> 
    </div>
@@ -91,11 +94,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
 <script>
+    
     let description = document.getElementById("description")
     let about = document.getElementById("about")
     let edit = document.getElementById("edit")
     let schedule = document.getElementById("schedule")
     
+    document.getElementById("p").innerHTML = "happy";
 
     document.getElementById("edit").addEventListener("click", async() =>{
         if (description.style.display != "none" ){

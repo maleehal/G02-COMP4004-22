@@ -35,10 +35,11 @@
 
         <br>
 
-        <button id="conf">Make Appoinment</button>
-        <button id="back">Back</button>
+        <button type="submit">Make Appoinment</button>
+      
         
     </form>
+    <button id="back">Back</button>
 
 </body>
 
@@ -47,34 +48,47 @@
 </footer>
   
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
 <script>
+    const param = window.location.href
+    const require = param.split("/")
+    console.log(require)
+
+
     const fname = document.getElementById("fname");
     const f_event = document.getElementById("f_event");
     const a_date = document.getElementById("a_date");
+    const form = document.getElementById("don")
 
-    const fin = {
-        fname: "",
-        f_event: "",
-        a_date: ""
-    }
 
-    conf.onclick = function conf(){
-        if(fname.value == "" || f_event.value == "" || a_date.value == ""){
+
+    form.addEventListener("submit", async function(e){
+        const s_id = require[4]
+        console.log(s_id)
+        console.log("came")
+        e.preventDefault()
+        const firstname = fname.value
+        const event = f_event.value
+        const date = a_date.value
+        console.log(firstname,event,date)
+        if(firstname == "" || event == "" || date== ""){
             alert("Please fill out the required fields");
         }else{
-            alert("Your appoinment is placed. \n Will be notified after service provider's exceptance")       
-            window.location.href = "/service_provider";
+            alert("Your appoinment is placed. \n Will be notified after service provider's exceptance") 
+            const newBooking = await axios.post("/api/v1/customer/booking",{firstname, event, date,s_id })
+            // window.location.href = "/service_provider";
         }
-    }
-    document.getElementById("conf").addEventListener("click", function(conf){
-    event.preventDefault()
+  
     });
 
-    back.onclick = function back(){
+    
+    document.getElementById("back").addEventListener("click", function(){
         window.location.href = "/service_provider";
-    }
-    document.getElementById("back").addEventListener("click", function(back){
-    event.preventDefault()
+        event.preventDefault()
     });
+
+
+
 </script>
 </html>

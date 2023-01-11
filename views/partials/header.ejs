@@ -35,9 +35,5 @@
 
    <hr>
 </body>
-<script>
-    document.getElementById("serviceProviderId").addEventListener("click", async() =>{
-        const {data:{numberOfOngoingProvider, numberOfPendingProvider, numberOfCompletedProvider, numberOfRejectedProvider}} = await axios.get("/api/v1/service-provider/getBuisnessPerformance")
-    })
-</script>
+
 </html>

@@ -57,6 +57,7 @@ setInterval(defaultRejectAppoinment = async () => {
   }
 }, 10000);
 
+
 setInterval(defaultCompletedAppoinment = async () => {
   const ongoingDates = await Booking.find({status:"Ongoing"}).select("date")
   data = [...ongoingDates]
