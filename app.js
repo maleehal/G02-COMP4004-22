@@ -55,16 +55,10 @@ setInterval(defaultRejectAppoinment = async () => {
   }
 }, 10000);
 
-<<<<<<< HEAD
-app.get("/rc", (req,res) => {
-  res.render("rc")
-})
 
-=======
 setInterval(defaultCompletedAppoinment = async () => {
   const ongoingDates = await Booking.find({status:"Ongoing"}).select("date")
   data = [...ongoingDates]
->>>>>>> main
 
   for (let i = 0; i < data.length; i++) {
     const todayDate = new Date();
