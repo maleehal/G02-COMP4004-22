@@ -8,23 +8,26 @@ const cookieParser = require("cookie-parser")
 const displayStartup = async (req,res)=>{
     res.render("startup")
 }
-const displayServiceSignUp  = async (req,res)=>{
+
+const displaySignupService  = async (req,res)=>{
     res.render("signup-service")
 }
-const displayServiceLogin = async (req,res)=>{
+
+const displayLoginService = async (req,res)=>{
     res.render("login-service")
 }
 const displayPending = async (req,res) =>{
     res.render("pending")
 }
-const displayCustomerSignUp = async (req,res) =>{
+const displaySignupCustomer = async (req,res) =>{
     res.render("signup-customer")
 }
-const displayCustomerLogin = async (req,res) =>{
+const displayLoginCustomer = async (req,res) =>{
     res.render("login-customer")
 }
 const displayHome = async (req,res)=>{
-    res.render('home')
+    const topThreeProviders = await ServiceProvider.find({}).sort({rating:-1}).limit(3)
+    res.render('home',{topThreeProviders})
 }
 
 const search = async (req,res)=>{
@@ -109,6 +112,6 @@ const customerSchedule = async (req,res) =>{
 
 module.exports = {
     displayStartup, displaySignupService, displaySignupCustomer, displayLoginService, displayLoginCustomer, displayHome, 
-    displayProviderProfile, displayProviderSchedule, displaypageToCustomer, customerSchedule, search, booking, displayAdmin,
+    displayProviderProfile, displayProviderSchedule, displaypageToCustomer, customerSchedule, search, booking, 
     displayPending, viewRc
 }

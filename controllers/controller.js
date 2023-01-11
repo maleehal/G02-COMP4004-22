@@ -16,18 +16,6 @@ const createToken = (id) => {
     })
 }
 
-const SearchProvider = async (req,res) =>{
-    const {searchkey} = req.query
-    try {
-        const searchedResults = await ServiceProvider.find({name:new RegExp(`^${searchkey}`,"i")})
-        res.status(200).send({searchedResults})
-        
-    } catch (error) {
-        
-    }
-    
-}
-
 const customerSignIn = async (req,res) =>{
     const {name,email,telephone,username,password,expertise,flag} = req.body
     console.log(flag)
@@ -57,10 +45,6 @@ const customerLogIn = async (req,res) =>{
         const errors = handleErrors(error)
         res.status(400).send({errors}) 
     }   
-}
-
-const customerLogOut = async (req,res) =>{
-    res.status(200).send({success:true,msg:"customer has logged-out"})
 }
 
 const handleErrors = (error) =>{
@@ -131,4 +115,4 @@ const createComment = async (req,res) =>{
 }
 
 
-module.exports = {customerSignIn , customerLogIn , customerLogOut ,displayLogInPage ,displaySignUpPage, createBooking,createComment}
+module.exports = {customerSignIn , customerLogIn , LogoutUser, createBooking,createComment}

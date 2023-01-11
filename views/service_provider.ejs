@@ -27,7 +27,7 @@
                 <% if (flag === "sp") { %>
                     <button id="schedule"><img src="/images/Picture1.png" alt="Schedule"></button>
                     <button id="edit"><img src="/images/Picture2.png" alt="Edit"></button>
-                    <button id="logout"><img src="/images/logout.png" alt="logout"></button>
+                    <button id="logout"><a href="/api/v1/customer/logout"><img src="/images/logout.png" alt="logout"></a></button>
                 <% } %>    
             </div>
         </div>
@@ -130,7 +130,7 @@
         <% if (flag === "cu") { %>
 
             <div class="sp2-11">
-                <a href="/booking"><button><h2>Book an Appoinment</h2></button></a>
+                <a href="/booking/<%= user._id %> "><button><h2>Book an Appoinment</h2></button></a>
             </div>
         <% } %> 
    </div>
@@ -148,8 +148,6 @@
     let about = document.getElementById("about")
     let edit = document.getElementById("edit")
     let schedule = document.getElementById("schedule")
-    
-    document.getElementById("p").innerHTML = "happy";
 
     document.getElementById("edit").addEventListener("click", async() =>{
         if (description.style.display != "none" ){

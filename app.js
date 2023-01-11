@@ -29,8 +29,7 @@ app.set('view engine', 'ejs');
 app.use('/api/v1/customer', customerRoutes);
 app.use('/api/v1/service-provider', serviceRoutes);
 app.use('/', viewRoutes);
-
-app.use('/api/v1/admin', adminRoutes)
+app.use('/api/v1/admin', adminRoute)
 
 
 
