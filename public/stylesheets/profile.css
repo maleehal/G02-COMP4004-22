@@ -77,7 +77,16 @@ body{
 .bt{
     text-align: center;
 }
-
+.sp2-11{
+    margin: auto;
+    margin-left: 190px;
+}
+.sp2-11 button{
+    border-radius: 10%;
+    border: none;
+    background-color: var(--tcolor);
+    color: white;
+}
 /* service provider schedule */
 .BP{
     width: 40%;

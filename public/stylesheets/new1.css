@@ -16,15 +16,22 @@ body{
 .flex-box-container{
 display: flex;
 width: 50%;
-
-
 }
-
+.flex-box-container p{
+    text-align: center;
+}
 a{
     text-decoration: none;
     color: white;
 }
-
+.flex-box-container button{
+    margin-bottom: 5px;
+}
+.signUP{
+    color: black;
+    padding: 5px;
+    margin-left: 45px;
+}
 h1{
     text-align: center;
 }

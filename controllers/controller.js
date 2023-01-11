@@ -10,7 +10,6 @@ const Comment = require("../models/comment")
 const maxAge = 3 * 24  * 60 * 60
 
 
-
 const createToken = (id) => {
     return jwt.sign({ id },"Customer",{
         expiresIn:maxAge
@@ -29,34 +28,22 @@ const SearchProvider = async (req,res) =>{
     
 }
 
-
-
 const customerSignIn = async (req,res) =>{
     const {name,email,telephone,username,password,expertise,flag} = req.body
     console.log(flag)
-    // if (flag === 'CUSTOMER'){
-            try {
-                console.log("came")
-                const customer = await Customer.create({name,email,telephone,username,password})
-                res.status(201).send({task:"succesful",user:customer})
-            } catch (error) {
-                const errors = handleErrors(error);
-                res.status(400).send({errors}) 
-            }
-    // }
-    // else{
-    //     try{
-    //         const provider = await ServiceProvider.create({name,email,telephone,username,password,expertise})
-    //         res.status(200).send({provider}) 
-    //     }
-    //     catch(errors){
-    //         console.log(errors)
-    //         res.status(400).send({msg:"errors"}) 
-    
-    //     }
+    try {
+        console.log("came")
+        const customer = await Customer.create({name,email,telephone,username,password})
+        res.status(201).send({task:"succesful",user:customer})
+    } catch (error) {
+        const errors = handleErrors(error);
+        res.status(400).send({errors}) 
+    }
+}
 
-    // }
-   
+const LogoutUser = async (req,res)=>{
+    res.cookie("jwt","",{maxAge:1})
+    res.redirect("/startup")
 }
 
 const customerLogIn = async (req,res) =>{
@@ -72,26 +59,9 @@ const customerLogIn = async (req,res) =>{
     }   
 }
 
-
-
-
-
-
 const customerLogOut = async (req,res) =>{
     res.status(200).send({success:true,msg:"customer has logged-out"})
 }
-
-const displaySignUpPage = (req,res) =>{
-    res.render("signup-customer")
-}
-
-const displayLogInPage = (req,res) =>{
-    res.render("login-customer")
-}
-
-
-
-
 
 const handleErrors = (error) =>{
     let errors = { username : "",password : "" }
@@ -161,17 +131,4 @@ const createComment = async (req,res) =>{
 }
 
 
-
-
-
-
-
-
-
-
-
 module.exports = {customerSignIn , customerLogIn , customerLogOut ,displayLogInPage ,displaySignUpPage, createBooking,createComment}
-
-
-
-

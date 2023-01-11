@@ -9,11 +9,11 @@ const  {
 const router = express.Router()
 
 router.route("/startup").get(displayStartup)
-router.route("/signup-service").get(displaySignupService)
+router.route("/signup-service").get(displayServiceSignUp)
+router.route("/login-service").get(displayServiceLogin)
 router.route("/pending").get(displayPending)
-router.route("/signup-customer").get(displaySignupCustomer)
-router.route("/login-service").get(displayLoginService)
-router.route("/login-customer").get(displayLoginCustomer)
+router.route("/signup-customer").get(displayCustomerSignUp)
+router.route("/login-customer").get(displayCustomerLogin)
 router.route("/").get(checkUser,displayHome)
 router.route("/search").get(checkUser,search)
 router.route("/service_provider").get(checkUser,displayProviderProfile)
@@ -22,6 +22,5 @@ router.route("/rc/:id").get(viewRc)
 router.route("/service_provider/:id").get(checkUser,displaypageToCustomer)
 router.route("/booking/:id").get(checkUser,booking)
 router.route("/customer_schedule").get(checkUser, customerAuth, customerSchedule)
-router.route("/admin").get(checkUser,displayAdmin)
 
 module.exports = router

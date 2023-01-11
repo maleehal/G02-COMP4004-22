@@ -11,6 +11,9 @@ const bookingSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "customer"
     },
+    event: {
+        type: String
+    },
     status: {
         type: String,
         default:"Pending",
