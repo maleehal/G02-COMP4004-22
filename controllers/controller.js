@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken")
 const cookieParser = require("cookie-parser")
 // const ServiceProvider = require("../models/service-provider")
 const Customer = require("../models/customer")
+
 const Booking = require("../models/booking")
 const Comment = require("../models/comment")
 
@@ -14,6 +15,18 @@ const createToken = (id) => {
     return jwt.sign({ id },"Customer",{
         expiresIn:maxAge
     })
+}
+
+const SearchProvider = async (req,res) =>{
+    const {searchkey} = req.query
+    try {
+        const searchedResults = await ServiceProvider.find({name:new RegExp(`^${searchkey}`,"i")})
+        res.status(200).send({searchedResults})
+        
+    } catch (error) {
+        
+    }
+    
 }
 
 
@@ -156,7 +169,9 @@ const createComment = async (req,res) =>{
 
 
 
+
 module.exports = {customerSignIn , customerLogIn , customerLogOut ,displayLogInPage ,displaySignUpPage, createBooking,createComment}
+
 
 
 

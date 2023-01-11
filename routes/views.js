@@ -1,4 +1,5 @@
 const express = require("express")
+
 const {checkUser, serviceProviderAuth, customerAuth} = require("../middleware/middleware")
 const  {
     displayStartup, displaySignupService, displayPending, displaySignupCustomer, displayLoginService, displayLoginCustomer, displayHome, search, 
