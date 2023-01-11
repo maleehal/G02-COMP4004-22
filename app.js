@@ -3,6 +3,7 @@ const express = require("express")
 const customerRoutes = require('./routes/CustomerRoute');
 const serviceRoutes = require('./routes/ServiceRoute');
 const viewRoutes = require('./routes/views') 
+const adminRoutes = require('./routes/Adminroute')
 const connectDB = require('./database/connect');
 
 const cookieParser = require("cookie-parser");
@@ -29,6 +30,7 @@ app.set('view engine', 'ejs');
 app.use('/api/v1/customer', customerRoutes);
 app.use('/api/v1/service-provider', serviceRoutes);
 app.use('/', viewRoutes);
+app.use('/api/v1/admin', adminRoutes)
 
 
 const port = 3000
@@ -38,7 +40,6 @@ app.get("/signup-service", (req,res)=>{
 })
 
 app.get("/startup", (req,res)=>{
- 
   res.render("startup")
 })
 
@@ -68,7 +69,6 @@ app.get("/booking", (req,res)=>{
 
 app.get("/customer_schedule", (req,res)=>{
   res.render("customer_schedule")
-  console.log('hello')
 })
 
 app.get("/admin", (req,res)=>{
@@ -109,3 +109,24 @@ const start = async () => {
   
   start();
 
+
+  /*fetching data
+
+app.get('/admin',(req,res)=>{
+  ServiceProvider.findById('63b847058603102b7c006b69').then((result)=>{
+    res.send(result);
+  })
+  .catch((err)=>{
+    console.log(err);
+  })
+})
+
+
+
+//app.get('/admin',(req,res)=>{
+ // ServiceProvider.find().then((result)=>{
+  //   res.send(result);
+ // }).catch((err)=>{
+ //   console.log(err)
+ // })
+//})*/

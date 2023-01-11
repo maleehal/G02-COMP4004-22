@@ -1,6 +1,9 @@
 
 const ServiceProvider = require("../models/service-provider")
 const Customer = require("../models/customer")
+const Booking = require("../models/booking")
+
+
 
 const getPendingProviders = async (req,res) =>{
     
@@ -17,12 +20,13 @@ const getPendingProviders = async (req,res) =>{
 const verifyProvider = async (req,res) =>{
     const {id} = req.body
     try {
-        const provider = await ServiceProvider.findByIdAndUpdate({_id:id},{status:"Verified"},{
+        const provider = await ServiceProvider.findByIdAndUpdate(id,{status:"Verified"},{
             new: true,
             runValidators: true,})
             res.status(200).send({provider})
         
     } catch (error) {
+        console.log(error)
         
     }
 }
@@ -32,25 +36,48 @@ const getCounts = async (req,res) =>{
         const providerCount = await ServiceProvider.countDocuments({status:"Verified"})
         const deactivatedUsers = await ServiceProvider.countDocuments({status:"Rejected"})
         const customerCount = await Customer.countDocuments({})
-        res.send({providerCount , deactivatedUsers , customerCount})
+        const acceptedOrders = await Booking.countDocuments({status:"Ongoing"})
+        const rejectedOrders = await Booking.countDocuments({status:"Rejected"})
+        const SerProOngoingBooking = await Booking.countDocuments({status:"Ongoing"})
+        const SerProNoOngoingBooking = await Booking.countDocuments({status:"Pending"})
+        res.send({providerCount , deactivatedUsers , customerCount , acceptedOrders , rejectedOrders , SerProOngoingBooking , SerProNoOngoingBooking})
         
     } catch (error) {
+        console.log(error)
         
     }
 }
 
-
+//status to rejected
 const rejectProvider = async (req,res) =>{
     const {id} = req.body
     try {
-        const provider = await ServiceProvider.findByIdAndUpdate({_id:id},{status:"Rejected"},{
+        const provider = await ServiceProvider.findByIdAndUpdate(id,{status:"Rejected"},{
             new: true,
             runValidators: true,})
             res.status(200).send({provider})
         
     } catch (error) {
+        console.log(error)
         
     }
 }
 
-module.exports = { rejectProvider , getCounts , verifyProvider , getPendingProviders}
+
+//getting all status verified users
+const getServiceProviderVerified = async (req,res) =>{
+    
+    try {
+        const providers = await ServiceProvider.find({status:"Verified"})
+        res.send({providers}).status(200)
+        
+    } catch (error) {
+        res.send({error}).status(400)
+        
+    }
+}
+
+
+
+
+module.exports = { rejectProvider ,getCounts , verifyProvider , getPendingProviders, getServiceProviderVerified }

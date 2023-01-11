@@ -6,143 +6,311 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
 
-    <!-- <link rel="stylesheet" href="admin.css"> -->
+    <link rel="stylesheet" href="/stylesheets/admin.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,500,0,0" />
 </head>
-<header>
-    <%- include('partials/header'); %>
-</header>
+
 <body>
-    <div class="sidebar">
+  <div class="main">
+    <div class="main-1">
+      <div class="sidebar">
         <div class="logo">
-            <img src="images/logo.png" alt="Logo">
-            <h1>Event Hustler</h1>             
+             <img src="images/logo.png" alt="Logo">
+             <h1>Event Hustler</h1>             
         </div>
 
         <div class="dashboard">
             <span class="material-symbols-sharp">home</span>
             <h2>Dashboard</h2>
         </div>
+      </div>
     </div>
-    <div class="main">
+    <div class="main-2">
+      <div class="main">
         <div class="top">
             <span class="material-symbols-sharp">notifications</span>
             <img src="#" alt="profile pic">
             <p>Jakob Calzoni</p>
             <p>jakobcalzoni@gmail.com</p>
         </div>
+  
+
+
+      <div class="mainclass">
+        <div class="customers">
+            <div><h1>Customers</h1></div>
+            <div class ="material"><img class="imgsmallicon" src="/images/icon-park.png"></div>
+        </div>
+        <div class="countclass">
+        <div><p>Total</p></div>
+          <div> <p id="customerCount"></p></div> 
+          </div>
+          
+        
 
         <div class="customers">
-            <h3>Customers</h3>
-            <span class="material-symbols-sharp">face</span>
-            <p>Total</p>
-            <p>2,500</p>
+           <div><h1>Providers</h1></div> 
+           <div class ="material"><img class="imgsmallicon" src="/images/mdi_customer.png"></div>
+            </div>
+            <div class="countclass">
+            <div><p>Total</p></div>
+           <div> <p id="serviceCount"></p></div>
         </div>
+      </div>
 
-        <div class="customers">
-            <h3>Providers</h3>
-            <span class="material-symbols-sharp">support_agent</span>
-            <p>Total</p>
-            <p>2,500</p>
-        </div>
-
+      <div class="maintwo">
         <div class="tracking">
-            <p>Service Providers with ongoing bookings: 125</p>
-            <p>Service Providers with no onigoing bookings: 50</p>
-            <p>Overall accepted orders: 1050</p>
-            <p>Overall rejected oreder: 200</p>
-            <p>Service Providers with deactivated accounts: 300</p>
+          <table>
+            <tr>
+              <td>Service Providers with ongoing bookings:</td>
+              <td id='SerProOngoingBooking'></td>
+            </tr>
+            <tr>
+              <td>Service Providers with no ongoing bookings:</td>
+              <td id="SerProNoOngoingBooking"></td>
+            </tr>
+            <tr>
+              <td>Overall accepted orders:</td>
+              <td id='acceptedOrders'></td>
+            </tr>
+            <tr>
+              <td>Overall rejected orders:</td>
+              <td id='rejectedOrders'></td>
+            </tr>
+          </table>
+            <table>
+              <tr>
+                <td>Service Providers with deactivated accounts:</td>
+                <td id="RejectedCount"></td>
+              </tr>
+            </table>
+            
+            
         </div>
-
+        </div>
+        
+      <div class="mainthree"> 
         <div class="authentication">
             <h2>Authentication</h2>
             <table>
                 <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Service Provider Name</th>
-                        <th>Accept</th>
-                        <th>Reject</th>
-                    </tr>
+                  <tr>
+                    <th>ID</th>
+                    <th>Service Provider Name</th>
+                    <th>Accept</th>
+                    <th>Reject</th>
+                  </tr>
                 </thead>
-                <tbody>
-                    <td>
-                        <tr>
-                            <td>1</td>
-                            <td>Martin Vetrovs</td>
-                            <td><input type="button" value="Accept"></td>
-                            <td><input type="button" value="Reject"></td>
-                        </tr>
-                    </td>
-                    <td>
-                        <tr>
-                            <td>2</td>
-                            <td>Ashlynn Torff</td>
-                            <td><input type="button" value="Accept"></td>
-                            <td><input type="button" value="Reject"></td>
-                        </tr>
-                    </td>
-                    <td>
-                        <tr>
-                            <td>3</td>
-                            <td>Talan Press</td>
-                            <td><input type="button" value="Accept"></td>
-                            <td><input type="button" value="Reject"></td>
-                        </tr>
-                    </td>
-                    <td>
-                        <tr>
-                            <td>4</td>
-                            <td>Aspen Mango</td>
-                            <td><input type="button" value="Accept"></td>
-                            <td><input type="button" value="Reject"></td>
-                        </tr>
-                    </td>
-                    <td>
-                        <tr>
-                            <td>5</td>
-                            <td>Carla Franci</td>
-                            <td><input type="button" value="Accept"></td>
-                            <td><input type="button" value="Reject"></td>
-                        </tr>
-                    </td>
+                <tbody id="pendingList">
+                  <!-- The list of service provider cards will be inserted here -->
                 </tbody>
-            </table>
+              </table>
+            
         </div>
 
-        <div class="userlist">
-            <h2>List Of Users</h2>
-            <table>
-                <thead>
-                    <tr>
+        
+            <div class="authentication">
+                <h2>List of all Service Providers</h2>
+                <table>
+                    <thead>
+                      <tr>
                         <th>ID</th>
-                        <th>Customer</th>
-                        <th>Service Provder</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td> 
-                        <td>Callie Goodman</td>
-                        <td>Alan Villegas</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Hope Burch</td>
-                        <td>Lance Macias</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Kamran Chambers</td>
-                        <td>Jordan Cooper</td>
-                    </tr>
-                </tbody>
-            </table>
+                        <th>Service Provider Name</th>
+                        <th>Disable Account</th>
+                      </tr>
+                    </thead>
+                    <tbody id="serviceList">
+                      <!-- The list of service provider cards will be inserted here -->
+                    </tbody>
+                  </table>
+        </div>
         </div>
     </div>
+
+  </div>
+    
+    
+      
+
 </body>
-<footer>
-    <%- include('partials/footer'); %>
-</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+   
+
+const serviceTable = document.getElementById("serviceList")
+
+
+//function to get pending users into table rows(authentication)
+const displayContent = (providers) => {
+  let content = "";
+  //To Iterate over the array of providers and create a table row for each one
+  providers.forEach((provider) => {
+    content += `
+      <tr>
+        <td>${provider._id}</td>
+        <td>${provider.name}</td>
+        <td><button class="verify-provider-button" onclick="acceptProvider(this)" data-id="${provider._id}" >Verify Provider</button></td>
+        <td><button class="reject-provider-button" onclick="rejectProvider(this)" data-id="${provider._id}" >Reject Provider</button></td>
+      </tr>
+    `;
+  });
+
+  document.querySelector("#pendingList").innerHTML = content;
+};
+
+axios.get('/api/v1/admin/getallpendingproviders')
+    .then(response => {
+      displayContent(response.data.providers);
+    })
+
+//to accept users
+const acceptProvider = async (clickedElement) =>{
+
+  const id = clickedElement.dataset.id;
+  console.log(id)
+  try {
+    const update = await axios.patch("/api/v1/admin/verify",{id})
+    const row = clickedElement.parentElement.parentElement
+    row.remove()
+
+    
+  } catch (error) {
+    console.log(error)
+    
+  }
+}
+
+/*/to reject providers
+const rejectProvider = async (clickedElementreject) =>{
+
+const idreject = clickedElementreject.dataset.id;
+console.log(idreject)
+try {
+  const update = await axios.patch("/api/v1/admin/reject",{idreject})
+  const row = clickedElementreject.parentElement.parentElement
+  row.remove()
+
+  
+} catch (error) {
+  console.log(error)
+  
+}
+
+}*/
+
+//to reject users
+const rejectProvider = async (clickedElement) =>{
+
+const id = clickedElement.dataset.id;
+console.log(id)
+try {
+  const update = await axios.patch("/api/v1/admin/reject",{id})
+  const row = clickedElement.parentElement.parentElement
+  row.remove()
+
+  
+} catch (error) {
+  console.log(error)
+  
+}
+}
+
+
+   /*const verifyProviderButton = document.getElementById('verify-provider-button');
+    verifyProviderButton.addEventListener('click', async () => {
+    const id = // Get the id of the provider to be verified
+    try {
+        const response = await fetch('/api/v1/admin/verify', {
+            method: 'POST',
+            body: JSON.stringify({ id }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const provider = await response.json();
+        // Handle the response, for example by updating the UI to reflect the change
+    } catch (error) {
+        console.error(error);
+        // Handle the error, for example by showing an error message to the user
+    }
+});
+
+
+
+*/
+
+
+
+
+
+
+//function to get Verified users into table rows(authentication)
+const displayContentCustomer = (providers) => {
+  let content = "";
+  //To Iterate over the array of providers and create a table row for each one
+  providers.forEach((provider) => {
+    content += `
+      <tr>
+        <td>${provider._id}</td>
+        <td>${provider.name}</td>
+        <td><button class="reject-provider-button" onclick="rejectProvider(this)" data-id="${provider._id}" >Reject Provider</button></td>
+      </tr>
+    `;
+  });
+
+  document.querySelector("#serviceList").innerHTML = content;
+};
+
+axios.get('/api/v1/admin/getallVerifiedproviders')
+    .then(response => {
+      displayContentCustomer(response.data.providers);
+    })
+
+async function getTotalCount(){
+  const {data:{providerCount , deactivatedUsers , customerCount , acceptedOrders , rejectedOrders , SerProOngoingBooking , SerProNoOngoingBooking}} = await axios.get("/api/v1/admin/totalValue")
+  document.getElementById('customerCount').innerHTML = customerCount
+  document.getElementById('serviceCount').innerHTML = providerCount
+  document.getElementById('RejectedCount').innerHTML = deactivatedUsers
+  document.getElementById('acceptedOrders').innerHTML = acceptedOrders
+  document.getElementById('rejectedOrders').innerHTML = rejectedOrders
+  document.getElementById('SerProOngoingBooking').innerHTML =  SerProOngoingBooking
+  document.getElementById('SerProNoOngoingBooking').innerHTML =  SerProNoOngoingBooking
+}
+getTotalCount()
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </html>
