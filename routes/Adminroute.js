@@ -1,10 +1,15 @@
 const express = require("express")
-const  {customerSignIn , customerLogIn ,displayLogInPage,displaySignUpPage} = require('../controllers/controller')
+const ServiceProvider = require("../models/service-provider")
+const { rejectProvider ,getCounts , verifyProvider , getPendingProviders, getServiceProviderVerified } = require('../controllers/adminController')
 
 const router = express.Router()
 
-router.route("/signup").post(customerSignIn).get(displaySignUpPage)
-router.route("/login").post(customerLogIn).get(displayLogInPage)
+
+router.route('/getallpendingproviders').get(getPendingProviders)
+router.route('/getallVerifiedproviders').get(getServiceProviderVerified)
+router.route('/verify').patch(verifyProvider);
+router.route('/reject').patch(rejectProvider);
+router.route('/totalValue').get(getCounts);
 
 
 

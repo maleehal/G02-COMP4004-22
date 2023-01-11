@@ -3,13 +3,13 @@ const express = require("express")
 const customerRoutes = require('./routes/CustomerRoute');
 const serviceRoutes = require('./routes/ServiceRoute');
 const viewRoutes = require('./routes/views') 
+
+const adminRoute = require("./routes/Adminroute")
+
 const connectDB = require('./database/connect');
 
 const cookieParser = require("cookie-parser");
 const middleware = require("./middleware/middleware")
-const mongoose = require("mongoose")
-
-const ServiceProvider = require("./models/service-provider");
 const Booking = require("./models/booking");
 
 require('dotenv').config();
@@ -29,6 +29,9 @@ app.set('view engine', 'ejs');
 app.use('/api/v1/customer', customerRoutes);
 app.use('/api/v1/service-provider', serviceRoutes);
 app.use('/', viewRoutes);
+
+app.use('/api/v1/admin', adminRoutes)
+
 
 
 const port = 3000
@@ -54,6 +57,7 @@ setInterval(defaultRejectAppoinment = async () => {
     }
   }
 }, 10000);
+
 
 setInterval(defaultCompletedAppoinment = async () => {
   const ongoingDates = await Booking.find({status:"Ongoing"}).select("date")
@@ -84,3 +88,4 @@ const start = async () => {
   }
 };
 start();
+

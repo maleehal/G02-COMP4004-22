@@ -61,16 +61,74 @@
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
+            <% if (flag === "cu") { %>
+                <a href="/rc/<%= user._id %>"><button>Rate me</button></a>
+            <% } %> 
+
+           
         </div>
-        <div class="sp2-1">
+        <div class="sp2-1" id="comment-section">
             <h2>Comments</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <img src="/images/image 2.png" alt="">
+                    <div><h1>Bulath malli</h1> 
+                      <h2>Rating | 2 Weeks ago</h2>  
+
+                    </div>
+                </div>
+                <div class="comment-content">excelent service and i would come again</div> <br>
+               
+
+
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <img src="/images/image 2.png" alt="">
+                    <div><h1>Bulath malli</h1> 
+                      <h2>Rating | 2 Weeks ago</h2>  
+
+                    </div>
+                </div>
+                <div class="comment-content">excelent service and i would come again</div> <br>
+               
+
+
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <img src="/images/image 2.png" alt="">
+                    <div><h1>Bulath malli</h1> 
+                      <h2>Rating | 2 Weeks ago</h2>  
+
+                    </div>
+                </div>
+                <div class="comment-content">excelent service and i would come again</div> <br>
+               
+
+
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <img src="/images/image 2.png" alt="">
+                    <div><h1>Bulath malli</h1> 
+                      <h2>Rating | 2 Weeks ago</h2>  
+
+                    </div>
+                </div>
+                <div class="comment-content">excelent service and i would come again</div> <br>
+               
+
+
+            </div>
+
         </div>
         <% if (flag === "cu") { %>
+
             <div class="sp2-11">
                 <a href="/booking"><button><h2>Book an Appoinment</h2></button></a>
             </div>
@@ -85,11 +143,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
 <script>
+    
     let description = document.getElementById("description")
     let about = document.getElementById("about")
     let edit = document.getElementById("edit")
     let schedule = document.getElementById("schedule")
     
+    document.getElementById("p").innerHTML = "happy";
 
     document.getElementById("edit").addEventListener("click", async() =>{
         if (description.style.display != "none" ){

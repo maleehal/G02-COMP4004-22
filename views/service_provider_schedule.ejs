@@ -64,7 +64,9 @@
                         <td> <%= booking._id %>  </td>
                         <td><%= booking.c_id %></td>
                         <td><%= booking.date %></td>
+
                         <td><button onclick="completedbook(this)" id="complete" data-id="<%= booking._id %>">Done</button></td>
+
                     </tr>  
                 <% } %>
             <% }) %>   
@@ -72,6 +74,7 @@
     </div>
 
     <div id="Pending" class="spb2">
+
         <table>  
             <tr>
                 <th>ID</th>
@@ -80,6 +83,7 @@
                 <th>Accept</th>
                 <th>Reject</th>
             </tr>
+
             <% bookings.forEach(booking => { %>
                 <% if (booking.status =="Pending") { %>
                     <tr>
@@ -118,16 +122,20 @@
         <table>
             <tr>
                 <th>ID</th>
+
                 <th>Customer</th>
                 <th>Date</th>
+
             </tr>
 
             <% bookings.forEach(booking => { %>
                 <% if (booking.status =="Rejected") { %>  
                     <tr>
                         <td> <%= booking._id %>  </td>
+
                         <td><%= booking.c_id %></td>
                         <td><%= booking.date %></td> 
+
                     </tr>
                 <% } %>
             <% }) %>   
@@ -163,6 +171,8 @@
         evt.currentTarget.className += " active";
     }
 
+
+
     async function acceptbook(acc){
         var dataID = acc.getAttribute("data-id");
         var changed = "Ongoing";
@@ -174,6 +184,7 @@
         var changed = "Rejected";
         const data = await axios.patch(`/api/v1/service-provider/rejectAppoinments`,{dataID, changed})
     }
+
 
     async function completedbook(acc){
         var dataID = acc.getAttribute("data-id");
@@ -200,6 +211,6 @@
     // }
     
                     
-   
+  
 </script>
 </html>

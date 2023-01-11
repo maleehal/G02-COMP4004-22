@@ -4,6 +4,7 @@ const Booking = require("../models/booking")
 const jwt = require("jsonwebtoken")
 const cookieParser = require("cookie-parser")
 
+
 const displayStartup = async (req,res)=>{
     res.render("startup")
 }
@@ -43,6 +44,18 @@ const search = async (req,res)=>{
     res.render("search",{providers})
 }
 
+
+const displayHomePage = async(req,res) =>{
+    try {
+        const topThreeProviders = await ServiceProvider.find({}).sort({rating:-1}).limit(3)
+        res.render("home",{topThreeProviders})
+        
+    } catch (error) {
+        console.log("error")
+        
+    }
+}
+
 const displayProviderProfile = async (req,res) =>{ 
     res.render("service_provider");  
 }
@@ -61,6 +74,11 @@ const displayProviderSchedule = async (req,res)=>{
         }
     })    
 };
+
+
+const viewRc = async (req,res) =>{ 
+    res.render("rc");  
+}
 
 const displaypageToCustomer = async (req,res) =>{
     const {id} = req.params
@@ -88,7 +106,9 @@ const customerSchedule = async (req,res) =>{
     })
 }
 
+
 module.exports = {
-    displayStartup, displayServiceSignUp, displayServiceLogin, displayPending, displayCustomerSignUp, displayCustomerLogin, displayHome, 
-    displayProviderProfile, displayProviderSchedule, displaypageToCustomer, customerSchedule, search, booking
+    displayStartup, displaySignupService, displaySignupCustomer, displayLoginService, displayLoginCustomer, displayHome, 
+    displayProviderProfile, displayProviderSchedule, displaypageToCustomer, customerSchedule, search, booking, displayAdmin,
+    displayPending, viewRc
 }

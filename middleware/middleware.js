@@ -60,8 +60,8 @@ const checkUser =  (req,res,next) =>{
                         next()
                     }
                     else{
-                        const flag = "sp"
                         let user = await ServiceProvider.findById(decodeedToken.id)
+                        const flag ="sp"
                         res.locals.user= user;
                         res.locals.flag = flag;
                         next()
@@ -71,6 +71,7 @@ const checkUser =  (req,res,next) =>{
             }
             else{
                 let user = await Customer.findById(decodeedToken.id)
+                
                 const flag = "cu"
                 res.locals.flag = flag;
                 res.locals.user = user;
