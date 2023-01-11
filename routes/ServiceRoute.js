@@ -1,15 +1,12 @@
 const express = require("express")
 const ServiceProvider = require("../models/service-provider")
+const Booking = require("../models/booking")
 const {checkUser, serviceProviderAuth} = require("../middleware/middleware")
-const {getAllproviders , displayLogInPage ,displaySignUpPage ,signUpService, serviceLogIn, updateProviderDetails, acceptAppoinments, rejectAppoinments} = require('../controllers/serviceController')
-
-const displaypage = async (req,res) =>{
-    const {id} = req.params
-    const serviceProvider = await ServiceProvider.findById(id)
-    const flag = "cu"
-    res.render("service_provider",{user:serviceProvider,flag})
-}
-
+const {
+    getAllproviders , displayLogInPage ,displaySignUpPage ,signUpService, serviceLogIn, 
+    updateProviderDetails, acceptAppoinments, rejectAppoinments, completedAppoinments, getBuisnessPerformance
+} = require('../controllers/serviceController')
+ 
 const router = express.Router()
 
 router.route("/signup").get(displaySignUpPage).post(signUpService)
@@ -18,8 +15,9 @@ router.route("/getallproviders").get(getAllproviders)
 router.route("/updateProviderDetails").patch(updateProviderDetails)
 router.route("/acceptAppoinments").patch(acceptAppoinments)
 router.route("/rejectAppoinments").patch(rejectAppoinments)
-router.route("/service_provider/:id").get(displaypage)
-
+router.route("/completedAppoinments").patch(completedAppoinments)
+router.route("/getBuisnessPerformance").get(getBuisnessPerformance)
+router.route("/get").get(getBuisnessPerformance)
 
 
 

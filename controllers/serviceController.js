@@ -1,13 +1,9 @@
-
 const jwt = require("jsonwebtoken")
 const cookieParser = require("cookie-parser")
 const ServiceProvider = require("../models/service-provider")
 const Booking = require("../models/booking")
 
-
 const maxAge = 3 * 24  * 60 * 60
-
-
 
 const createToken = (id) => {
     return jwt.sign({ id },"ServiceProvider",{
@@ -38,10 +34,6 @@ const handleErrors = (error) =>{
     return errors;
 }
 
-
-
-
-
 const getAllproviders = async (req,res) =>{
     try {
         const providers = await ServiceProvider.find({status:"Verified"}).select("name email expertise")
@@ -51,8 +43,6 @@ const getAllproviders = async (req,res) =>{
         res.status(400).send({msg:"errors"}) 
         
     }
-
-
 }
 
 const signUpService = async (req,res) =>{
@@ -67,16 +57,6 @@ const signUpService = async (req,res) =>{
 
     }
 }
-
-// const updateServiceDescription = async (req,res) =>{
-//     console.log("came here")
-//     const {descriptionData,id} = req.body
-//     console.log(req.params)
-//     console.log(id)
-//     console.log(descriptionData)
-//     const Updateprovider = await ServiceProvider.findByIdAndUpdate(id,{description:descriptionData},{runValidators:true})
-//     console.log(Updateprovider)
-// }
 
 const serviceLogIn = async (req,res) =>{
     const {username , password} = req.body
@@ -131,7 +111,52 @@ const rejectAppoinments = async (req,res)=>{
     }
 };
 
+const getOngoingDates = async(req,res)=>{
+    try{
+        const ongoingDates = await Booking.find({status:"Ongoing"}).select("date")
+        res.status(200).send({ongoingDates})
+    } catch (error) {
+        res.status(400).send({msg:"errors"})  
+    }
+}
 
+const defaultCompletedAppoinment = async(req,res)=>{
+    const {dataID, changed} = req.body
+    try {
+        const defaultCompletedAppoinment = await Booking.findByIdAndUpdate(dataID,{status:changed},{runValidators:true})
+    }catch(error){
+        console.log(error)
+    }
+}
 
-module.exports = {getAllproviders , displayLogInPage , displaySignUpPage , signUpService, serviceLogIn, updateProviderDetails, acceptAppoinments, rejectAppoinments}
+const completedAppoinments = async(req,res)=>{
+    try{
+        const completedAppoinments = await Booking.find({status:"Ongoing"}).select("date")
+        res.status(200).send({completedAppoinments})
+    } catch (error) {
+        res.status(400).send({msg:"errors"})  
+    }
+}
 
+const getBuisnessPerformance = async (req,res)=>{
+    const token = req.cookies.jwt
+    jwt.verify(token, "ServiceProvider", async (error, decodedtoken)=>{
+        if(error){
+            console.log(error)
+        }else{
+            const id = decodedtoken.id
+            const numberOfOngoingProvider = await Booking.countDocuments({s_id:id, status:"Ongoing" })
+            const numberOfPendingProvider = await Booking.countDocuments({s_id:id, status:"Pending" })
+            const numberOfCompletedProvider = await Booking.countDocuments({s_id:id, status:"Completed" })
+            const numberOfRejectedProvider = await Booking.countDocuments({s_id:id, status:"Rejected" })
+            res.status(200).send({numberOfOngoingProvider, numberOfPendingProvider, numberOfCompletedProvider, numberOfRejectedProvider})    
+
+           
+        }
+    }) 
+};
+
+module.exports = {
+    getAllproviders , displayLogInPage , displaySignUpPage , signUpService, serviceLogIn, updateProviderDetails, 
+    acceptAppoinments, rejectAppoinments, getOngoingDates, defaultCompletedAppoinment, completedAppoinments, getBuisnessPerformance
+}
