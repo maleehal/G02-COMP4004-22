@@ -14,7 +14,7 @@
 <body>
 
    <div class="sp3">
-        <div class="sp3-1"><button class="item-4"><img class="search1" src="/images/image 2.png" alt="profile"></button></div>
+        <div class="sp3-1"><button class="item"><img class="search1" src="/images/image 2.png" alt="profile"></button></div>
         <div class="sp3-1">
             <%=user.name%>
             <%=user.email%>
@@ -27,6 +27,7 @@
                 <% if (flag === "sp") { %>
                     <button id="schedule"><img src="/images/Picture1.png" alt="Schedule"></button>
                     <button id="edit"><img src="/images/Picture2.png" alt="Edit"></button>
+                    <button id="logout"><img src="/images/logout.png" alt="logout"></button>
                 <% } %>    
             </div>
         </div>
@@ -121,7 +122,6 @@
     document.getElementById("schedule").addEventListener("click", async() =>{
         location.assign(`/service_provider_schedule`)
     })
-    
 
 </script>
 </html>

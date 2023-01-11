@@ -17,7 +17,6 @@ const bookingSchema = new mongoose.Schema({
         enum:["Ongoing","Pending","Completed","Rejected"]
     },
     date: {
-        
         type: Date,
         default:Date.now,
         // required:[true,"this field is required"]
