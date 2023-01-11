@@ -3,8 +3,11 @@ const  {customerSignIn , customerLogIn ,displayLogInPage,displaySignUpPage} = re
 
 const router = express.Router()
 
-router.route("/signup").post(customerSignIn).get(displaySignUpPage)
-router.route("/login").post(customerLogIn).get(displayLogInPage)
+router.route("/").get((req,res) =>[
+    console.log("hey")
+])
+
+
 
 
 

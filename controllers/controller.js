@@ -116,7 +116,7 @@ const handleErrors = (error) =>{
 
 
 
-module.exports = {customerSignIn , customerLogIn , customerLogOut ,displayLogInPage ,displaySignUpPage , SearchProvider}
+module.exports = {customerSignIn , customerLogIn , customerLogOut ,displayLogInPage ,displaySignUpPage , SearchProvider }
 
 
 

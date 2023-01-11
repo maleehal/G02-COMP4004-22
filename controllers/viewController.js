@@ -12,6 +12,17 @@ const cookieParser = require("cookie-parser")
 //     });
 // }
 
+const displayHomePage = async(req,res) =>{
+    try {
+        const topThreeProviders = await ServiceProvider.find({}).sort({rating:-1}).limit(3)
+        res.render("home",{topThreeProviders})
+        
+    } catch (error) {
+        console.log("error")
+        
+    }
+}
+
 const displayProviderProfile = async (req,res) =>{ 
     res.render("service_provider");  
 }
@@ -31,5 +42,5 @@ const displayProviderSchedule = async (req,res)=>{
     })    
 };
 
-module.exports = {displayProviderProfile, displayProviderSchedule}
+module.exports = {displayProviderProfile, displayProviderSchedule ,displayHomePage}
 

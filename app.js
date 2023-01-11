@@ -3,6 +3,7 @@ const express = require("express")
 const customerRoutes = require('./routes/CustomerRoute');
 const serviceRoutes = require('./routes/ServiceRoute');
 const viewRoutes = require('./routes/views') 
+const adminRoute = require("./routes/Adminroute")
 const connectDB = require('./database/connect');
 
 const cookieParser = require("cookie-parser");
@@ -26,6 +27,7 @@ app.set('view engine', 'ejs');
 app.use('/api/v1/customer', customerRoutes);
 app.use('/api/v1/service-provider', serviceRoutes);
 app.use('/', viewRoutes);
+app.use("/admin",adminRoute)
 
 
 const port = 3000
@@ -38,6 +40,11 @@ app.get("/startup", (req,res)=>{
  
   res.render("startup")
 })
+
+// app.get("/", (req,res)=>{
+//   res.render("home")
+// })
+
 
 // app.get("/search",async  (req,res)=>{
 //   const {searchkey , filter} = req.query;

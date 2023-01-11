@@ -39,44 +39,21 @@
     <center><h1>Top Service Providers</h1></center>
     <!--Main box for the content!-->
     <div class="container-sub-1"> 
-        
-        <div class ="container-sub-1-1">
-           
-                <img class="profilepic" src="/images/image 2.png">
+        <% topThreeProviders.forEach((provider) => { %>
+            <div class ="container-sub-1-1">
+            <img class="profilepic" src="/images/image 2.png">
+            <div><%= provider.name %> </div>
+            <div><%= provider.rating %> </div>
+            <button onclick="" class="providerprofile">View Provider</button>
+        </div>
+               
+
          
-            <div>
-                Person 1
-            </div>
-            <div>
-                ratings
-            </div>
-            <button onclick="" class="providerprofile">View Provider</button>
-        </div>
+        <% }) %>
         
-        <div class ="container-sub-1-1">
-         
-                <img class="profilepic" src="/images/image 2.png">
-            
-            <div>
-                Person 2
-            </div>
-            <div>
-                ratings
-            </div>
-            <button onclick="" class="providerprofile">View Provider</button>
-        </div>
-        <div class ="container-sub-1-1">
-           
-                <img class="profilepic" src="/images/image 2.png">
-           
-            <div>
-                Person 3
-            </div>
-            <div>
-                ratings
-            </div>
-            <button onclick="" class="providerprofile">View Provider</button>
-        </div>
+       
+        
+       
     </div>
 
 

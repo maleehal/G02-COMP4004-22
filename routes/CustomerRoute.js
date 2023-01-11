@@ -5,7 +5,10 @@ const router = express.Router()
 
 router.route("/signup").post(customerSignIn).get(displaySignUpPage)
 router.route("/login").post(customerLogIn).get(displayLogInPage)
-router.route("/search").get(SearchProvider)
+router.route("/search").get((req,res) =>{
+    res.render("search")
+
+})
 
 
 
