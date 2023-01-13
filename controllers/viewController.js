@@ -3,6 +3,7 @@ const Customers = require("../models/customer")
 const Booking = require("../models/booking")
 const jwt = require("jsonwebtoken")
 const cookieParser = require("cookie-parser")
+const Comment = require("../models/comment")
 
 const displayStartup = async (req,res)=>{
     res.render("startup")
@@ -74,8 +75,13 @@ const viewRc = async (req,res) =>{
 const displaypageToCustomer = async (req,res) =>{
     const {id} = req.params
     const serviceProvider = await ServiceProvider.findById(id)
+    const comments = await Comment.find({s_id:id})
     const flag = "cu"
-    res.render("service_provider",{user:serviceProvider,flag})
+    res.render("service_provider",{
+        user:serviceProvider, flag,
+        comments:comments,
+        // customer:customer
+    }) 
 }
 
 const booking = async (req,res) =>{

@@ -4,6 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/profile.css">
+
     <title>Service Provider</title>
 </head>
 
@@ -15,7 +16,7 @@
 
    <div class="sp3">
         <div class="sp3-1"><button class="item"><img class="search1" src="/images/image 2.png" alt="profile"></button></div>
-        <div class="sp3-1">
+        <div class="sp3-1"> 
             <%=user.name%>
             <%=user.email%>
             <%= user.telephone %> 
@@ -25,9 +26,9 @@
         <div class="sp3-1">
             <div class="bt">
                 <% if (flag === "sp") { %>
-                    <button id="schedule"><img src="/images/Picture1.png" alt="Schedule"></button>
+                    <button id="schedule"><a href="/service_provider_schedule"><img src="/images/Picture1.png" alt="Schedule"></a></button>
                     <button id="edit"><img src="/images/Picture2.png" alt="Edit"></button>
-                    <button id="logout"><img src="/images/logout.png" alt="logout"></button>
+                    <button id="logout"><a href="/api/v1/customer/logout"><img src="/images/logout.png" alt="logout"></a></button>
                 <% } %>    
             </div>
         </div>
@@ -48,44 +49,118 @@
         </div>
         <div class="sp2-1">
             <h2>Photos</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
+            <div class="pictures">
+                <div class="pic"><img src="/images/event1.jpg" alt=""></div>
+                <div class="pic"><img src="/images/event2.jfif" alt=""></div>
+                <div class="pic"><img src="/images/event3.jpg" alt=""></div>
+                <div class="pic"><img src="/images/event4.cms" alt=""></div>
+                <div class="pic"><img src="/images/event5.png" alt=""></div>
+                <div class="pic"><img src="/images/event6.jpg" alt=""></div>
+            </div>
         </div>
         <div class="sp2-1">
             <h2>Ratings</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            <% if (flag === "cu") { %>
-                <a href="/rc/<%= user._id %>"><button>Rate me</button></a>
-            <% } %> 
+            <div class="progressBar">
+                <p>5 Stars</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:30%">
+                      <span class="sr-only"></span>
+                    </div>
+                </div>
+                <p>()</p>
 
-           
+                <p>4 Stars</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                      <span class="sr-only"></span>
+                    </div>
+                </div>
+                <p>()</p>
+
+                <p>3 Stars</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                      <span class="sr-only"></span>
+                    </div>
+                </div>
+                <p>()</p>
+
+                <p>2 Stars</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:60%">
+                      <span class="sr-only"></span>
+                    </div>
+                </div>
+                <p>()</p>
+
+                <p>1 Stars</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                      <span class="sr-only">70% Complete</span>
+                    </div>
+                </div>
+                <p>()</p>
+            </div>
+            <% if (flag === "cu") { %>
+                <a href="/rc/<%= user._id %>"><button id="rate">Rate me</button></a>
+            <% } %> 
         </div>
-        <div class="sp2-1">
+    
+        <div class="sp2-1" id="comment-section">
             <h2>Comments</h2>
-            <p id="p">
-                
-            </p>
+            <div class="comment">
+                <div class="comment-header">
+                    <div> 
+                        <% if (flag === "sp") { %>
+                            <table>
+                                <% comments.forEach(comment => { %>
+                                    <% if (comment.s_id != "") { %>  
+                                        <tr>
+                                            <td><img src="/images/image 2.png" alt=""></td>
+                                            <td><%= comment.c_id %> </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="text-align: center;"><%= comment.content %> </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="width: 100%;"><hr></td>
+                                        </tr>
+                                    <% } %>
+                                <% }) %>
+                            </table> 
+                        <% } else { %>
+                            <table>
+                                <% comments.forEach(comment => { %>
+                                    <% if (comment.s_id != "") { %>  
+                                        <tr>
+                                            <td><img src="/images/image 2.png" alt=""></td>
+                                            <td><%= comment.c_id %> </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="text-align: center;"><%= comment.content %> </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="width: 100%;"><hr></td>
+                                        </tr>
+                                    <% } %>
+                                <% }) %>
+                            </table> 
+                        <% } %>
+                    </div>
+                </div>
+                <div class="comment-content"></div> <br>
+            </div>
         </div>
+        
         <% if (flag === "cu") { %>
-            <div class="sp2-1">
-                <h2>Book an Appoinment</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-                <a href="/booking/<%= user._id %>"><button>Book Appoinment</button></a>
+
+            <div class="sp2-11">
+                <a href="/booking/<%= user._id %> "><button><h2>Book an Appoinment</h2></button></a>
             </div>
         <% } %> 
    </div>
-</body>
+   
+</body> 
 
 <footer>
     <%- include('partials/footer'); %>
@@ -94,13 +169,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
 <script>
-    
+
     let description = document.getElementById("description")
     let about = document.getElementById("about")
     let edit = document.getElementById("edit")
     let schedule = document.getElementById("schedule")
-    
-    document.getElementById("p").innerHTML = "happy";
 
     document.getElementById("edit").addEventListener("click", async() =>{
         if (description.style.display != "none" ){
@@ -124,6 +197,14 @@
             const data = await axios.patch(`/api/v1/service-provider/updateProviderDetails`,{aboutData,descriptionData})
         }
     })   
+
+    // async function customerComments(acc){
+    //     var dataID = acc.getAttribute("data-id");
+    //     console.log(dataID);
+    //     // var changed = "Completed";
+    //     // const data = await axios.patch(`/api/v1/service-provider/rejectAppoinments`,{dataID, changed})
+    // }
+    customerComments(acc)
     document.getElementById("schedule").addEventListener("click", async() =>{
         location.assign(`/service_provider_schedule`)
     })

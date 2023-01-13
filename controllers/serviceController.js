@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken")
 const cookieParser = require("cookie-parser")
 const ServiceProvider = require("../models/service-provider")
 const Booking = require("../models/booking")
+const Comments = require("../models/comment")
 
 const maxAge = 3 * 24  * 60 * 60
 
@@ -156,7 +157,25 @@ const getBuisnessPerformance = async (req,res)=>{
     }) 
 };
 
+const displayProviderProfile = async (req,res) =>{ 
+    const token = req.cookies.jwt
+    jwt.verify(token, "ServiceProvider", async (error, decodedtoken)=>{
+        if(error){
+            console.log(error)
+        }else{
+            const id = decodedtoken.id
+            const comments = await Comment.find({s_id:id})
+            console.log(comments);
+            res.render("service_provider", {
+                comments:comments
+            })
+        }
+        
+        
+    }) 
+}
 module.exports = {
     getAllproviders , displayLogInPage , displaySignUpPage , signUpService, serviceLogIn, updateProviderDetails, 
-    acceptAppoinments, rejectAppoinments, getOngoingDates, defaultCompletedAppoinment, completedAppoinments, getBuisnessPerformance
+    acceptAppoinments, rejectAppoinments, getOngoingDates, defaultCompletedAppoinment, completedAppoinments, 
+    getBuisnessPerformance, displayProviderProfile
 }

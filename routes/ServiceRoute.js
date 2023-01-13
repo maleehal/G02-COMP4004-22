@@ -4,7 +4,8 @@ const Booking = require("../models/booking")
 const {checkUser, serviceProviderAuth} = require("../middleware/middleware")
 const {
     getAllproviders , displayLogInPage ,displaySignUpPage ,signUpService, serviceLogIn, 
-    updateProviderDetails, acceptAppoinments, rejectAppoinments, completedAppoinments, getBuisnessPerformance
+    updateProviderDetails, acceptAppoinments, rejectAppoinments, completedAppoinments, getBuisnessPerformance, 
+    displayProviderProfile
 } = require('../controllers/serviceController')
  
 const router = express.Router()
@@ -18,6 +19,7 @@ router.route("/rejectAppoinments").patch(rejectAppoinments)
 router.route("/completedAppoinments").patch(completedAppoinments)
 router.route("/getBuisnessPerformance").get(getBuisnessPerformance)
 router.route("/get").get(getBuisnessPerformance)
+router.route("/getProviderComments").get(displayProviderProfile)
 
 
 

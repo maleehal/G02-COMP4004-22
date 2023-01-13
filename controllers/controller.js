@@ -132,7 +132,7 @@ const createComment = async (req,res) =>{
     try {
         jwt.verify(token,"Customer",async (err,decodeedToken)=>{
             if(err){
-              console.log(ërror)
+              console.log(error)
             }
             else{ 
                 //console.log("went inside")
