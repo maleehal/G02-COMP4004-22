@@ -116,9 +116,12 @@ const customerSchedule = async (req,res) =>{
     })
 }
 
+const displayAdmin = (req,res)=>{
+    res.render("admin")
+}
 
 module.exports = {
     displayStartup, displaySignupService, displaySignupCustomer, displayLoginService, displayLoginCustomer, displayHome, 
     displayProviderProfile, displayProviderSchedule, displaypageToCustomer, customerSchedule, search, booking, 
-    displayPending, viewRc
+    displayPending, viewRc, displayAdmin
 }
