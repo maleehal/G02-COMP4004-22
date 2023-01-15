@@ -38,6 +38,7 @@ const port = 3000
 // })
 
 setInterval(defaultRejectAppoinment = async () => {
+  const date = await 
 
   for (let i = 0; i < date.length; i++) {
     const todayDate = new Date();
