@@ -1,5 +1,10 @@
 /*section 1 csss */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&display=swap');
+
+:root{
+    --tcolor: #9702B0;
+}
+
 *{
     font-family: "Raleway";
     font-weight: bolder;
@@ -32,7 +37,7 @@ a{
 }
 
 .search-btn{
-    background-color: rgb(195, 19, 195);
+    background-color: var(--tcolor);
     color: white;
     border: none;
     border-radius: 10px;
@@ -65,7 +70,8 @@ a{
 }
 
 .providerprofile{
-    background-color: purple;
+    background-color: var(--tcolor);
+    border: none;
     color: white;
     padding: 4%;
     border-radius: 24px;

@@ -5,11 +5,11 @@ const {isEmail} = require("validator")
 const bookingSchema = new mongoose.Schema({
     s_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "service-provider"
+        ref: "Service-provider"
     },
     c_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "customer"
+        ref: "Customer"
     },
     event: {
         type: String
@@ -24,11 +24,7 @@ const bookingSchema = new mongoose.Schema({
         default:Date.now,
         // required:[true,"this field is required"]
         
-    },
-    // Time: {
-    //     type: Date,
-    //     required:[true,"this field is required"]
-    // }
+    }
 })
 
 const Booking = mongoose.model("booking",bookingSchema)

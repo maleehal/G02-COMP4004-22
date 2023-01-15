@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken")
 const cookieParser = require("cookie-parser")
 const ServiceProvider = require("../models/service-provider")
 const Booking = require("../models/booking")
+const Comment = require("../models/comment")
 
 const maxAge = 3 * 24  * 60 * 60
 
@@ -70,14 +71,6 @@ const serviceLogIn = async (req,res) =>{
         console.log(errors)
         res.status(200).send({errors}) 
     }   
-}
-
-const displaySignUpPage = (req,res) =>{
-    res.render("signup-service")
-}
-
-const displayLogInPage = (req,res) =>{
-    res.render("login-service")
 }
 
 const updateProviderDetails = async (req,res)=>{
@@ -150,11 +143,10 @@ const getBuisnessPerformance = async (req,res)=>{
             const numberOfCompletedProvider = await Booking.countDocuments({s_id:id, status:"Completed" })
             const numberOfRejectedProvider = await Booking.countDocuments({s_id:id, status:"Rejected" })
             res.status(200).send({numberOfOngoingProvider, numberOfPendingProvider, numberOfCompletedProvider, numberOfRejectedProvider})    
-
-           
         }
     }) 
 };
+
 
 module.exports = {
     getAllproviders , signUpService, serviceLogIn, updateProviderDetails, 

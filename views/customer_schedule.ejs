@@ -9,6 +9,7 @@
 
 <header>
     <%- include('partials/header'); %>
+    <%- include('partials/functions'); %>
 </header>
 
 <body>
@@ -21,11 +22,7 @@
         </div>
         <div class="sp3-1"></div>
         <div class="sp3-1"></div>
-        <div class="sp3-1">
-            <div class="bt">     
-                <button id="logout"><a href="api/v1/customer/logout"><img src="/images/logout.png" alt="logout"></a></button>   
-            </div>
-        </div>
+        <div class="sp3-1"></div>
    </div>
    
    <div class="spb1">
@@ -39,14 +36,18 @@
             <tr>
                 <th>ID</th>
                 <th>Service Provider</th>
+                <th>Event</th>
                 <th>Date</th>
+                <th>Time</th>
             </tr>
             <% bookings.forEach(booking => { %>
                 <% if (booking.status =="Ongoing") { %>
                     <tr>
                         <td> <%= booking._id %>  </td>
-                        <td><%= booking.s_id %></td>
-                        <td><%= booking.date %></td>
+                        <td><%= booking.s_id.username %></td>
+                        <td><%= booking.event %></td>
+                        <td><%= booking.date.toLocaleDateString(); %></td> 
+                        <td><%= booking.date.toLocaleTimeString(); %></td> 
                     </tr>  
                 <% } %>
             <% }) %> 
@@ -56,17 +57,21 @@
         <table border="1">
             <tr>
                 <th>ID</th>
-                <th>Event</th>
                 <th>Service Provider</th>
+                <th>Event</th>
                 <th>Date</th>
+                <th>Time</th>
+                <th>Rate</th>
             </tr>
             <% bookings.forEach(booking => { %>
                 <% if (booking.status =="Completed") { %>
                     <tr>
                         <td><%= booking._id %></td>
+                        <td><%= booking.s_id.username %></td>
                         <td><%= booking.event %></td>
-                        <td><%= booking.s_id %></td>
-                        <td><%= booking.date %></td>
+                        <td><%= booking.date.toLocaleDateString(); %></td> 
+                        <td><%= booking.date.toLocaleTimeString(); %></td> 
+                        <td><button id="rating"><a href="/rc/<%= booking.s_id._id %>">Rate</a></button></td>
                     </tr>  
                 <% } %>
             <% }) %> 
@@ -76,17 +81,19 @@
         <table border="1">
             <tr>
                 <th>ID</th>
-                <th>Event</th>
                 <th>Service Provider</th>
+                <th>Event</th>
                 <th>Date</th>
+                <th>Time</th>
             </tr>
             <% bookings.forEach(booking => { %>
                 <% if (booking.status =="Rejected") { %>
                     <tr>
                         <td><%= booking._id %></td>
+                        <td><%= booking.s_id.username %></td>
                         <td><%= booking.event %></td>
-                        <td><%= booking.s_id %></td>
-                        <td><%= booking.date %></td>
+                        <td><%= booking.date.toLocaleDateString(); %></td> 
+                        <td><%= booking.date.toLocaleTimeString(); %></td> 
                     </tr>  
                 <% } %>
             <% }) %> 
@@ -95,10 +102,11 @@
 </body>
 
 <footer>
-    <%- include('partials/footer'); %>
+    <%- include('partials/footer') %>
 </footer>
 
 <script>
+
     spb2 = document.getElementsByClassName("spb2");
     for(i = 0; i < spb2.length; i++){
         spb2[i].style.display = "none";

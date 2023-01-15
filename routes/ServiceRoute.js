@@ -17,9 +17,6 @@ router.route("/acceptAppoinments").patch(acceptAppoinments)
 router.route("/rejectAppoinments").patch(rejectAppoinments)
 router.route("/completedAppoinments").patch(completedAppoinments)
 router.route("/getBuisnessPerformance").get(getBuisnessPerformance)
-router.route("/get").get(getBuisnessPerformance)
-
-
 
 
 module.exports = router

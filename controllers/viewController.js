@@ -1,6 +1,7 @@
 const ServiceProvider = require("../models/service-provider")
 const Customers = require("../models/customer")
 const Booking = require("../models/booking")
+const Comment =require("../models/comment")
 const jwt = require("jsonwebtoken")
 const cookieParser = require("cookie-parser")
 
@@ -26,8 +27,12 @@ const displayLoginCustomer = async (req,res) =>{
     res.render("login-customer")
 }
 const displayHome = async (req,res)=>{
-    const topThreeProviders = await ServiceProvider.find({}).sort({rating:-1}).limit(3)
+    try{
+        const topThreeProviders = await ServiceProvider.find({}).sort({rating:-1}).limit(3)
     res.render('home',{topThreeProviders})
+    } catch (error) {
+        console.log("error")
+    }
 }
 
 const search = async (req,res)=>{
@@ -47,20 +52,19 @@ const search = async (req,res)=>{
     res.render("search",{providers})
 }
 
-
-const displayHomePage = async(req,res) =>{
-    try {
-        const topThreeProviders = await ServiceProvider.find({}).sort({rating:-1}).limit(3)
-        res.render("home",{topThreeProviders})
-        
-    } catch (error) {
-        console.log("error")
-        
-    }
-}
-
 const displayProviderProfile = async (req,res) =>{ 
-    res.render("service_provider");  
+    const token = req.cookies.jwt
+    jwt.verify(token, "ServiceProvider", async (error, decodedtoken)=>{
+        if(error){
+            console.log(error)
+        }else{
+            const id = decodedtoken.id
+            const comments = await Comment.find({s_id:id})
+            res.render("service_provider", {
+                comments:comments
+            })
+        }    
+    }) 
 }
 
 const displayProviderSchedule = async (req,res)=>{
@@ -70,14 +74,13 @@ const displayProviderSchedule = async (req,res)=>{
             console.log(error)
         }else{
             const id = decodedtoken.id
-            const bookings = await Booking.find({s_id:id})
+            const bookings = await Booking.find({s_id:id}).populate("c_id")
             res.render("service_provider_schedule", {
                 bookings:bookings
             })
         }
     })    
 };
-
 
 const viewRc = async (req,res) =>{ 
     res.render("rc");  
@@ -86,8 +89,12 @@ const viewRc = async (req,res) =>{
 const displaypageToCustomer = async (req,res) =>{
     const {id} = req.params
     const serviceProvider = await ServiceProvider.findById(id)
+    const comments = await Comment.find({s_id:id})
     const flag = "cu"
-    res.render("service_provider",{user:serviceProvider,flag})
+    res.render("service_provider",{
+        user:serviceProvider, flag,
+        comments:comments
+    }) 
 }
 
 const booking = async (req,res) =>{
@@ -101,7 +108,7 @@ const customerSchedule = async (req,res) =>{
             console.log(error)
         }else{
             const id = decodedtoken.id
-            const bookings = await Booking.find({c_id:id})
+            const bookings = await Booking.find({c_id:id}).populate("s_id")
             res.render("customer_schedule", {
                 bookings:bookings
             })

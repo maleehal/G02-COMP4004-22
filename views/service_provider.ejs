@@ -9,28 +9,21 @@
 
 <header>
     <%- include('partials/header'); %>
+    <%- include('partials/functions'); %>
 </header>
 
 <body>
 
    <div class="sp3">
         <div class="sp3-1"><button class="item"><img class="search1" src="/images/image 2.png" alt="profile"></button></div>
-        <div class="sp3-1">
+        <div class="sp3-1"> 
             <%=user.name%>
             <%=user.email%>
             <%= user.telephone %> 
         </div>
         <div class="sp3-1"></div>
         <div class="sp3-1"></div>
-        <div class="sp3-1">
-            <div class="bt">
-                <% if (flag === "sp") { %>
-                    <button id="schedule"><img src="/images/Picture1.png" alt="Schedule"></button>
-                    <button id="edit"><img src="/images/Picture2.png" alt="Edit"></button>
-                    <button id="logout"><a href="/api/v1/customer/logout"><img src="/images/logout.png" alt="logout"></a></button>
-                <% } %>    
-            </div>
-        </div>
+        <div class="sp3-1"></div>
    </div>
 
    <div class="sp2">
@@ -48,11 +41,14 @@
         </div>
         <div class="sp2-1">
             <h2>Photos</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
+            <div class="pictures">
+                <div class="pic"><img src="/images/event1.jpg" alt=""></div>
+                <div class="pic"><img src="/images/event2.jfif" alt=""></div>
+                <div class="pic"><img src="/images/event3.jpg" alt=""></div>
+                <div class="pic"><img src="/images/event4.cms" alt=""></div>
+                <div class="pic"><img src="/images/event5.png" alt=""></div>
+                <div class="pic"><img src="/images/event6.jpg" alt=""></div>
+            </div>
         </div>
         <div class="sp2-1">
             <h2>Ratings</h2>
@@ -60,81 +56,64 @@
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            <% if (flag === "cu") { %>
-                <a href="/rc/<%= user._id %>"><button>Rate me</button></a>
-            <% } %> 
-
-           
+            </p> 
         </div>
+    
         <div class="sp2-1" id="comment-section">
             <h2>Comments</h2>
-
             <div class="comment">
                 <div class="comment-header">
-                    <img src="/images/image 2.png" alt="">
-                    <div><h1>Bulath malli</h1> 
-                      <h2>Rating | 2 Weeks ago</h2>  
-
+                    <div> 
+                        <% if (flag === "sp") { %>
+                            <table>
+                                <% comments.forEach(comment => { %>
+                                    <% if (comment.s_id != "") { %>  
+                                        <tr>
+                                            <td><img src="/images/image 2.png" alt=""></td>
+                                            <td><%= comment.c_id %> </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="text-align: center;"><%= comment.content %> </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="width: 100%;"><hr></td>
+                                        </tr>
+                                    <% } %>
+                                <% }) %>
+                            </table> 
+                        <% } else { %>
+                            <table>
+                                <% comments.forEach(comment => { %>
+                                    <% if (comment.s_id != "") { %>  
+                                        <tr>
+                                            <td><img src="/images/image 2.png" alt=""></td>
+                                            <td><%= comment.c_id %> </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="text-align: center;"><%= comment.content %> </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="width: 100%;"><hr></td>
+                                        </tr>
+                                    <% } %>
+                                <% }) %>
+                            </table> 
+                        <% } %>
                     </div>
                 </div>
-                <div class="comment-content">excelent service and i would come again</div> <br>
-               
-
-
+                 <div class="comment-content"></div> <br>
             </div>
-
-            <div class="comment">
-                <div class="comment-header">
-                    <img src="/images/image 2.png" alt="">
-                    <div><h1>Bulath malli</h1> 
-                      <h2>Rating | 2 Weeks ago</h2>  
-
-                    </div>
-                </div>
-                <div class="comment-content">excelent service and i would come again</div> <br>
-               
-
-
-            </div>
-
-            <div class="comment">
-                <div class="comment-header">
-                    <img src="/images/image 2.png" alt="">
-                    <div><h1>Bulath malli</h1> 
-                      <h2>Rating | 2 Weeks ago</h2>  
-
-                    </div>
-                </div>
-                <div class="comment-content">excelent service and i would come again</div> <br>
-               
-
-
-            </div>
-
-            <div class="comment">
-                <div class="comment-header">
-                    <img src="/images/image 2.png" alt="">
-                    <div><h1>Bulath malli</h1> 
-                      <h2>Rating | 2 Weeks ago</h2>  
-
-                    </div>
-                </div>
-                <div class="comment-content">excelent service and i would come again</div> <br>
-               
-
-
-            </div>
-
         </div>
+        
         <% if (flag === "cu") { %>
 
             <div class="sp2-11">
-                <a href="/booking/<%= user._id %> "><button><h2>Book an Appoinment</h2></button></a>
+                <a href="/booking/<%= user._id %>"><button><h2>Book an Appoinment</h2></button></a>
             </div>
         <% } %> 
    </div>
-</body>
+   
+</body> 
 
 <footer>
     <%- include('partials/footer'); %>
@@ -143,7 +122,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
 <script>
-    
+
     let description = document.getElementById("description")
     let about = document.getElementById("about")
     let edit = document.getElementById("edit")
@@ -171,6 +150,8 @@
             const data = await axios.patch(`/api/v1/service-provider/updateProviderDetails`,{aboutData,descriptionData})
         }
     })   
+
+    customerComments(acc)
     document.getElementById("schedule").addEventListener("click", async() =>{
         location.assign(`/service_provider_schedule`)
     })
