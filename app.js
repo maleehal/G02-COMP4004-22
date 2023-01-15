@@ -40,13 +40,16 @@ const port = 3000
 setInterval(defaultRejectAppoinment = async () => {
   const date = await 
 
-  for (let i = 0; i < date.length; i++) {
+  const pendingDates = await Booking.find({status:"Pending"}).select("date")
+  data = [...pendingDates]
+
+  for (let i = 0; i < data.length; i++) {
     const todayDate = new Date();
-    const appoinmentDate = date[i].date
+    const appoinmentDate = data[i].date
     appoinmentDate.setDate(appoinmentDate.getDate() + 1)
 
     if (appoinmentDate < todayDate){
-      var dataID = date[i]._id
+      var dataID = data[i]._id
       var changed = "Rejected";
       const defaultRejectAppoinment = await Booking.findByIdAndUpdate(dataID,{status:changed},{runValidators:true})
     }
