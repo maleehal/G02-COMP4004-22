@@ -4,6 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
     <title>Service Provider</title>
 </head>
@@ -58,48 +59,61 @@
                 <div class="pic"><img src="/images/event6.jpg" alt=""></div>
             </div>
         </div>
+
+        
         <div class="sp2-1">
             <h2>Ratings</h2>
+            <p id="avg">
+                <%= totalRating %> Reviews
+
+                <span id="oneS" class="fas fa-star"></span>
+                <span id="twoS" class="fas fa-star"></span>
+                <span id="threeS" class="fas fa-star"></span>
+                <span id="fourS" class="fas fa-star"></span>
+                <span id="fiveS" class="fas fa-star"></span>
+
+                <%= dpAvg %> 
+            </p>
             <div class="progressBar">
                 <p>5 Stars</p>
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:30%">
+                    <div id="five" class="progress-bar " role="progressbar" data-width="<%= fivestarPr %>" aria-valuemin="0" aria-valuemax="100">
                       <span class="sr-only"></span>
                     </div>
                 </div>
-                <p>()</p>
+                <p>(<%= fiveStar %>)</p>
 
                 <p>4 Stars</p>
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                    <div id="four" class="progress-bar" role="progressbar" data-width="<%= fourstarPr %>" aria-valuemin="0" aria-valuemax="100">
                       <span class="sr-only"></span>
                     </div>
                 </div>
-                <p>()</p>
+                <p>(<%= fourStar %>)</p>
 
                 <p>3 Stars</p>
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                    <div id="three" class="progress-bar" role="progressbar" data-width="<%= threestarPr %>" aria-valuemin="0" aria-valuemax="100">
                       <span class="sr-only"></span>
                     </div>
                 </div>
-                <p>()</p>
+                <p>(<%= threeStar %>)</p>
 
                 <p>2 Stars</p>
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:60%">
+                    <div id="two" class="progress-bar" role="progressbar" data-width="<%= twostarPr %>" aria-valuemin="0" aria-valuemax="100">
                       <span class="sr-only"></span>
                     </div>
                 </div>
-                <p>()</p>
+                <p>(<%= twoStar %>)</p>
 
                 <p>1 Stars</p>
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                      <span class="sr-only">70% Complete</span>
+                    <div id="one" class="progress-bar" role="progressbar" data-width="<%= onestarPr %> aria-valuemin="0" aria-valuemax="100">
+                      <span class="sr-only"></span>
                     </div>
                 </div>
-                <p>()</p>
+                <p>(<%= oneStar %>)</p>
             </div>
             <% if (flag === "cu") { %>
                 <a href="/rc/<%= user._id %>"><button id="rate">Rate me</button></a>
@@ -112,43 +126,33 @@
                 <div class="comment-header">
                     <div> 
                         <% if (flag === "sp") { %>
-                            <table>
-                                <% comments.forEach(comment => { %>
-                                    <% if (comment.s_id != "") { %>  
-                                        <tr>
-                                            <td><img src="/images/image 2.png" alt=""></td>
-                                            <td><%= comment.c_id %> </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" style="text-align: center;"><%= comment.content %> </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" style="width: 100%;"><hr></td>
-                                        </tr>
-                                    <% } %>
-                                <% }) %>
-                            </table> 
+                            <% comments.forEach(comment => { %>
+                                <div class="comment">
+                                    <div class="comment-header">
+                                        <img src="/images/image 2.png" alt="">
+                                        <div><h2><%= comment.c_id.username %> </h2> 
+                                          <h2><%= comment.rating %> </h2>  
+                                        </div>
+                                    </div>
+                                    <div class="comment-content"><%= comment.content %> </div> <br>
+                                </div>
+                            <% }) %>
                         <% } else { %>
-                            <table>
                                 <% comments.forEach(comment => { %>
-                                    <% if (comment.s_id != "") { %>  
-                                        <tr>
-                                            <td><img src="/images/image 2.png" alt=""></td>
-                                            <td><%= comment.c_id %> </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" style="text-align: center;"><%= comment.content %> </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" style="width: 100%;"><hr></td>
-                                        </tr>
-                                    <% } %>
+                                    <div class="comment">
+                                        <div class="comment-header">
+                                            <img src="/images/image 2.png" alt="">
+                                            <div><h2><%= comment.c_id.username %> </h2> 
+                                              <h2><%= comment.rating %> </h2>  
+                                            </div>
+                                        </div>
+                                        <div class="comment-content"><%= comment.content %> </div> <br>
+                                        <hr>
+                                    </div>
                                 <% }) %>
-                            </table> 
                         <% } %>
                     </div>
                 </div>
-                <div class="comment-content"></div> <br>
             </div>
         </div>
         
@@ -174,6 +178,9 @@
     let about = document.getElementById("about")
     let edit = document.getElementById("edit")
     let schedule = document.getElementById("schedule")
+
+    setWidth()
+    overallRating()
 
     document.getElementById("edit").addEventListener("click", async() =>{
         if (description.style.display != "none" ){
@@ -207,7 +214,67 @@
     customerComments(acc)
     document.getElementById("schedule").addEventListener("click", async() =>{
         location.assign(`/service_provider_schedule`)
-    })
+    });
+
+    function setWidth () {
+        const five = document.getElementById("five")
+        const four = document.getElementById("four")
+        const three = document.getElementById("three")
+        const two = document.getElementById("two")
+        const one = document.getElementById("one")
+
+        five.style.width = five.dataset.width + "%";
+        four.style.width = four.dataset.width + "%";
+        three.style.width = three.dataset.width + "%";
+        two.style.width = two.dataset.width + "%";
+        one.style.width = one.dataset.width + "%";
+
+
+    }
+
+    function overallRating () {
+        const avg = "<%- dpAvg %>"
+
+
+        const oneStar = document.getElementById("oneS");
+        const twoStar = document.getElementById("twoS");
+        const threeStar = document.getElementById("threeS");
+        const fourStar = document.getElementById("fourS");
+        const fiveStar = document.getElementById("fiveS");
+
+
+        if (avg < 1){
+            oneStar.style.color = "FFF";
+            twoStar.style.color = "FFF";
+            threeStar.style.color = "FFF";
+            fourStar.style.color = "FFF";
+            fiveStar.style.color = "FFF";
+        }else if (avg >= 1 & avg < 2) {
+            oneStar.style.color = "FFE234";
+        }else if (avg >= 2 & avg < 3){
+            oneStar.style.color = "FFE234";
+            twoStar.style.color = "FFE234";
+
+        }else if (avg >=3 & avg < 4){
+            oneStar.style.color = "FFE234";
+            twoStar.style.color = "FFE234";
+            threeStar.style.color = "FFE234";
+
+        }else if (avg >= 4 & avg < 5){
+            oneStar.style.color = "FFE234";
+            twoStar.style.color = "FFE234";
+            threeStar.style.color = "FFE234";
+            fourStar.style.color = "FFE234";
+
+        }else{
+            oneStar.style.color = "FFE234";
+            twoStar.style.color = "FFE234";
+            threeStar.style.color = "FFE234";
+            fourStar.style.color = "FFE234";
+            fiveStar.style.color = "FFE234";
+
+        }
+    }
 
 </script>
 </html>

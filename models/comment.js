@@ -4,12 +4,12 @@ const commentSchema =new mongoose.Schema({
     
     s_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "service-provider"
+        ref: "Service-provider"
     },
 
     c_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "customer"
+        ref: "Customer"
     },
     
     content: {
@@ -26,4 +26,4 @@ const commentSchema =new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model("comment", commentSchema)
+module.exports = mongoose.model("Comment", commentSchema)

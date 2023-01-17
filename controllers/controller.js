@@ -155,8 +155,7 @@ const createComment = async (req,res) =>{
 
 
 
-
-module.exports = {customerSignIn , customerLogIn , customerLogOut ,displayLogInPage ,displaySignUpPage, createBooking,createComment}
+module.exports = {customerSignIn , customerLogIn , customerLogOut ,displayLogInPage ,displaySignUpPage, createBooking, createComment}
 
 
 

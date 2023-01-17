@@ -5,11 +5,11 @@ const {isEmail} = require("validator")
 const bookingSchema = new mongoose.Schema({
     s_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "service-provider"
+        ref: "Service-provider"
     },
     c_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "customer"
+        ref: "Customer"
     },
     status: {
         type: String,
