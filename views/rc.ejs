@@ -31,8 +31,9 @@
                 <div class="textarea">
                     <textarea name="" id="comment" cols="30" rows="0" placeholder="Describe your experience ..."></textarea>
                 </div>
+
                 <div class="btn">
-                    <button type="button">Next</button>
+                    </a><button type="button">Next</button>
                 </div>
             </form>
         </div>
@@ -47,12 +48,6 @@
         const widget = document.querySelector(".star-widget");
         // const comments = document.querySelector(".post");
         const comment = document.getElementById("comment")
-
-        btn.addEventListener("click", ()=> {
-            widget.style.display = "none";
-            // comments.style.display = "block";
-            return false;
-        });
 
         btn.addEventListener("click", async () => {
             const content  = comment.value
