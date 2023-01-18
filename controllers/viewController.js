@@ -127,9 +127,9 @@ const displaypageToCustomer = async (req,res) =>{
     const comments = await Comment.find({s_id:id}).populate("c_id")
     const [onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg] = await ratingStats(id)
 
-    const flag = "cu"
+    // const flag = "cu"
     res.render("service_provider",{
-        user:serviceProvider, flag,
+        user:serviceProvider,
         comments:comments, onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg
     }) 
 }

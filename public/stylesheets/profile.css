@@ -1,18 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&display=swap');
 
 :root{
-<<<<<<< HEAD
     --tcolor: #9702B0;
-=======
-    --tcolor: #7D3C98;
     --bshadow: 10px;
     --rating-color: #FFE234;
->>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
 }
 
 *{
     font-family: "Raleway";
     font-weight: bolder;
+    color: #000;
 }
 
 body{
@@ -51,12 +48,14 @@ border-radius: 10px;
     padding: 10%;
     text-align: center;
     align-items: center;
-    background-color: var(--tcolor);
+
+    background-color: #fff;
     margin-top: 5%;
     margin-bottom: 5%;
-    height: 55%;
-    width: 60%;
-    border-radius: 10%;
+
+    height: 24rem;
+    width: 30rem;
+    border-radius: 24px;
     color: antiquewhite; 
 }
 
@@ -142,6 +141,11 @@ border-radius: 10px;
 .pic img:hover{
     transform: scale(2,2);
     transition: all 2s;
+}
+
+.rateBar {
+    display: flex;
+    justify-content: space-between;
 }
 
 /* service provider schedule */
@@ -279,7 +283,6 @@ border-radius: 10px;
     width: 500px;
     margin-left: 170px;
 }
-<<<<<<< HEAD
 
 #makeAppoinment{
     background-color: var(--tcolor);
@@ -297,7 +300,7 @@ border-radius: 10px;
     border: none;
     border-radius: 20px; 
 }
-=======
+
 #comment-section{
     background-color: white;
     color: black;
@@ -305,9 +308,6 @@ border-radius: 10px;
     overflow-y: scroll; 
 }
 
-/* .comment{
-    border-bottom: 2px solid black;
-} */
 .comment img{
     width: 20%;
 }
@@ -339,23 +339,27 @@ border-radius: 10px;
 .progressBar {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
-    /* font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; */
     font-size: 14px;
     line-height: 1.42857143;
     color: #000;
     box-sizing: border-box;
 }
 
+.progressBar table td {
+    text-align: center;
+    align-items: center;
+    padding: 0.5rem;
+}
+
 .progressBar .progress {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
-    /* font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; */
     font-size: 14px;
     line-height: 1.42857143;
     color: #000;
     box-sizing: border-box;
     height: 16px;
-    margin-bottom: 20px;
+    width: 25rem;
     overflow: hidden;
     background-color: #000;
     border-radius: 4px;
@@ -365,7 +369,6 @@ border-radius: 10px;
 .progressBar .progress .progress-bar {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
-    /* font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; */
     box-sizing: border-box;
     float: left;
     height: 100%;
@@ -379,24 +382,7 @@ border-radius: 10px;
 }
 
 .progressBar .progress .progress-bar .sr-only {
-    /* -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 12px;
-    line-height: 20px;
-    color: #fff;
-    text-align: center;
-    box-sizing: border-box;
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    border: 0; */
     display: none;
 }
 
 
->>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
