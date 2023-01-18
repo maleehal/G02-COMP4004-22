@@ -9,9 +9,22 @@
 
 <header>
     <%- include('partials/header'); %>
+    <%- include('partials/functions'); %>
 </header>
 
 <body>
+    <div class="sp3">
+        <div class="sp3-1"><button class="item"><img class="search1" src="/images/image 2.png" alt="profile"></button></div>
+        <div class="sp3-1">
+            <%=user.name%>
+            <%=user.email%>
+            <%= user.telephone %> 
+        </div>
+        <div class="sp3-1"></div>
+        <div class="sp3-1"></div>
+        <div class="sp3-1"></div>
+   </div>
+   
    <div class="spb1">
         <button class="spb1i" onclick="openBooking(event, 'Ongoing')">Ongoing</button>
         <button class="spb1i" onclick="openBooking(event, 'Completed')">Completed</button>
@@ -22,41 +35,78 @@
         <table border="1">
             <tr>
                 <th>ID</th>
-                <th>Event</th>
                 <th>Service Provider</th>
+                <th>Event</th>
                 <th>Date</th>
                 <th>Time</th>
             </tr>
+            <% bookings.forEach(booking => { %>
+                <% if (booking.status =="Ongoing") { %>
+                    <tr>
+                        <td> <%= booking._id %>  </td>
+                        <td><%= booking.s_id.username %></td>
+                        <td><%= booking.event %></td>
+                        <td><%= booking.date.toLocaleDateString(); %></td> 
+                        <td><%= booking.date.toLocaleTimeString(); %></td> 
+                    </tr>  
+                <% } %>
+            <% }) %> 
         </table>
    </div>
     <div id="Completed" class="spb2">
         <table border="1">
             <tr>
                 <th>ID</th>
-                <th>Event</th>
                 <th>Service Provider</th>
+                <th>Event</th>
                 <th>Date</th>
                 <th>Time</th>
+                <th>Rate</th>
             </tr>
+            <% bookings.forEach(booking => { %>
+                <% if (booking.status =="Completed") { %>
+                    <tr>
+                        <td><%= booking._id %></td>
+                        <td><%= booking.s_id.username %></td>
+                        <td><%= booking.event %></td>
+                        <td><%= booking.date.toLocaleDateString(); %></td> 
+                        <td><%= booking.date.toLocaleTimeString(); %></td> 
+                        <td><button id="rating"><a href="/rc/<%= booking.s_id._id %>">Rate</a></button></td>
+                    </tr>  
+                <% } %>
+            <% }) %> 
         </table>
     </div>
     <div id="Rejected" class="spb2">
         <table border="1">
             <tr>
                 <th>ID</th>
-                <th>Event</th>
                 <th>Service Provider</th>
-                <th>Reason</th>
+                <th>Event</th>
+                <th>Date</th>
+                <th>Time</th>
             </tr>
+            <% bookings.forEach(booking => { %>
+                <% if (booking.status =="Rejected") { %>
+                    <tr>
+                        <td><%= booking._id %></td>
+                        <td><%= booking.s_id.username %></td>
+                        <td><%= booking.event %></td>
+                        <td><%= booking.date.toLocaleDateString(); %></td> 
+                        <td><%= booking.date.toLocaleTimeString(); %></td> 
+                    </tr>  
+                <% } %>
+            <% }) %> 
         </table>
     </div>
 </body>
 
 <footer>
-    <%- include('partials/footer'); %>
+    <%- include('partials/footer') %>
 </footer>
 
 <script>
+
     spb2 = document.getElementsByClassName("spb2");
     for(i = 0; i < spb2.length; i++){
         spb2[i].style.display = "none";

@@ -2,30 +2,8 @@ const jwt = require("jsonwebtoken")
 const Customer = require("../models/customer");
 const ServiceProvider = require("../models/service-provider");
 
-// const requireAuth = (req,res,next) =>{
-//     const token = req.cookies.jwt;
-//     if (token){
-//         jwt.verify(token,"gaymomma",(err,decodeedToken)=>{
-//             if(err){
-//                 console.log(err.message)
-//                 res.redirect("/login")
-
-//             }
-//             else{
-//                 console.log(decodeedToken)
-//                 next()
-//             }
-//         })
-
-//     }
-//     else{
-//         res.redirect("/login")
-//     }
-
-// }
 
 const customerAuth = (req,res,next) =>{
-    console.log("ran customer auth")
     const token = req.cookies.jwt;
     if (token){
         jwt.verify(token,"Customer",(err,decodeedToken)=>{
@@ -33,16 +11,13 @@ const customerAuth = (req,res,next) =>{
                 res.redirect("/startup")
             }
             else{
-                //console.log("went inside")
                 next()
             }
         })
-
     }
     else{
         res.redirect("/startup")
     }
-
 }
 
 const serviceProviderAuth = (req,res,next) =>{
@@ -56,17 +31,14 @@ const serviceProviderAuth = (req,res,next) =>{
                 next()
             }
         })
-
     }
     else{
         res.redirect("/startup")
     }
-
 }
 
 
 const checkUser =  (req,res,next) =>{
-    //console.log("chckl user")
     const token = req.cookies.jwt;
     let user
     
@@ -82,14 +54,13 @@ const checkUser =  (req,res,next) =>{
                         next()
                     }
                     else{
-                        const flag = "sp"
                         let user = await ServiceProvider.findById(decodeedToken.id)
+                        const flag ="sp"
                         res.locals.user= user;
                         res.locals.flag = flag;
                         next()
                     }
-                }
-                )  
+                })  
             }
             else{
                 let user = await Customer.findById(decodeedToken.id)
@@ -98,22 +69,13 @@ const checkUser =  (req,res,next) =>{
                 res.locals.user = user;
                 next()
             }
-        }
-        )
-        
-        
-
+        })
     }
     else{
         res.locals.user = null;
         next()
-
-    }
-   
+    } 
 }
-
-
-
 
 
 module.exports = {serviceProviderAuth,customerAuth,checkUser}

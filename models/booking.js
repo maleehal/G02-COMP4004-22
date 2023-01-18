@@ -10,6 +10,12 @@ const bookingSchema = new mongoose.Schema({
     c_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Customer"
+<<<<<<< HEAD
+    },
+    event: {
+        type: String
+=======
+>>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
     },
     status: {
         type: String,
@@ -21,11 +27,7 @@ const bookingSchema = new mongoose.Schema({
         default:Date.now,
         // required:[true,"this field is required"]
         
-    },
-    // Time: {
-    //     type: Date,
-    //     required:[true,"this field is required"]
-    // }
+    }
 })
 
 const Booking = mongoose.model("booking",bookingSchema)

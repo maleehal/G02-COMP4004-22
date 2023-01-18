@@ -11,6 +11,7 @@
 
 <header>
     <%- include('partials/header'); %>
+    <%- include('partials/functions'); %>
 </header>
 
 <body>
@@ -35,10 +36,6 @@
     </select>
 
     <div class="customer-list" id="customer-list">
-        
-
-           
-     
         
         
     </div>
@@ -84,13 +81,17 @@
         let Content = filteredProviders.map((provider) =>{
             return content = `
                           <div class="customer-cards">
+                           
                             <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
                             <div class="provider-info">
-                                <div class="provider-name">${provider.name}</div>
+                                <div class="provider-name">${provider.name}</div> 
                                 <div class="provider-email">${provider.email}</div>
+
                                 <button> <a href="/service_provider/${provider._id}">View provider</a></button>
+
                             </div>
-                            <div class="rating"><span class="fa fa-star"></span>5 stars</div>
+                           
+                            <div class="rating"><span class="fa fa-star"></span>${provider.rating}</div> 
 
                         </div>`
 
@@ -112,18 +113,19 @@
     getAllCustomers()
 
     searchBtn.addEventListener("click", async () =>{
-        // let searchResults = [];
+        let searchResults = [];
         let searchKey = searchBar.value.toLowerCase()
         searchResults = serviceProviders.filter( provider =>{
             if(provider.name.toLowerCase().startsWith(searchKey)){
                 return provider
             }
+
         })
        
         displayContent(searchResults)
-        // location.assign(`/search?searchkey=${searchKey}`)
-        // const response = await axios.get(`/search?searchkey=${searchKey}`)
-        })
+        }
+        // const response = await axios.get(`/api/v1/customer/search?searchkey=${searchKey}`)
+        )
     
 
 

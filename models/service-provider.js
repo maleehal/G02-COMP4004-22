@@ -46,8 +46,27 @@ const service_providerSchema = new mongoose.Schema({
         required:[true,"This field is required"]
     },
     rating:{
-        type:Number,
-        default:0,
+       totalrating:{
+        type:Number
+
+       },
+       onestarrating:{
+        type:Number
+       },
+       twostarrating:{
+        type:Number
+       },
+       threestarrating:{
+        type:Number
+       },
+       fourstarrating:{
+        type:Number
+       },
+       fivestarrating:{
+        type:Number
+       }
+       
+
     },
 
     description: {

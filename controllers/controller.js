@@ -1,13 +1,11 @@
-
 const jwt = require("jsonwebtoken")
 const cookieParser = require("cookie-parser")
-// const ServiceProvider = require("../models/service-provider")
+
 const Customer = require("../models/customer")
 const Booking = require("../models/booking")
 const Comment = require("../models/comment")
 
 const maxAge = 3 * 24  * 60 * 60
-
 
 
 const createToken = (id) => {
@@ -16,34 +14,31 @@ const createToken = (id) => {
     })
 }
 
-
-
 const customerSignIn = async (req,res) =>{
     const {name,email,telephone,username,password,expertise,flag} = req.body
     console.log(flag)
-    // if (flag === 'CUSTOMER'){
-            try {
-                console.log("came")
-                const customer = await Customer.create({name,email,telephone,username,password})
-                res.status(201).send({task:"succesful",user:customer})
-            } catch (error) {
-                const errors = handleErrors(error);
-                res.status(400).send({errors}) 
-            }
-    // }
-    // else{
-    //     try{
-    //         const provider = await ServiceProvider.create({name,email,telephone,username,password,expertise})
-    //         res.status(200).send({provider}) 
-    //     }
-    //     catch(errors){
-    //         console.log(errors)
-    //         res.status(400).send({msg:"errors"}) 
-    
-    //     }
+    try {
+        const customer = await Customer.create({name,email,telephone,username,password})
+        res.status(201).send({task:"succesful",user:customer})
+    } catch (error) {
+        const errors = handleErrors(error);
+        res.status(400).send({errors}) 
+    }
+}
 
-    // }
-   
+const LogoutUser = async (req,res)=>{
+    const token = req.cookies.jwt
+    jwt.verify(token,"Customer", (err,decodeedToken)=>{
+        if(err){
+            res.cookie("jwt","",{maxAge:1})
+            res.redirect("/login-service")
+        }
+        else{
+            res.cookie("jwt","",{maxAge:1})
+            res.redirect("/login-customer")
+        }
+    })
+    
 }
 
 const customerLogIn = async (req,res) =>{
@@ -58,27 +53,6 @@ const customerLogIn = async (req,res) =>{
         res.status(400).send({errors}) 
     }   
 }
-
-
-
-
-
-
-const customerLogOut = async (req,res) =>{
-    res.status(200).send({success:true,msg:"customer has logged-out"})
-}
-
-const displaySignUpPage = (req,res) =>{
-    res.render("signup-customer")
-}
-
-const displayLogInPage = (req,res) =>{
-    res.render("login-customer")
-}
-
-
-
-
 
 const handleErrors = (error) =>{
     let errors = { username : "",password : "" }
@@ -101,8 +75,7 @@ const handleErrors = (error) =>{
 }
 
 const createBooking = async (req, res) => {
-    const {firstname, event, date,s_id} = req.body
-    console.log(s_id)
+    const {event, date, s_id} = req.body
     token = req.cookies.jwt
     
     try {
@@ -111,43 +84,37 @@ const createBooking = async (req, res) => {
               console.log(ërror)
             }
             else{
-                //console.log("went inside")
                 const c_id = decodeedToken.id
-                await Booking.create({c_id,s_id,firstname,event,date})
+                await Booking.create({c_id,s_id,event,date})
             }
-        })
-        // const newBooking = await Booking.create({firstname,event,date})
-        
+        })    
     } catch (error) {
-        console.log(error)
-        
+        console.log(error)  
     }
 }
 
 const createComment = async (req,res) =>{
-    console.log("hi")
     const {rating,content,s_id} = req.body
     token = req.cookies.jwt
-    console.log(rating,content,s_id)
     try {
         jwt.verify(token,"Customer",async (err,decodeedToken)=>{
             if(err){
               console.log(error)
             }
             else{ 
-                //console.log("went inside")
                 const c_id = decodeedToken.id
                 await Comment.create({s_id,c_id,rating,content})
             }
         })
-        // const newBooking = await Booking.create({firstname,event,date})
-        
     } catch (error) {
         console.log(error)
     }
 }
 
 
+<<<<<<< HEAD
+module.exports = {customerSignIn , customerLogIn , LogoutUser, createBooking, createComment}
+=======
 
 
 
@@ -159,3 +126,4 @@ module.exports = {customerSignIn , customerLogIn , customerLogOut ,displayLogInP
 
 
 
+>>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12

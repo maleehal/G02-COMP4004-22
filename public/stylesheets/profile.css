@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&display=swap');
 
 :root{
-    --tcolor: #7D3C98;
+    --tcolor: #9702B0;
     --bshadow: 10px;
     --rating-color: #FFE234;
 }
@@ -19,8 +19,25 @@ body{
     padding: 2% black;
 }
 
-/* service provider */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+box-shadow: inset 0 0 5px grey; 
+border-radius: 10px;
+}
 
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: var(--tcolor); 
+height: 20px;
+border-radius: 10px;
+}
+
+/* service provider */
 .sp2{
     display: grid;
     grid-template-columns: 50% 50%;
@@ -31,6 +48,7 @@ body{
     padding: 10%;
     text-align: center;
     align-items: center;
+
     background-color: #fff;
     margin-top: 5%;
     margin-bottom: 5%;
@@ -78,6 +96,51 @@ body{
 
 .bt{
     text-align: center;
+}
+.sp2-11{ 
+    margin-left: 190px;
+}
+.sp2-11 button{
+    border-radius: 10%;
+    border: none;
+    background-color: var(--tcolor);
+    color: white;
+}
+#rate{
+    background-color: white;
+    border: none;
+    color: var(--tcolor);
+    padding: 2%;
+    border-radius: 24px;
+    margin: auto;
+}
+.pictures{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+}
+.pic{
+    margin: 5%;
+
+}
+.pic img{
+    width: 130px;
+    
+}
+#comment-section{
+    background-color: white;
+    color: black;
+    border-radius: none;
+    overflow-y: scroll; 
+}
+
+.comment img{
+    width: 20%;
+}
+
+.pic img:hover{
+    transform: scale(2,2);
+    transition: all 2s;
 }
 
 .rateBar {
@@ -191,7 +254,6 @@ body{
     margin-right: 10%;
     padding: 10px;
     font-size: 20px;
-    border-style: dashed;
 }
 #don input[type=text], #don input[type=number], #don input[type=datetime-local]{
     width: 100%;
@@ -200,9 +262,8 @@ body{
     border-radius: 10px;
     box-sizing: border-box;
     margin-top: 5px;
-    margin-bottom: 15px;
-    
-}
+    margin-bottom: 15px;    
+} comment
 
 #don #conf, #don #back{
     padding: 12px;
@@ -222,6 +283,24 @@ body{
     width: 500px;
     margin-left: 170px;
 }
+
+#makeAppoinment{
+    background-color: var(--tcolor);
+    border: none;
+    color: white;
+    padding: 2%;
+    border-radius: 24px;
+    margin-top: 5px;
+    margin-left: 40%; 
+}
+#rating{
+    background-color: yellow;
+    font-size: 15px;
+    padding: 8px;
+    border: none;
+    border-radius: 20px; 
+}
+
 #comment-section{
     background-color: white;
     color: black;

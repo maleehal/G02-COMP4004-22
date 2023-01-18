@@ -9,17 +9,13 @@
 
 <header>
     <%- include('partials/header'); %>
+    <%- include('partials/functions'); %>
 </header> 
 
 <body>
 
     <form id="don" action="get">
         <h2>Appoinment</h2>
-
-        <label for="fname">Full Name</label>
-        <input type="text" id="fname" required name="fname" size="50" maxlength="75">
-
-        <br>
 
         <label for="f_event">Event</label>
         <input type="text" id="f_event" required name="f_event" size="50" maxlength="75">
@@ -31,64 +27,49 @@
 
         <br>
 
-        <label for="amount">2000 LKR will be charged for the appoinment</label>
+        <label for="amount" style="color: red;">* 2000 LKR will be charged for the appoinment</label>
 
         <br>
 
-        <button type="submit">Make Appoinment</button>
-      
+        <button id="makeAppoinment" type="submit">Make Appoinment</button>
         
     </form>
-    <button id="back">Back</button>
-
 </body>
 
 <footer>
     <%- include('partials/footer'); %>
 </footer>
-  
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
 <script>
     const param = window.location.href
     const require = param.split("/")
-    console.log(require)
-
 
     const fname = document.getElementById("fname");
     const f_event = document.getElementById("f_event");
     const a_date = document.getElementById("a_date");
     const form = document.getElementById("don")
 
-
+    var today = new Date().toISOString().slice(0, 16);
+    document.getElementsByName('a_date')[0].setAttribute('min', today);
 
     form.addEventListener("submit", async function(e){
         const s_id = require[4]
-        console.log(s_id)
-        console.log("came")
         e.preventDefault()
-        const firstname = fname.value
         const event = f_event.value
         const date = a_date.value
-        console.log(firstname,event,date)
-        if(firstname == "" || event == "" || date== ""){
+        if(event == "" || date== ""){
             alert("Please fill out the required fields");
         }else{
-            alert("Your appoinment is placed. \n Will be notified after service provider's exceptance") 
-            const newBooking = await axios.post("/api/v1/customer/booking",{firstname, event, date,s_id })
-            // window.location.href = "/service_provider";
+            console.log("came here")
+          location.assign(`/service_provider/${require[require.length-1]}`)
+            
+            
+            
+            
         }
-  
     });
-
-    
-    document.getElementById("back").addEventListener("click", function(){
-        window.location.href = "/service_provider";
-        event.preventDefault()
-    });
-
-
 
 </script>
 </html>

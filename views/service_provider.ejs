@@ -11,6 +11,7 @@
 
 <header>
     <%- include('partials/header'); %>
+    <%- include('partials/functions'); %>
 </header>
 
 <body>
@@ -24,6 +25,9 @@
         </div>
         <div class="sp3-1"></div>
         <div class="sp3-1"></div>
+<<<<<<< HEAD
+        <div class="sp3-1"></div>
+=======
         <div class="sp3-1">
             <div class="bt">
                 <% if (flag === "sp") { %>
@@ -33,6 +37,7 @@
                 <% } %>    
             </div>
         </div>
+>>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
    </div>
 
    <div class="sp2">
@@ -188,6 +193,7 @@
                 </div>
             </div>
         </div>
+>>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
         
         <% if (flag === "cu") { %>
 
@@ -215,6 +221,7 @@
     setWidth()
     overallRating()
 
+
     document.getElementById("edit").addEventListener("click", async() =>{
         if (description.style.display != "none" ){
             description.parentElement.appendChild(document.createElement("input")).setAttribute("id","description-input")
@@ -238,12 +245,6 @@
         }
     })   
 
-    // async function customerComments(acc){
-    //     var dataID = acc.getAttribute("data-id");
-    //     console.log(dataID);
-    //     // var changed = "Completed";
-    //     // const data = await axios.patch(`/api/v1/service-provider/rejectAppoinments`,{dataID, changed})
-    // }
     customerComments(acc)
     document.getElementById("schedule").addEventListener("click", async() =>{
         location.assign(`/service_provider_schedule`)

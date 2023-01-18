@@ -1,36 +1,50 @@
 const ServiceProvider = require("../models/service-provider")
 const Customers = require("../models/customer")
 const Booking = require("../models/booking")
+const Comment =require("../models/comment")
 const jwt = require("jsonwebtoken")
 const cookieParser = require("cookie-parser")
 const Comment = require("../models/comment")
 const { argv } = require("process")
 
-const displayStartup = async (req,res)=>{
+
+const displayStartup = (req,res)=>{
     res.render("startup")
 }
 
-const displaySignupService = async (req,res)=>{
+const displaySignupService  = (req,res)=>{
     res.render("signup-service")
 }
 
-const displayPending = async (req,res) =>{
+const displayLoginService = (req,res)=>{
+    res.render("login-service")
+}
+const displayPending = (req,res) =>{
     res.render("pending")
 }
-
-const displaySignupCustomer = async (req,res)=>{
+const displaySignupCustomer = (req,res) =>{
     res.render("signup-customer")
 }
-
-const displayLoginCustomer = async (req,res)=>{ 
+const displayLoginCustomer = (req,res) =>{
     res.render("login-customer")
 }
-const displayLoginService = async (req,res)=>{
-    res.render("login-service")
+const viewRc = (req,res) =>{ 
+    res.render("rc");  
+}
+const booking = (req,res) =>{
+    res.render("booking")
+}
+const displayAdmin = (req,res)=>{
+    res.render("admin")
 }
 
 const displayHome = async (req,res)=>{
-    res.render('home')
+    try{
+        const topThreeProviders = await ServiceProvider.find({}).sort({rating:-1}).limit(3)
+    res.render('home',{topThreeProviders})
+    } catch (error) {
+        console.log("error")
+    }
 }
 
 const search = async (req,res)=>{
@@ -50,24 +64,50 @@ const search = async (req,res)=>{
     res.render("search",{providers})
 }
 
-const displayProviderProfile = async (req,res) =>{ 
-    res.render("service_provider");  
+
+
+
+const renderProfile = async (req,res) =>{
+    const {id} = req.params
+    const token = req.cookies.jwt;
+    jwt.verify(token,"ServiceProvider",async (error,decodedtoken)=>{
+        if (error){
+            const serviceProvider = await ServiceProvider.findById(id)
+            const comments = await Comment.find({s_id:id})
+            const flag = "cu"
+            res.render("service_provider",{
+                user:serviceProvider, flag,
+                comments:comments
+            }) 
+            
+        }
+        else{
+            
+            if(typeof id == undefined){
+                const serviceProvider = await ServiceProvider.findById(decodedtoken.id)
+                const comments = await Comment.find({s_id:decodedtoken.id})
+                const flag = "sp"
+                res.render("service_provider",{user:serviceProvider, flag,comments})
+
+            }
+
+            else if(decodedtoken.id === id){
+                const serviceProvider = await ServiceProvider.findById(id)
+                const comments = await Comment.find({s_id:id})
+                const flag = "sp"
+                res.render("service_provider",{user:serviceProvider, flag,comments})
+            }
+            else{
+                const serviceProvider = await ServiceProvider.findById(id)
+                const comments = await Comment.find({s_id:id})
+                const flag = "cu"
+                res.render("service_provider",{user:serviceProvider, flag,comments})
+            }
+        }
+    })
+  
 }
 
-const displayProviderSchedule = async (req,res)=>{
-    const token = req.cookies.jwt
-    jwt.verify(token, "ServiceProvider", async (error, decodedtoken)=>{
-        if(error){
-            console.log(error)
-        }else{
-            const id = decodedtoken.id
-            const bookings = await Booking.find({s_id:id})
-            res.render("service_provider_schedule", {
-                bookings:bookings
-            })
-        }
-    })    
-};
 
 const viewRc = async (req,res) =>{ 
     res.render("rc");  
@@ -77,6 +117,13 @@ const displaypageToCustomer = async (req,res) =>{
     const {id} = req.params
     // console.log(id)
     const serviceProvider = await ServiceProvider.findById(id)
+    const comments = await Comment.find({s_id:id})
+    const flag = "cu"
+    res.render("service_provider",{
+        user:serviceProvider, flag,
+        comments:comments
+    }) 
+
     const comments = await Comment.find({s_id:id}).populate("c_id")
     const [onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg] = await ratingStats(id)
 
@@ -135,15 +182,21 @@ const booking = async (req,res) =>{
 }
 
 const customerSchedule = async (req,res) =>{
-res.render("customer_schedule")
-}
-
-const displayAdmin = async (req,res) =>{
-    res.render("admin")
+    const token = req.cookies.jwt
+    jwt.verify(token, "Customer", async (error, decodedtoken)=>{
+        if(error){
+            console.log(error)
+        }else{
+            const id = decodedtoken.id
+            const bookings = await Booking.find({c_id:id}).populate("s_id")
+            res.render("customer_schedule", {
+                bookings:bookings
+            })
+        }
+    })
 }
 
 module.exports = {
-    displayStartup, displaySignupService, displaySignupCustomer, displayLoginService, displayLoginCustomer, displayHome, 
-    displayProviderProfile, displayProviderSchedule, displaypageToCustomer, customerSchedule, search, booking, displayAdmin,
-    displayPending, viewRc
+    displayStartup, displaySignupService, displaySignupCustomer, displayLoginService, displayLoginCustomer, displayHome,  customerSchedule, search, booking, 
+    displayPending, viewRc, displayAdmin,renderProfile
 }
