@@ -24,22 +24,19 @@
             <div class="form-content">
                 <form id="regForm">
 
-            <label for="">Username</label><br>
-            <input type="text" name="username" id="" oninput="this.className = ''"><br>
+                    <label for="">Username</label><br>
+                    <input type="text" name="username" id="" oninput="this.className = ''"><br>
 
-            <label for="">Password</label><br>
-            <input type="password" name="password" id="" oninput="this.className = ''"><br>
+                    <label for="">Password</label><br>
+                    <input type="password" name="password" id="" oninput="this.className = ''"><br>
 
-            <button type="submit" class="log-in-button">Log in</button><br>
+                    <button type="submit" class="log-in-button">Log in</button><br>
 
-            Don't have an account?<a href="/startup">Sign Up</a>
-            </form>
-
-           
-            </div>
-
+                    Don't have an account?<a href="/startup">Sign Up</a>
+                </form>
             </div>
         </div>
+    </div>
     
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
@@ -54,14 +51,10 @@
             const {data} = await axios.post("/api/v1/customer/login",{username,password})
             if(data.customer){
                 location.assign("/")
-            }
-           
-
-            
+            }    
         } catch (error) {
-            
+            alert("Username or password is incorrect");
         }
-
     })
 </script>
 </html>

@@ -77,7 +77,7 @@ border-radius: 10px;
     font-size: 25px;  
 }
 
-.item, #schedule, #edit, #logout{
+.item, #edit{
     background: none;
     border: none;
 }
@@ -104,7 +104,10 @@ border-radius: 10px;
     border-radius: 10%;
     border: none;
     background-color: var(--tcolor);
-    color: white;
+}
+
+.sp2-11 button h2 {
+    color: #fff;
 }
 #rate{
     background-color: white;
@@ -124,7 +127,7 @@ border-radius: 10px;
 
 }
 .pic img{
-    width: 130px;
+    width: 150px;
     
 }
 #comment-section{

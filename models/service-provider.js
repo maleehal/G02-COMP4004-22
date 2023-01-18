@@ -45,29 +45,6 @@ const service_providerSchema = new mongoose.Schema({
         type: String,
         required:[true,"This field is required"]
     },
-    rating:{
-       totalrating:{
-        type:Number
-
-       },
-       onestarrating:{
-        type:Number
-       },
-       twostarrating:{
-        type:Number
-       },
-       threestarrating:{
-        type:Number
-       },
-       fourstarrating:{
-        type:Number
-       },
-       fivestarrating:{
-        type:Number
-       }
-       
-
-    },
 
     description: {
         type: String,
@@ -84,6 +61,10 @@ const service_providerSchema = new mongoose.Schema({
         default:  "Pending",
         
     },
+    rating:{
+        type: String,
+        default: "0",
+    }
 })
 
 service_providerSchema.pre('save', async function(next){

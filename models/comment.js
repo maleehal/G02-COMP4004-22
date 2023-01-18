@@ -1,3 +1,4 @@
+const { realpath } = require("fs");
 const mongoose = require("mongoose")
 
 const CommentSchema =new mongoose.Schema({
@@ -24,12 +25,9 @@ const CommentSchema =new mongoose.Schema({
     rating: {
         type: Number,
     }
+
 })
 
-<<<<<<< HEAD
 const Comment = mongoose.model("Comment",CommentSchema)
 
 module.exports = Comment;
-=======
-module.exports = mongoose.model("Comment", commentSchema)
->>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
