@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="/stylesheets/general.css">
+
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+
+<% if (flag === "sp") { %>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/service_provider_schedule">Schedule</a>
+        <a href="/api/v1/customer/logout">Logout</a>
+    </div>
+<% } else { %>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/api/v1/customer/logout">Logout</a>
+    </div>
+<% } %>
+
+<script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+</script>

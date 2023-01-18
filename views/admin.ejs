@@ -126,6 +126,10 @@
       </div>
     </div>
   </div>
+
+</div>
+          
+        
     
     
       
@@ -148,8 +152,11 @@ const displayContent = (providers) => {
       <tr>
         <td>${provider._id}</td>
         <td>${provider.name}</td>
-        <td><button class="verify-provider-button" onclick="acceptProvider(this)" data-id="${provider._id}" >Verify Provider</button></td>
-        <td><button class="reject-provider-button" onclick="rejectProvider(this)" data-id="${provider._id}" >Reject Provider</button></td>
+        <td><button class="verify-provider-button" onclick="acceptProvider(this)" data-id="${provider._id}" >Verify</button></td>
+        <td><button class="reject-provider-button" onclick="rejectProvider(this)" data-id="${provider._id}" >Reject</button></td>
+      </tr>
+      <tr>
+        <td colspan="4"><hr></td>
       </tr>
     `;
   });
@@ -233,15 +240,7 @@ try {
         // Handle the error, for example by showing an error message to the user
     }
 });
-
-
-
 */
-
-
-
-
-
 
 //function to get Verified users into table rows(authentication)
 const displayContentCustomer = (providers) => {
@@ -253,6 +252,9 @@ const displayContentCustomer = (providers) => {
         <td>${provider._id}</td>
         <td>${provider.name}</td>
         <td><button class="reject-provider-button" onclick="rejectProvider(this)" data-id="${provider._id}" >Reject Provider</button></td>
+      </tr>
+      <tr>
+        <td colspan="3"><hr></td>
       </tr>
     `;
   });

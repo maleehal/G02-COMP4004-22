@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&display=swap');
 
+:root{
+    --tcolor: #9702B0;
+}
+
 *{
     font-family: "Raleway";
     font-weight: bolder;
@@ -17,10 +21,13 @@
 }
 
 button{
-    background-color: purple;
+    background-color: var(--tcolor);
     color: white;
     padding: 1%;
     border-radius: 24px;
     font-size: 22px;
     border: none;
+}
+#rating[disabled]{
+    background-color: grey;
 }

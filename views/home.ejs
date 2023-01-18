@@ -10,6 +10,7 @@
 </head>
 <header>
     <%- include('partials/header'); %>
+    <%- include('partials/functions'); %>
 </header>
 <body>
     <!-- <nav>
@@ -26,9 +27,11 @@
         <div class="box-container-2">
             <img src="/images/mainimg.png" alt="image">
             <div class="heading"><h2>WELCOME TO EVENT HUSTLER</h2></div>
-            <div class="heading-2"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim nostrum itaque illo, neque saepe reprehenderit, eveniet,
-               minima mollitia impedit illum reiciendis nesciunt aspernatur odio consequuntur maxime assumenda dolor possimus tenetur.
-            </p></div>
+            <div class="heading-2">
+                <p>
+                    Plan your special days to be beautiful and memorable
+                </p>
+            </div>
 
         </div>
     </div>
@@ -41,14 +44,11 @@
     <div class="container-sub-1"> 
         <% topThreeProviders.forEach((provider) => { %>
             <div class ="container-sub-1-1">
-            <img class="profilepic" src="/images/image 2.png">
-            <div><%= provider.name %> </div>
-            <div><%= provider.rating %> </div>
-            <button onclick="" class="providerprofile">View Provider</button>
-        </div>
-               
-
-         
+                <img class="profilepic" src="/images/image 2.png">
+                <div><%= provider.name %> </div>
+                <div><%= provider.rating %> </div>
+                <button class="providerprofile"><a href="/service_provider/<%= provider._id %>"> View Provider</a></button>
+            </div>
         <% }) %>
         
        

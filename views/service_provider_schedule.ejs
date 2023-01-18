@@ -9,6 +9,7 @@
 
 <header>
     <%- include('partials/header'); %>
+    <%- include('partials/functions'); %>
 </header>
 
 <body>
@@ -55,16 +56,19 @@
             <tr>
                 <th>ID</th>
                 <th>Customer</th>
+                <th>Event</th>
                 <th>Date</th>
+                <th>Time</th>
                 <th>Confirm</th>
             </tr>
             <% bookings.forEach(booking => { %>
                 <% if (booking.status =="Ongoing") { %>
                     <tr>
                         <td> <%= booking._id %>  </td>
-                        <td><%= booking.c_id %></td>
-                        <td><%= booking.date %></td>
-
+                        <td><%= booking.c_id.username %></td>
+                        <td><%= booking.event %></td>
+                        <td><%= booking.date.toLocaleDateString(); %></td> 
+                        <td><%= booking.date.toLocaleTimeString(); %></td> 
                         <td><button onclick="completedbook(this)" id="complete" data-id="<%= booking._id %>">Done</button></td>
 
                     </tr>  
@@ -79,7 +83,9 @@
             <tr>
                 <th>ID</th>
                 <th>Customer</th>
-                <th>Appoinment Date</th>
+                <th>Event</th>
+                <th>Date</th>
+                <th>Time</th>
                 <th>Accept</th>
                 <th>Reject</th>
             </tr>
@@ -88,8 +94,10 @@
                 <% if (booking.status =="Pending") { %>
                     <tr>
                         <td> <%= booking._id %>  </td>
-                        <td><%= booking.c_id %></td>
-                        <td><%= booking.date %></td>
+                        <td><%= booking.c_id.username %></td>
+                        <td><%= booking.event %></td>
+                        <td><%= booking.date.toLocaleDateString(); %></td> 
+                        <td><%= booking.date.toLocaleTimeString(); %></td> 
                         <td><button onclick="acceptbook(this)" id="accept" data-id="<%= booking._id %>">Accept</button></td>
                         <td><button onclick="rejectbook(this)" id="reject" data-id="<%= booking._id %>">Reject</button></td>
                     </tr>  
@@ -103,15 +111,19 @@
             <tr>
                 <th>ID</th>
                 <th>Customer</th>
+                <th>Event</th>
                 <th>Date</th>
+                <th>Time</th>
             </tr>
 
             <% bookings.forEach(booking => { %>
                 <% if (booking.status =="Completed") { %> 
                     <tr>
                         <td> <%= booking._id %>  </td>
-                        <td><%= booking.c_id %></td>
-                        <td><%= booking.date %></td>
+                        <td><%= booking.c_id.username %></td>
+                        <td><%= booking.event %></td>
+                        <td><%= booking.date.toLocaleDateString(); %></td> 
+                        <td><%= booking.date.toLocaleTimeString(); %></td> 
                     </tr>
                 <% } %>
             <% }) %>
@@ -122,20 +134,20 @@
         <table>
             <tr>
                 <th>ID</th>
-
                 <th>Customer</th>
+                <th>Event</th>
                 <th>Date</th>
-
+                <td>Time</td> 
             </tr>
 
             <% bookings.forEach(booking => { %>
                 <% if (booking.status =="Rejected") { %>  
                     <tr>
                         <td> <%= booking._id %>  </td>
-
-                        <td><%= booking.c_id %></td>
-                        <td><%= booking.date %></td> 
-
+                        <td><%= booking.c_id.username %></td>
+                        <td><%= booking.event %></td>
+                        <td><%= booking.date.toLocaleDateString(); %></td> 
+                        <td><%= booking.date.toLocaleTimeString(); %></td> 
                     </tr>
                 <% } %>
             <% }) %>   
@@ -200,17 +212,6 @@
         document.getElementById("RA").innerHTML = numberOfRejectedProvider;   
     }
     viewBuisnessPerformance()
-
-    // async function viewBuisnessPerformance(acc) {
-    //     var dataID = acc.getAttribute("data-id");
-    //     const data = await axios.patch(`/api/v1/service-provider/getBuisnessPerformance`,{dataID})
-    //     const datab = await axios.get(`/api/v1/service-provider/getBuisnessPerformance`,{status})
-    //     console.log(datab)
-
-    //     document.getElementById("myHeader").innerHTML = "Have a nice day!";
-    // }
-    
-                    
   
 </script>
 </html>

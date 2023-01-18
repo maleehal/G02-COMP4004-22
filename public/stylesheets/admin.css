@@ -18,6 +18,16 @@ body{
     font-family: "Raleway";
     font-weight: bolder;
 }
+:root{
+    --tcolor: #7D3C98;
+    --bshadow: 10px;
+}
+body{
+    background: url(../images/admin.webp) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 2% black;
+}
 
 
 
@@ -187,11 +197,6 @@ body{
 .mainthree{
     margin: 10px;
 }
-
-
-
-
-
 
 /*2nd flex box*/
 .tracking{
