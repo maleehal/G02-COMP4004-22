@@ -37,7 +37,7 @@ const handleErrors = (error) =>{
 
 const getAllproviders = async (req,res) =>{
     try {
-        const providers = await ServiceProvider.find({status:"Verified"}).select("name email expertise")
+        const providers = await ServiceProvider.find({status:"Verified"}).select("name email expertise rating")
         res.status(200).send({providers}) 
         
     } catch (error) {

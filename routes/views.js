@@ -3,9 +3,8 @@ const express = require("express")
 const {checkUser, serviceProviderAuth, customerAuth} = require("../middleware/middleware")
 
 const  {
-    displayStartup, displaySignupService, displayPending, displaySignupCustomer, displayLoginService, displayLoginCustomer, displayHome, search, 
-    displayProviderProfile, displayProviderSchedule, displaypageToCustomer, customerSchedule, booking, viewRc, displayAdmin
-} = require('../controllers/viewController.js')
+    displayStartup, displaySignupService, displayPending, displaySignupCustomer, displayLoginService, displayLoginCustomer, displayHome, search,  customerSchedule, booking, viewRc, displayAdmin,renderProfile,
+displayProviderSchedule} = require('../controllers/viewController.js')
 
 const router = express.Router()
 
@@ -17,10 +16,8 @@ router.route("/signup-customer").get(displaySignupCustomer)
 router.route("/login-customer").get(displayLoginCustomer)
 router.route("/").get(checkUser,displayHome)
 router.route("/search").get(checkUser,search)
-router.route("/service_provider").get(checkUser,displayProviderProfile)
-router.route("/service_provider_schedule").get(checkUser,serviceProviderAuth,displayProviderSchedule)
 router.route("/rc/:id").get(viewRc)
-router.route("/service_provider/:id").get(checkUser,displaypageToCustomer)
+router.route("/service_provider/:id").get(renderProfile)
 router.route("/booking/:id").get(checkUser,booking)
 router.route("/customer_schedule").get(checkUser, customerAuth, customerSchedule)
 router.route("/admin").get(displayAdmin)

@@ -38,7 +38,6 @@ const port = 3000
 // })
 
 setInterval(defaultRejectAppoinment = async () => {
-  const date = await 
 
   const pendingDates = await Booking.find({status:"Pending"}).select("date")
   data = [...pendingDates]

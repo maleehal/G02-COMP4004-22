@@ -62,8 +62,11 @@
         if(event == "" || date== ""){
             alert("Please fill out the required fields");
         }else{
-            alert("Your appoinment is placed. \n Will be notified after service provider's exceptance") 
-            const newBooking = await axios.post("/api/v1/customer/booking",{event, date, s_id })
+            console.log("came here")
+          location.assign(`/service_provider/${require[require.length-1]}`)
+            
+            
+            
             
         }
     });
