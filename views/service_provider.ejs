@@ -68,60 +68,6 @@
         
         <div class="sp2-1">
             <h2>Ratings</h2>
-<<<<<<< HEAD
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p> 
-        </div>
-    
-        <div class="sp2-1" id="comment-section">
-            <h2>Comments</h2>
-            <div class="comment">
-                <div class="comment-header">
-                    <div> 
-                        <% if (flag === "sp") { %>
-                            <table>
-                                <% comments.forEach(comment => { %>
-                                    <% if (comment.s_id != "") { %>  
-                                        <tr>
-                                            <td><img src="/images/image 2.png" alt=""></td>
-                                            <td><%= comment.c_id %> </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" style="text-align: center;"><%= comment.content %> </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" style="width: 100%;"><hr></td>
-                                        </tr>
-                                    <% } %>
-                                <% }) %>
-                            </table> 
-                        <% } else { %>
-                            <table>
-                                <% comments.forEach(comment => { %>
-                                    <% if (comment.s_id != "") { %>  
-                                        <tr>
-                                            <td><img src="/images/image 2.png" alt=""></td>
-                                            <td><%= comment.c_id %> </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" style="text-align: center;"><%= comment.content %> </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" style="width: 100%;"><hr></td>
-                                        </tr>
-                                    <% } %>
-                                <% }) %>
-                            </table> 
-                        <% } %>
-                    </div>
-                </div>
-                 <div class="comment-content"></div> <br>
-            </div>
-        </div>
-=======
             <p id="avg">
                 <%= totalRating %> Reviews
 
@@ -219,11 +165,7 @@
         <% if (flag === "cu") { %>
 
             <div class="sp2-11">
-<<<<<<< HEAD
-                <a href="/booking/<%= user._id %>"><button><h2>Book an Appoinment</h2></button></a>
-=======
                 <a href="/booking/<%= user._id %> "><button><h2>Book an Appoinment</h2></button></a>
->>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
             </div>
         <% } %> 
    </div>
@@ -242,12 +184,10 @@
     let about = document.getElementById("about")
     let edit = document.getElementById("edit")
     let schedule = document.getElementById("schedule")
-<<<<<<< HEAD
-=======
 
     setWidth()
     overallRating()
->>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
+
 
     document.getElementById("edit").addEventListener("click", async() =>{
         if (description.style.display != "none" ){
@@ -272,15 +212,6 @@
         }
     })   
 
-<<<<<<< HEAD
-=======
-    // async function customerComments(acc){
-    //     var dataID = acc.getAttribute("data-id");
-    //     console.log(dataID);
-    //     // var changed = "Completed";
-    //     // const data = await axios.patch(`/api/v1/service-provider/rejectAppoinments`,{dataID, changed})
-    // }
->>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
     customerComments(acc)
     document.getElementById("schedule").addEventListener("click", async() =>{
         location.assign(`/service_provider_schedule`)
