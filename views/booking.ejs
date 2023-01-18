@@ -30,7 +30,7 @@
         <label for="amount" style="color: red;">* 2000 LKR will be charged for the appoinment</label>
 
         <br>
-
+        
         <button id="makeAppoinment" type="submit">Make Appoinment</button>
         
     </form>
@@ -45,8 +45,7 @@
 <script>
     const param = window.location.href
     const require = param.split("/")
-
-    const fname = document.getElementById("fname");
+   
     const f_event = document.getElementById("f_event");
     const a_date = document.getElementById("a_date");
     const form = document.getElementById("don")
@@ -57,12 +56,16 @@
     form.addEventListener("submit", async function(e){
         const s_id = require[4]
         e.preventDefault()
+    
         const event = f_event.value
         const date = a_date.value
+
         if(event == "" || date== ""){
             alert("Please fill out the required fields");
         }else{
+            alert("Your appoinment is placed. \n Will be notified after service provider's exceptance") 
             location.assign(`/service_provider/${require[require.length-1]}`)    
+            const newBooking = await axios.post("/api/v1/customer/booking",{event, date, s_id })   
         }
     });
 

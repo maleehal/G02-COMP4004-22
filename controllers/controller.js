@@ -87,11 +87,14 @@ const createBooking = async (req, res) => {
                 const c_id = decodeedToken.id
                 await Booking.create({c_id,s_id,event,date})
             }
-        })    
+        })
+        
     } catch (error) {
-        console.log(error)  
+        console.log(error)
+        
     }
 }
+
 
 const createComment = async (req,res) =>{
     const {rating,content,s_id} = req.body
