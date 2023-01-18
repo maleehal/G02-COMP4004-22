@@ -14,7 +14,6 @@ require('dotenv').config();
 
 const app = express()
 
-const {checkUser,serviceProviderAuth} = require("./middleware/middleware")
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -31,11 +30,6 @@ app.use('/api/v1/admin', adminRoute)
 
 const port = 3000
 
-// // testing
-// app.post("/createProvider", async (req,res)=>{
-//   const {s_id , c_id} = req.body
-//   const newBooking = await Booking.create({c_id , s_id})  
-// })
 
 setInterval(defaultRejectAppoinment = async () => {
 
@@ -72,10 +66,6 @@ setInterval(defaultCompletedAppoinment = async () => {
     }
   }
 }, 10000);
-
-// setInterval(defaultDisableDates = async () => {
-//   const bookedDates = await Booking.find({status:"Ongoing"}).select("date")
-// }, 10000);
 
 // connect database
 const start = async () => {

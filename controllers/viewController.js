@@ -1,11 +1,8 @@
 const ServiceProvider = require("../models/service-provider")
-const Customers = require("../models/customer")
 const Booking = require("../models/booking")
-const Comment =require("../models/comment")
+const Comment = require("../models/comment")
 const jwt = require("jsonwebtoken")
 const cookieParser = require("cookie-parser")
-const Comment = require("../models/comment")
-const { argv } = require("process")
 
 
 const displayStartup = (req,res)=>{
@@ -49,23 +46,17 @@ const displayHome = async (req,res)=>{
 
 const search = async (req,res)=>{
     const {searchkey , filter} = req.query;
-    console.log("came")
     let providers
     if (filter){
-      console.log("came again")
       providers  = await ServiceProvider.find({expertise:`${filter}`})
       console.log(providers)
     }
     if (searchkey){
-      console.log("came to die")
       providers = await ServiceProvider.find({username:new RegExp(`^${searchkey}`,"i")})
       console.log(providers)
     }
     res.render("search",{providers})
 }
-
-
-
 
 const renderProfile = async (req,res) =>{
     const {id} = req.params
@@ -74,12 +65,14 @@ const renderProfile = async (req,res) =>{
         if (error){
             const serviceProvider = await ServiceProvider.findById(id)
             const comments = await Comment.find({s_id:id})
+            const [onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg] = await ratingStats(id)
+            const defaultTopProvider = await ServiceProvider.findByIdAndUpdate(id,{rating:dpAvg},{runValidators:true})
             const flag = "cu"
             res.render("service_provider",{
                 user:serviceProvider, flag,
-                comments:comments
-            }) 
-            
+                comments:comments,
+                onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg
+            })    
         }
         else{
             
@@ -87,21 +80,32 @@ const renderProfile = async (req,res) =>{
                 const serviceProvider = await ServiceProvider.findById(decodedtoken.id)
                 const comments = await Comment.find({s_id:decodedtoken.id})
                 const flag = "sp"
-                res.render("service_provider",{user:serviceProvider, flag,comments})
-
+                const [onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg] = await ratingStats(decodedtoken.id)
+                const defaultTopProvider = await ServiceProvider.findByIdAndUpdate(decodedtoken.id,{rating:dpAvg},{runValidators:true})
+                res.render("service_provider",{user:serviceProvider, flag,comments,onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg})
+              
             }
 
             else if(decodedtoken.id === id){
                 const serviceProvider = await ServiceProvider.findById(id)
                 const comments = await Comment.find({s_id:id})
                 const flag = "sp"
-                res.render("service_provider",{user:serviceProvider, flag,comments})
+                const [onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg] = await ratingStats(id)
+                const defaultTopProvider = await ServiceProvider.findByIdAndUpdate(id,{rating:dpAvg},{runValidators:true})
+                res.render("service_provider",{
+                    user:serviceProvider, flag,
+                    comments,
+                    onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg
+                })
+                
             }
             else{
                 const serviceProvider = await ServiceProvider.findById(id)
                 const comments = await Comment.find({s_id:id})
                 const flag = "cu"
-                res.render("service_provider",{user:serviceProvider, flag,comments})
+                const [onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg] = await ratingStats(id)
+                const defaultTopProvider = await ServiceProvider.findByIdAndUpdate(id,{rating:dpAvg},{runValidators:true})
+                res.render("service_provider",{user:serviceProvider, flag,comments,onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg})
             }
         }
     })
@@ -109,34 +113,9 @@ const renderProfile = async (req,res) =>{
 }
 
 
-const viewRc = async (req,res) =>{ 
-    res.render("rc");  
-}
-
-const displaypageToCustomer = async (req,res) =>{
-    const {id} = req.params
-    // console.log(id)
-    const serviceProvider = await ServiceProvider.findById(id)
-    const comments = await Comment.find({s_id:id})
-    const flag = "cu"
-    res.render("service_provider",{
-        user:serviceProvider, flag,
-        comments:comments
-    }) 
-
-    const comments = await Comment.find({s_id:id}).populate("c_id")
-    const [onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg] = await ratingStats(id)
-
-    // const flag = "cu"
-    res.render("service_provider",{
-        user:serviceProvider,
-        comments:comments, onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg
-    }) 
-}
 
 const ratingStats = async (id) => {
     try {
-        console.log(id)
         const totalRating = await Comment.countDocuments({s_id:id})
         const fiveStar = await Comment.countDocuments({rating:5,s_id:id})
         const fourStar = await Comment.countDocuments({rating:4,s_id:id})
@@ -154,11 +133,10 @@ const ratingStats = async (id) => {
 
         return [onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg]
 
-
         
 
     } catch (error) {
-        
+        console.log("error")
     }
 }
 const getPercentage = (rating,totalRating) =>{
@@ -177,8 +155,19 @@ const getAverage = (ratingOne, ratingTwo, ratingThree, ratingFour, ratingFive, t
     return finalAvg
 }
 
-const booking = async (req,res) =>{
-    res.render("booking")
+const providerSchedule = async (req,res) =>{
+    const token = req.cookies.jwt
+    jwt.verify(token, "ServiceProvider", async (error, decodedtoken)=>{
+        if(error){
+            console.log(error)
+        }else{
+            const id = decodedtoken.id
+            const bookings = await Booking.find({s_id:id}).populate("c_id")
+            res.render("service_provider_schedule", {
+                bookings:bookings
+            })
+        }
+    })
 }
 
 const customerSchedule = async (req,res) =>{
@@ -189,6 +178,7 @@ const customerSchedule = async (req,res) =>{
         }else{
             const id = decodedtoken.id
             const bookings = await Booking.find({c_id:id}).populate("s_id")
+            console.log(bookings)
             res.render("customer_schedule", {
                 bookings:bookings
             })
@@ -197,6 +187,6 @@ const customerSchedule = async (req,res) =>{
 }
 
 module.exports = {
-    displayStartup, displaySignupService, displaySignupCustomer, displayLoginService, displayLoginCustomer, displayHome,  customerSchedule, search, booking, 
-    displayPending, viewRc, displayAdmin,renderProfile
+    displayStartup, displaySignupService, displaySignupCustomer, displayLoginService, displayLoginCustomer, 
+    displayHome,  customerSchedule, search, booking, displayPending, viewRc, displayAdmin,renderProfile, providerSchedule
 }

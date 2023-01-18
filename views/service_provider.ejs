@@ -25,19 +25,13 @@
         </div>
         <div class="sp3-1"></div>
         <div class="sp3-1"></div>
-<<<<<<< HEAD
-        <div class="sp3-1"></div>
-=======
         <div class="sp3-1">
             <div class="bt">
                 <% if (flag === "sp") { %>
-                    <button id="schedule"><a href="/service_provider_schedule"><img src="/images/Picture1.png" alt="Schedule"></a></button>
                     <button id="edit"><img src="/images/Picture2.png" alt="Edit"></button>
-                    <button id="logout"><a href="/api/v1/customer/logout"><img src="/images/logout.png" alt="logout"></a></button>
                 <% } %>    
             </div>
         </div>
->>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
    </div>
 
    <div class="sp2">
@@ -193,10 +187,8 @@
                 </div>
             </div>
         </div>
->>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
         
         <% if (flag === "cu") { %>
-
             <div class="sp2-11">
                 <a href="/booking/<%= user._id %> "><button><h2>Book an Appoinment</h2></button></a>
             </div>
@@ -268,7 +260,6 @@
 
     function overallRating () {
         const avg = "<%- dpAvg %>"
-
 
         const oneStar = document.getElementById("oneS");
         const twoStar = document.getElementById("twoS");

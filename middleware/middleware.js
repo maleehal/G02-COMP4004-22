@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken")
 const Customer = require("../models/customer");
+const serviceProvider = require("../models/service-provider");
 const ServiceProvider = require("../models/service-provider");
 
 
@@ -20,10 +21,10 @@ const customerAuth = (req,res,next) =>{
     }
 }
 
-const serviceProviderAuth = (req,res,next) =>{
+const serviceProviderAuth =  (req,res,next) =>{
     const token = req.cookies.jwt;
     if (token){
-        jwt.verify(token,"ServiceProvider",(err,decodeedToken)=>{
+        jwt.verify(token,"ServiceProvider", async (err,decodeedToken)=>{
             if(err){
                 res.redirect("/api/v1/service-provider/login")
             }

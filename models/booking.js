@@ -10,12 +10,9 @@ const bookingSchema = new mongoose.Schema({
     c_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Customer"
-<<<<<<< HEAD
     },
     event: {
         type: String
-=======
->>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
     },
     status: {
         type: String,
