@@ -64,7 +64,7 @@ const renderProfile = async (req,res) =>{
     jwt.verify(token,"ServiceProvider",async (error,decodedtoken)=>{
         if (error){
             const serviceProvider = await ServiceProvider.findById(id)
-            const comments = await Comment.find({s_id:id})
+            const comments = await Comment.find({s_id:id}).populate("c_id")
             const [onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg] = await ratingStats(id)
             const defaultTopProvider = await ServiceProvider.findByIdAndUpdate(id,{rating:dpAvg},{runValidators:true})
             const flag = "cu"
@@ -78,7 +78,7 @@ const renderProfile = async (req,res) =>{
             
             if(typeof id == undefined){
                 const serviceProvider = await ServiceProvider.findById(decodedtoken.id)
-                const comments = await Comment.find({s_id:decodedtoken.id})
+                const comments = await Comment.find({s_id:decodedtoken.id}).populate("c_id")
                 const flag = "sp"
                 const [onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg] = await ratingStats(decodedtoken.id)
                 const defaultTopProvider = await ServiceProvider.findByIdAndUpdate(decodedtoken.id,{rating:dpAvg},{runValidators:true})
@@ -88,7 +88,7 @@ const renderProfile = async (req,res) =>{
 
             else if(decodedtoken.id === id){
                 const serviceProvider = await ServiceProvider.findById(id)
-                const comments = await Comment.find({s_id:id})
+                const comments = await Comment.find({s_id:id}).populate("c_id")
                 const flag = "sp"
                 const [onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg] = await ratingStats(id)
                 const defaultTopProvider = await ServiceProvider.findByIdAndUpdate(id,{rating:dpAvg},{runValidators:true})
@@ -101,7 +101,7 @@ const renderProfile = async (req,res) =>{
             }
             else{
                 const serviceProvider = await ServiceProvider.findById(id)
-                const comments = await Comment.find({s_id:id})
+                const comments = await Comment.find({s_id:id}).populate("c_id")
                 const flag = "cu"
                 const [onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg] = await ratingStats(id)
                 const defaultTopProvider = await ServiceProvider.findByIdAndUpdate(id,{rating:dpAvg},{runValidators:true})
