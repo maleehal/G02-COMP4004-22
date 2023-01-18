@@ -99,7 +99,7 @@ const createComment = async (req,res) =>{
     try {
         jwt.verify(token,"Customer",async (err,decodeedToken)=>{
             if(err){
-              console.log(ërror)
+              console.log(error)
             }
             else{ 
                 const c_id = decodeedToken.id
@@ -112,4 +112,18 @@ const createComment = async (req,res) =>{
 }
 
 
+<<<<<<< HEAD
 module.exports = {customerSignIn , customerLogIn , LogoutUser, createBooking, createComment}
+=======
+
+
+
+
+
+
+
+module.exports = {customerSignIn , customerLogIn , customerLogOut ,displayLogInPage ,displaySignUpPage, createBooking, createComment}
+
+
+
+>>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12

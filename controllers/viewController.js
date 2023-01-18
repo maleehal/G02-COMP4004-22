@@ -4,6 +4,8 @@ const Booking = require("../models/booking")
 const Comment =require("../models/comment")
 const jwt = require("jsonwebtoken")
 const cookieParser = require("cookie-parser")
+const Comment = require("../models/comment")
+const { argv } = require("process")
 
 
 const displayStartup = (req,res)=>{
@@ -94,13 +96,72 @@ const displayProviderSchedule = async (req,res)=>{
 
 const displaypageToCustomer = async (req,res) =>{
     const {id} = req.params
+    // console.log(id)
     const serviceProvider = await ServiceProvider.findById(id)
+<<<<<<< HEAD
     const comments = await Comment.find({s_id:id})
     const flag = "cu"
     res.render("service_provider",{
         user:serviceProvider, flag,
         comments:comments
     }) 
+=======
+    const comments = await Comment.find({s_id:id}).populate("c_id")
+    const [onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg] = await ratingStats(id)
+
+    const flag = "cu"
+    res.render("service_provider",{
+        user:serviceProvider, flag,
+        comments:comments, onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg
+    }) 
+}
+
+const ratingStats = async (id) => {
+    try {
+        console.log(id)
+        const totalRating = await Comment.countDocuments({s_id:id})
+        const fiveStar = await Comment.countDocuments({rating:5,s_id:id})
+        const fourStar = await Comment.countDocuments({rating:4,s_id:id})
+        const threeStar = await Comment.countDocuments({rating:3,s_id:id})
+        const twoStar = await Comment.countDocuments({rating:2,s_id:id})
+        const oneStar = await Comment.countDocuments({rating:1,s_id:id})
+        
+        const onestarPr = getPercentage(oneStar, totalRating)
+        const twostarPr = getPercentage(twoStar, totalRating)
+        const threestarPr = getPercentage(threeStar, totalRating)
+        const fourstarPr = getPercentage(fourStar, totalRating)
+        const fivestarPr = getPercentage(fiveStar, totalRating)
+
+        const dpAvg = getAverage(oneStar, twoStar, threeStar, fourStar, fiveStar, totalRating)
+
+        return [onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg]
+
+
+        
+
+    } catch (error) {
+        
+    }
+}
+const getPercentage = (rating,totalRating) =>{
+    const percentageValue = (rating/totalRating)*100
+    return percentageValue
+}
+
+const getAverage = (ratingOne, ratingTwo, ratingThree, ratingFour, ratingFive, totalRating) => {
+    const avg = ((ratingOne * 1) + (ratingTwo * 2) + (ratingThree * 3) + (ratingFour * 4) + (ratingFive * 5)) / totalRating
+
+    if (isNaN(avg) == true) {
+        finalAvg = 0;
+    }else {
+        finalAvg = avg.toFixed(1)
+    }
+    return finalAvg
+}
+
+const booking = async (req,res) =>{
+    res.render("booking")
+>>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
 }
 
 const customerSchedule = async (req,res) =>{

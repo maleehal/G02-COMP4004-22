@@ -4,6 +4,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
     <title>Service Provider</title>
 </head>
 
@@ -23,7 +25,19 @@
         </div>
         <div class="sp3-1"></div>
         <div class="sp3-1"></div>
+<<<<<<< HEAD
         <div class="sp3-1"></div>
+=======
+        <div class="sp3-1">
+            <div class="bt">
+                <% if (flag === "sp") { %>
+                    <button id="schedule"><a href="/service_provider_schedule"><img src="/images/Picture1.png" alt="Schedule"></a></button>
+                    <button id="edit"><img src="/images/Picture2.png" alt="Edit"></button>
+                    <button id="logout"><a href="/api/v1/customer/logout"><img src="/images/logout.png" alt="logout"></a></button>
+                <% } %>    
+            </div>
+        </div>
+>>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
    </div>
 
    <div class="sp2">
@@ -50,8 +64,11 @@
                 <div class="pic"><img src="/images/event6.jpg" alt=""></div>
             </div>
         </div>
+
+        
         <div class="sp2-1">
             <h2>Ratings</h2>
+<<<<<<< HEAD
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -104,11 +121,109 @@
                  <div class="comment-content"></div> <br>
             </div>
         </div>
+=======
+            <p id="avg">
+                <%= totalRating %> Reviews
+
+                <span id="oneS" class="fas fa-star"></span>
+                <span id="twoS" class="fas fa-star"></span>
+                <span id="threeS" class="fas fa-star"></span>
+                <span id="fourS" class="fas fa-star"></span>
+                <span id="fiveS" class="fas fa-star"></span>
+
+                <%= dpAvg %> 
+            </p>
+            <div class="progressBar">
+                <p>5 Stars</p>
+                <div class="progress">
+                    <div id="five" class="progress-bar " role="progressbar" data-width="<%= fivestarPr %>" aria-valuemin="0" aria-valuemax="100">
+                      <span class="sr-only"></span>
+                    </div>
+                </div>
+                <p>(<%= fiveStar %>)</p>
+
+                <p>4 Stars</p>
+                <div class="progress">
+                    <div id="four" class="progress-bar" role="progressbar" data-width="<%= fourstarPr %>" aria-valuemin="0" aria-valuemax="100">
+                      <span class="sr-only"></span>
+                    </div>
+                </div>
+                <p>(<%= fourStar %>)</p>
+
+                <p>3 Stars</p>
+                <div class="progress">
+                    <div id="three" class="progress-bar" role="progressbar" data-width="<%= threestarPr %>" aria-valuemin="0" aria-valuemax="100">
+                      <span class="sr-only"></span>
+                    </div>
+                </div>
+                <p>(<%= threeStar %>)</p>
+
+                <p>2 Stars</p>
+                <div class="progress">
+                    <div id="two" class="progress-bar" role="progressbar" data-width="<%= twostarPr %>" aria-valuemin="0" aria-valuemax="100">
+                      <span class="sr-only"></span>
+                    </div>
+                </div>
+                <p>(<%= twoStar %>)</p>
+
+                <p>1 Stars</p>
+                <div class="progress">
+                    <div id="one" class="progress-bar" role="progressbar" data-width="<%= onestarPr %> aria-valuemin="0" aria-valuemax="100">
+                      <span class="sr-only"></span>
+                    </div>
+                </div>
+                <p>(<%= oneStar %>)</p>
+            </div>
+            <% if (flag === "cu") { %>
+                <a href="/rc/<%= user._id %>"><button id="rate">Rate me</button></a>
+            <% } %> 
+        </div>
+    
+        <div class="sp2-1" id="comment-section">
+            <h2>Comments</h2>
+            <div class="comment">
+                <div class="comment-header">
+                    <div> 
+                        <% if (flag === "sp") { %>
+                            <% comments.forEach(comment => { %>
+                                <div class="comment">
+                                    <div class="comment-header">
+                                        <img src="/images/image 2.png" alt="">
+                                        <div><h2><%= comment.c_id.username %> </h2> 
+                                          <h2><%= comment.rating %> </h2>  
+                                        </div>
+                                    </div>
+                                    <div class="comment-content"><%= comment.content %> </div> <br>
+                                </div>
+                            <% }) %>
+                        <% } else { %>
+                                <% comments.forEach(comment => { %>
+                                    <div class="comment">
+                                        <div class="comment-header">
+                                            <img src="/images/image 2.png" alt="">
+                                            <div><h2><%= comment.c_id.username %> </h2> 
+                                              <h2><%= comment.rating %> </h2>  
+                                            </div>
+                                        </div>
+                                        <div class="comment-content"><%= comment.content %> </div> <br>
+                                        <hr>
+                                    </div>
+                                <% }) %>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+>>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
         
         <% if (flag === "cu") { %>
 
             <div class="sp2-11">
+<<<<<<< HEAD
                 <a href="/booking/<%= user._id %>"><button><h2>Book an Appoinment</h2></button></a>
+=======
+                <a href="/booking/<%= user._id %> "><button><h2>Book an Appoinment</h2></button></a>
+>>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
             </div>
         <% } %> 
    </div>
@@ -127,6 +242,12 @@
     let about = document.getElementById("about")
     let edit = document.getElementById("edit")
     let schedule = document.getElementById("schedule")
+<<<<<<< HEAD
+=======
+
+    setWidth()
+    overallRating()
+>>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
 
     document.getElementById("edit").addEventListener("click", async() =>{
         if (description.style.display != "none" ){
@@ -151,10 +272,79 @@
         }
     })   
 
+<<<<<<< HEAD
+=======
+    // async function customerComments(acc){
+    //     var dataID = acc.getAttribute("data-id");
+    //     console.log(dataID);
+    //     // var changed = "Completed";
+    //     // const data = await axios.patch(`/api/v1/service-provider/rejectAppoinments`,{dataID, changed})
+    // }
+>>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
     customerComments(acc)
     document.getElementById("schedule").addEventListener("click", async() =>{
         location.assign(`/service_provider_schedule`)
-    })
+    });
+
+    function setWidth () {
+        const five = document.getElementById("five")
+        const four = document.getElementById("four")
+        const three = document.getElementById("three")
+        const two = document.getElementById("two")
+        const one = document.getElementById("one")
+
+        five.style.width = five.dataset.width + "%";
+        four.style.width = four.dataset.width + "%";
+        three.style.width = three.dataset.width + "%";
+        two.style.width = two.dataset.width + "%";
+        one.style.width = one.dataset.width + "%";
+
+
+    }
+
+    function overallRating () {
+        const avg = "<%- dpAvg %>"
+
+
+        const oneStar = document.getElementById("oneS");
+        const twoStar = document.getElementById("twoS");
+        const threeStar = document.getElementById("threeS");
+        const fourStar = document.getElementById("fourS");
+        const fiveStar = document.getElementById("fiveS");
+
+
+        if (avg < 1){
+            oneStar.style.color = "FFF";
+            twoStar.style.color = "FFF";
+            threeStar.style.color = "FFF";
+            fourStar.style.color = "FFF";
+            fiveStar.style.color = "FFF";
+        }else if (avg >= 1 & avg < 2) {
+            oneStar.style.color = "FFE234";
+        }else if (avg >= 2 & avg < 3){
+            oneStar.style.color = "FFE234";
+            twoStar.style.color = "FFE234";
+
+        }else if (avg >=3 & avg < 4){
+            oneStar.style.color = "FFE234";
+            twoStar.style.color = "FFE234";
+            threeStar.style.color = "FFE234";
+
+        }else if (avg >= 4 & avg < 5){
+            oneStar.style.color = "FFE234";
+            twoStar.style.color = "FFE234";
+            threeStar.style.color = "FFE234";
+            fourStar.style.color = "FFE234";
+
+        }else{
+            oneStar.style.color = "FFE234";
+            twoStar.style.color = "FFE234";
+            threeStar.style.color = "FFE234";
+            fourStar.style.color = "FFE234";
+            fiveStar.style.color = "FFE234";
+
+        }
+    }
 
 </script>
 </html>
