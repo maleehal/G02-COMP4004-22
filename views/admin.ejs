@@ -7,8 +7,10 @@
     <title>Admin</title>
 
     <link rel="stylesheet" href="/stylesheets/admin.css">
-
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,500,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0" />
+    
 </head>
 
 <body>
@@ -16,84 +18,81 @@
     <div class="main-1">
       <div class="sidebar">
         <div class="logo">
-             <img src="images/logo.png" alt="Logo">
-             <h1>Event Hustler</h1>             
+            <div> <img class="eventhustleimage" src="images/logo.png" alt="Logo"></div>
+            <div><h1>Event Hustler</h1>          </div>   
         </div>
 
         <div class="dashboard">
-            <span class="material-symbols-sharp">home</span>
-            <h2>Dashboard</h2>
+            <div class="material-symbols-sharp">home</div>
+           <div class="dashtxt"> <h2>Dashboard</h2></div>
         </div>
       </div>
     </div>
-    <div class="main-2">
-      <div class="main">
-        <div class="top">
-            <span class="material-symbols-sharp">notifications</span>
-            <img src="#" alt="profile pic">
-            <p>Jakob Calzoni</p>
-            <p>jakobcalzoni@gmail.com</p>
-        </div>
   
-
-
-      <div class="mainclass">
-        <div class="customers">
-            <div><h1>Customers</h1></div>
-            <div class ="material"><img class="imgsmallicon" src="/images/icon-park.png"></div>
-        </div>
-        <div class="countclass">
-        <div><p>Total</p></div>
-          <div> <p id="customerCount"></p></div> 
-          </div>
-          
-        
-
-        <div class="customers">
-           <div><h1>Providers</h1></div> 
-           <div class ="material"><img class="imgsmallicon" src="/images/mdi_customer.png"></div>
+   
+    <div class="main-2">
+      <div class="header">
+        <div class="main-2sub">
+          <div class="top">
+            <div class="material-symbols-outlined">notifications</div>
+            <div><img class="profileuser" src="images/user-admin.png" alt="profile pic"></div>
+            <div class="accountuser">
+            <div class="nameperson"><p>Jakob Calzoni</p></div>
+            <div class="emailperson"><p>jakobcalzoni@gmail.com</p></div>
             </div>
-            <div class="countclass">
-            <div><p>Total</p></div>
-           <div> <p id="serviceCount"></p></div>
+          </div>
         </div>
       </div>
+   
 
-      <div class="maintwo">
+   
+    <div class="customerprovidercount">
+      <div class="mainclass">
+        <div class="customersicon"><h3 class="h1">Customers</h3><img class="imgsmallicon" src="/images/icon-park.png"></div>
+        <div><h2>Total</h2></div>
+        <div> <h1 id="customerCount"></h1></div> 
+      </div>
+          
+      <div class="customers">
+        <div class="customersicon1"><h3 class="h1">Providers</h3><img class="imgsmallicon" src="/images/mdi_customer.png"></div> 
+        <div><h2>Total</h2></div>
+        <div> <h1 id="serviceCount"></h1></div>
+      </div>
+    </div>
+      
+      
+
+      
         <div class="tracking">
           <table>
             <tr>
-              <td>Service Providers with ongoing bookings:</td>
+              <td>Overall completed bookings :</td>
               <td id='SerProOngoingBooking'></td>
             </tr>
             <tr>
-              <td>Service Providers with no ongoing bookings:</td>
+              <td>Overall pending bookings :</td>
               <td id="SerProNoOngoingBooking"></td>
             </tr>
             <tr>
-              <td>Overall accepted orders:</td>
+              <td>Overall accepted orders :</td>
               <td id='acceptedOrders'></td>
             </tr>
             <tr>
-              <td>Overall rejected orders:</td>
+              <td>Overall rejected orders :</td>
               <td id='rejectedOrders'></td>
-            </tr>
-          </table>
-            <table>
+            </tr>            
               <tr>
-                <td>Service Providers with deactivated accounts:</td>
+                <td>Service Providers with deactivated accounts :</td>
                 <td id="RejectedCount"></td>
               </tr>
             </table>
-            
-            
         </div>
-        </div>
+    
         
       <div class="mainthree"> 
         <div class="authentication">
-            <h2>Authentication</h2>
-            <table>
+            <h2 class="Auth">Authentication</h2>
+            <center><table class="listproservtable">
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -105,14 +104,12 @@
                 <tbody id="pendingList">
                   <!-- The list of service provider cards will be inserted here -->
                 </tbody>
-              </table>
+              </table></center>
             
         </div>
-
-        
-            <div class="authentication">
-                <h2>List of all Service Providers</h2>
-                <table>
+        <div class="authentication">
+              <h2 class="Auth">List of all Service Providers</h2>
+                <center><table class="listproservtable sticky">
                     <thead>
                       <tr>
                         <th>ID</th>
@@ -123,11 +120,11 @@
                     <tbody id="serviceList">
                       <!-- The list of service provider cards will be inserted here -->
                     </tbody>
-                  </table>
+                  </table></center>
+                
         </div>
-        </div>
+      </div>
     </div>
-
   </div>
     
     
@@ -261,7 +258,11 @@ const displayContentCustomer = (providers) => {
   });
 
   document.querySelector("#serviceList").innerHTML = content;
+  
 };
+
+
+
 
 axios.get('/api/v1/admin/getallVerifiedproviders')
     .then(response => {
