@@ -64,48 +64,66 @@ const search = async (req,res)=>{
     res.render("search",{providers})
 }
 
-const displayProviderProfile = async (req,res) =>{ 
-    const token = req.cookies.jwt
-    jwt.verify(token, "ServiceProvider", async (error, decodedtoken)=>{
-        if(error){
-            console.log(error)
-        }else{
-            const id = decodedtoken.id
+
+
+
+const renderProfile = async (req,res) =>{
+    const {id} = req.params
+    const token = req.cookies.jwt;
+    jwt.verify(token,"ServiceProvider",async (error,decodedtoken)=>{
+        if (error){
+            const serviceProvider = await ServiceProvider.findById(id)
             const comments = await Comment.find({s_id:id})
-            res.render("service_provider", {
+            const flag = "cu"
+            res.render("service_provider",{
+                user:serviceProvider, flag,
                 comments:comments
-            })
-        }    
-    }) 
+            }) 
+            
+        }
+        else{
+            
+            if(typeof id == undefined){
+                const serviceProvider = await ServiceProvider.findById(decodedtoken.id)
+                const comments = await Comment.find({s_id:decodedtoken.id})
+                const flag = "sp"
+                res.render("service_provider",{user:serviceProvider, flag,comments})
+
+            }
+
+            else if(decodedtoken.id === id){
+                const serviceProvider = await ServiceProvider.findById(id)
+                const comments = await Comment.find({s_id:id})
+                const flag = "sp"
+                res.render("service_provider",{user:serviceProvider, flag,comments})
+            }
+            else{
+                const serviceProvider = await ServiceProvider.findById(id)
+                const comments = await Comment.find({s_id:id})
+                const flag = "cu"
+                res.render("service_provider",{user:serviceProvider, flag,comments})
+            }
+        }
+    })
+  
 }
 
-const displayProviderSchedule = async (req,res)=>{
-    const token = req.cookies.jwt
-    jwt.verify(token, "ServiceProvider", async (error, decodedtoken)=>{
-        if(error){
-            console.log(error)
-        }else{
-            const id = decodedtoken.id
-            const bookings = await Booking.find({s_id:id}).populate("c_id")
-            res.render("service_provider_schedule", {
-                bookings:bookings
-            })
-        }
-    })    
-};
+
+const viewRc = async (req,res) =>{ 
+    res.render("rc");  
+}
 
 const displaypageToCustomer = async (req,res) =>{
     const {id} = req.params
     // console.log(id)
     const serviceProvider = await ServiceProvider.findById(id)
-<<<<<<< HEAD
     const comments = await Comment.find({s_id:id})
     const flag = "cu"
     res.render("service_provider",{
         user:serviceProvider, flag,
         comments:comments
     }) 
-=======
+
     const comments = await Comment.find({s_id:id}).populate("c_id")
     const [onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg] = await ratingStats(id)
 
@@ -161,7 +179,6 @@ const getAverage = (ratingOne, ratingTwo, ratingThree, ratingFour, ratingFive, t
 
 const booking = async (req,res) =>{
     res.render("booking")
->>>>>>> 48f4559b3d768944add8e8ce81487a418e875c12
 }
 
 const customerSchedule = async (req,res) =>{
@@ -180,7 +197,6 @@ const customerSchedule = async (req,res) =>{
 }
 
 module.exports = {
-    displayStartup, displaySignupService, displaySignupCustomer, displayLoginService, displayLoginCustomer, displayHome, 
-    displayProviderProfile, displayProviderSchedule, displaypageToCustomer, customerSchedule, search, booking, 
-    displayPending, viewRc, displayAdmin
+    displayStartup, displaySignupService, displaySignupCustomer, displayLoginService, displayLoginCustomer, displayHome,  customerSchedule, search, booking, 
+    displayPending, viewRc, displayAdmin,renderProfile
 }
