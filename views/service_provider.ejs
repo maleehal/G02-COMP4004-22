@@ -74,50 +74,83 @@
 
                 <%= dpAvg %> 
             </p>
+            
             <div class="progressBar">
-                <p>5 Stars</p>
-                <div class="progress">
-                    <div id="five" class="progress-bar " role="progressbar" data-width="<%= fivestarPr %>" aria-valuemin="0" aria-valuemax="100">
-                      <span class="sr-only"></span>
-                    </div>
-                </div>
-                <p>(<%= fiveStar %>)</p>
+                <table>
+                    <tr>
+                        <td>5 Stars</td>
+                        <td><div class="progress">
+                            <div id="five" class="progress-bar " role="progressbar" data-width="<%= fivestarPr %>" aria-valuemin="0" aria-valuemax="100">
+                              <span class="sr-only"></span>
+                            </div>
+                        </div></td>
+                        <td>
+                            (<%= fiveStar %>)
+                        </td>
+                    </tr>
 
-                <p>4 Stars</p>
-                <div class="progress">
-                    <div id="four" class="progress-bar" role="progressbar" data-width="<%= fourstarPr %>" aria-valuemin="0" aria-valuemax="100">
-                      <span class="sr-only"></span>
-                    </div>
-                </div>
-                <p>(<%= fourStar %>)</p>
-
-                <p>3 Stars</p>
-                <div class="progress">
-                    <div id="three" class="progress-bar" role="progressbar" data-width="<%= threestarPr %>" aria-valuemin="0" aria-valuemax="100">
-                      <span class="sr-only"></span>
-                    </div>
-                </div>
-                <p>(<%= threeStar %>)</p>
-
-                <p>2 Stars</p>
-                <div class="progress">
-                    <div id="two" class="progress-bar" role="progressbar" data-width="<%= twostarPr %>" aria-valuemin="0" aria-valuemax="100">
-                      <span class="sr-only"></span>
-                    </div>
-                </div>
-                <p>(<%= twoStar %>)</p>
-
-                <p>1 Stars</p>
-                <div class="progress">
-                    <div id="one" class="progress-bar" role="progressbar" data-width="<%= onestarPr %> aria-valuemin="0" aria-valuemax="100">
-                      <span class="sr-only"></span>
-                    </div>
-                </div>
-                <p>(<%= oneStar %>)</p>
+                    <tr>
+                        <td>
+                            <p>4 Stars</p>
+                        </td>
+                        <td>
+                            <div class="progress">
+                                <div id="four" class="progress-bar" role="progressbar" data-width="<%= fourstarPr %>" aria-valuemin="0" aria-valuemax="100">
+                                  <span class="sr-only"></span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p>(<%= fourStar %>)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>3 Stars</p>
+                        </td>
+                        <td>
+                            <div class="progress">
+                                <div id="three" class="progress-bar" role="progressbar" data-width="<%= threestarPr %>" aria-valuemin="0" aria-valuemax="100">
+                                  <span class="sr-only"></span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p>(<%= threeStar %>)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>2 Stars</p>
+                        </td>
+                        <td>
+                            <div class="progress">
+                                <div id="two" class="progress-bar" role="progressbar" data-width="<%= twostarPr %>" aria-valuemin="0" aria-valuemax="100">
+                                  <span class="sr-only"></span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p>(<%= twoStar %>)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>1 Stars</p>
+                        </td>
+                        <td>
+                            <div class="progress">
+                                <div id="one" class="progress-bar" role="progressbar" data-width="<%= onestarPr %> aria-valuemin="0" aria-valuemax="100">
+                                  <span class="sr-only"></span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p>(<%= oneStar %>)</p>
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <% if (flag === "cu") { %>
-                <a href="/rc/<%= user._id %>"><button id="rate">Rate me</button></a>
-            <% } %> 
         </div>
     
         <div class="sp2-1" id="comment-section">

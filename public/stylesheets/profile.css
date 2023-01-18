@@ -9,6 +9,7 @@
 *{
     font-family: "Raleway";
     font-weight: bolder;
+    color: #000;
 }
 
 body{
@@ -30,13 +31,13 @@ body{
     padding: 10%;
     text-align: center;
     align-items: center;
-    background-color: #7D3C98;
+    background-color: #fff;
     margin-top: 5%;
     margin-bottom: 5%;
 
-    height: 55%;
-    width: 60%;
-    border-radius: 10%;
+    height: 24rem;
+    width: 30rem;
+    border-radius: 24px;
     color: antiquewhite; 
 }
 
@@ -77,6 +78,11 @@ body{
 
 .bt{
     text-align: center;
+}
+
+.rateBar {
+    display: flex;
+    justify-content: space-between;
 }
 
 /* service provider schedule */
@@ -223,9 +229,6 @@ body{
     overflow-y: scroll; 
 }
 
-/* .comment{
-    border-bottom: 2px solid black;
-} */
 .comment img{
     width: 20%;
 }
@@ -257,23 +260,27 @@ border-radius: 10px;
 .progressBar {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
-    /* font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; */
     font-size: 14px;
     line-height: 1.42857143;
     color: #000;
     box-sizing: border-box;
 }
 
+.progressBar table td {
+    text-align: center;
+    align-items: center;
+    padding: 0.5rem;
+}
+
 .progressBar .progress {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
-    /* font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; */
     font-size: 14px;
     line-height: 1.42857143;
     color: #000;
     box-sizing: border-box;
     height: 16px;
-    margin-bottom: 20px;
+    width: 25rem;
     overflow: hidden;
     background-color: #000;
     border-radius: 4px;
@@ -283,7 +290,6 @@ border-radius: 10px;
 .progressBar .progress .progress-bar {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
-    /* font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; */
     box-sizing: border-box;
     float: left;
     height: 100%;
@@ -297,22 +303,6 @@ border-radius: 10px;
 }
 
 .progressBar .progress .progress-bar .sr-only {
-    /* -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 12px;
-    line-height: 20px;
-    color: #fff;
-    text-align: center;
-    box-sizing: border-box;
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    border: 0; */
     display: none;
 }
 
