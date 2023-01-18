@@ -6,26 +6,36 @@ const jwt = require("jsonwebtoken")
 const cookieParser = require("cookie-parser")
 
 
-const displayStartup = async (req,res)=>{
+const displayStartup = (req,res)=>{
     res.render("startup")
 }
 
-const displaySignupService  = async (req,res)=>{
+const displaySignupService  = (req,res)=>{
     res.render("signup-service")
 }
 
-const displayLoginService = async (req,res)=>{
+const displayLoginService = (req,res)=>{
     res.render("login-service")
 }
-const displayPending = async (req,res) =>{
+const displayPending = (req,res) =>{
     res.render("pending")
 }
-const displaySignupCustomer = async (req,res) =>{
+const displaySignupCustomer = (req,res) =>{
     res.render("signup-customer")
 }
-const displayLoginCustomer = async (req,res) =>{
+const displayLoginCustomer = (req,res) =>{
     res.render("login-customer")
 }
+const viewRc = (req,res) =>{ 
+    res.render("rc");  
+}
+const booking = (req,res) =>{
+    res.render("booking")
+}
+const displayAdmin = (req,res)=>{
+    res.render("admin")
+}
+
 const displayHome = async (req,res)=>{
     try{
         const topThreeProviders = await ServiceProvider.find({}).sort({rating:-1}).limit(3)
@@ -82,10 +92,6 @@ const displayProviderSchedule = async (req,res)=>{
     })    
 };
 
-const viewRc = async (req,res) =>{ 
-    res.render("rc");  
-}
-
 const displaypageToCustomer = async (req,res) =>{
     const {id} = req.params
     const serviceProvider = await ServiceProvider.findById(id)
@@ -95,10 +101,6 @@ const displaypageToCustomer = async (req,res) =>{
         user:serviceProvider, flag,
         comments:comments
     }) 
-}
-
-const booking = async (req,res) =>{
-    res.render("booking")
 }
 
 const customerSchedule = async (req,res) =>{
@@ -114,10 +116,6 @@ const customerSchedule = async (req,res) =>{
             })
         }
     })
-}
-
-const displayAdmin = (req,res)=>{
-    res.render("admin")
 }
 
 module.exports = {

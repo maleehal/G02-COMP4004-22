@@ -4,6 +4,16 @@
     font-family: "Raleway";
     font-weight: bolder;
 }
+:root{
+    --tcolor: #7D3C98;
+    --bshadow: 10px;
+}
+body{
+    background: url(../images/admin.webp) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 2% black;
+}
 
 .customers{
     display: flex;
@@ -15,7 +25,7 @@
 .main{
     display: grid;
     grid-template-columns: 20% 80%;
-    border: 1px black solid;
+
 }
 
 
@@ -27,3 +37,145 @@
     display: flex;
 }
 
+/* new */
+.main-1{
+    background-color: var(--tcolor);
+}
+.sidebar1{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 15px;
+    margin-bottom: 100px;
+    color: white;
+}
+.logo{
+    margin: auto;
+}
+.symbol{
+    width: 70px;
+    height: auto;
+    border-radius: 100%;
+}
+.sidebar2{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: auto;
+    color: white;
+    width: 60%;
+}
+.home{
+    width: 30px;
+    height: auto;
+}
+.he{
+    display: grid;
+    grid-template-columns: 65% 10% 5% 20%;
+}
+.top{
+    margin: auto;
+}
+.top img{
+    width: 70px;
+    height: auto;
+    border-radius: 100%;
+}
+.mainclass-1{
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 60%;
+    margin: auto;   
+    margin-bottom: 100px;
+    margin-top: 70px;
+}
+.customers{
+    display: grid;
+    grid-template-columns: auto;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 4px 4px 4px 4px rgb(162, 170, 169);
+    background: linear-gradient(to right,#ffffff 0%,#ffffff 50%,#000000 50%,#000000 100%,);
+}
+.customers-1{
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 60%;
+    text-align: center;
+    padding-right: 15px;
+    
+}
+.c{
+    margin: auto;
+    margin-left: 120px;
+}
+.customers-2{
+    display: grid;
+    grid-template-columns: auto;
+    margin: auto;
+    text-align: center;
+}
+.tracking{
+    width: 58%;
+    margin: auto;
+    margin-bottom: 100px;
+    margin-top: 5px;
+    box-shadow: 4px 4px 4px 4px rgb(162, 170, 169);
+    background: linear-gradient(to right,#ffffff 0%,#ffffff 50%,#000000 50%,#000000 100%,);
+    
+}
+.maintwo table, .maintwo td{
+    font-size: 20px;
+    padding: 5px;
+    margin: auto;  
+
+}
+.authentication{
+    margin: 30px;
+}
+.mainthree{
+    margin: 0px;
+}
+.authentication table, .mainthree table{
+    margin: auto;
+}
+.authentication tr th{
+    border: 1px solid var(--tcolor);
+    background-color: var(--tcolor);
+    color: white;
+    font-size: 20px;
+    padding: 5px;
+}
+.authentication td{
+    font-size: 20px;
+    padding: 5px;
+    text-align: center;
+}
+.verify-provider-button{
+    background-color: green;
+    color: white;
+    font-size: 15px;
+    padding: 8px;
+    border: none;
+    border-radius: 20px; 
+}
+.verify-provider-button:hover{
+    font-size: 13px;
+    background-color: white;
+    color: green; 
+    border: green 1px solid;
+}
+
+.reject-provider-button{
+    background-color: red;
+    color: white;
+    font-size: 15px;
+    padding: 8px;
+    border: none;
+    border-radius: 20px;  
+}
+
+.reject-provider-button:hover{
+    font-size: 13px;
+    background-color: white;
+    color: red; 
+    border: red 1px solid;
+}

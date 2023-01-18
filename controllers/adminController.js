@@ -41,7 +41,7 @@ const getCounts = async (req,res) =>{
         const SerProOngoingBooking = await Booking.countDocuments({status:"Ongoing"})
         const SerProNoOngoingBooking = await Booking.countDocuments({status:"Pending"})
         res.send({providerCount , deactivatedUsers , customerCount , acceptedOrders , rejectedOrders , SerProOngoingBooking , SerProNoOngoingBooking})
-        
+    
     } catch (error) {
         console.log(error)
         

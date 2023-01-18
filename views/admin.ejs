@@ -14,121 +14,162 @@
 <body>
   <div class="main">
     <div class="main-1">
-      <div class="sidebar">
-        <div class="logo">
-             <img src="images/logo.png" alt="Logo">
-             <h1>Event Hustler</h1>             
-        </div>
-
-        <div class="dashboard">
+      <div class="sidebar1">
+        <div class="logo"><img class="symbol" src="images/logo.png" alt="Logo"></div>
+        <div class="logo"><h1>Event Hustler</h1></div>  
+      </div>
+      <div class="sidebar2">
+        <div class="logo"><img class="home" src="images/home.png" alt="Logo"></div>
+        <div class="logo"><h2>Dashboard</h2></div>  
+      </div>
+        <!-- <div class="dashboard">
             <span class="material-symbols-sharp">home</span>
             <h2>Dashboard</h2>
-        </div>
-      </div>
+        </div> -->  
     </div>
     <div class="main-2">
-      <div class="main">
-        <div class="top">
-            <span class="material-symbols-sharp">notifications</span>
-            <img src="#" alt="profile pic">
+      
+        <div class="he">
+          <div class="top"></div>
+          <div class="top"><span class="material-symbols-sharp">notifications</span></div>
+          <div class="top"><img class="search1" src="/images/image 2.png" alt="profile"></div>
+          <div class="top">
             <p>Jakob Calzoni</p>
             <p>jakobcalzoni@gmail.com</p>
-        </div>
-  
-
-
-      <div class="mainclass">
-        <div class="customers">
-            <div><h1>Customers</h1></div>
-            <div class ="material"><img class="imgsmallicon" src="/images/icon-park.png"></div>
-        </div>
-        <div class="countclass">
-        <div><p>Total</p></div>
-          <div> <p id="customerCount"></p></div> 
           </div>
-          
-        
-
-        <div class="customers">
-           <div><h1>Providers</h1></div> 
-           <div class ="material"><img class="imgsmallicon" src="/images/mdi_customer.png"></div>
-            </div>
-            <div class="countclass">
-            <div><p>Total</p></div>
-           <div> <p id="serviceCount"></p></div>
         </div>
-      </div>
+        
+      
 
-      <div class="maintwo">
-        <div class="tracking">
-          <table>
-            <tr>
-              <td>Service Providers with ongoing bookings:</td>
-              <td id='SerProOngoingBooking'></td>
-            </tr>
-            <tr>
-              <td>Service Providers with no ongoing bookings:</td>
-              <td id="SerProNoOngoingBooking"></td>
-            </tr>
-            <tr>
-              <td>Overall accepted orders:</td>
-              <td id='acceptedOrders'></td>
-            </tr>
-            <tr>
-              <td>Overall rejected orders:</td>
-              <td id='rejectedOrders'></td>
-            </tr>
-          </table>
+
+        <div class="mainclass">
+          <div class="mainclass-1">
+            <div class="customers">
+              <div class="customers-1">
+                <h2>Customers</h2>
+                <div class="c"><img class="imgsmallicon" src="/images/icon-park.png"></div>
+              </div>
+              <div class="customers-2">
+                <div><h2>Total</h2></div>
+              <div> <h1 id="customerCount"></h1></div>
+              </div>
+               
+          </div>
+
+          <!-- <div class="countclass">
+            <div><p>Total</p></div>
+            <div> <p id="customerCount"></p></div> 
+          </div> -->
+            
+          <div class="customers">
+            <div class="customers-1">
+              <h2>Providers</h2>
+              <div class="c"><img class="imgsmallicon" src="/images/mdi_customer.png"></div>
+            </div>
+            <div class="customers-2">
+              <div><h2>Total</h2></div>
+              <div> <h1 id="serviceCount"></h1></div>
+            </div>
+            <!-- <div><h1>Providers</h1></div> 
+            <div class ="material"><img class="imgsmallicon" src="/images/mdi_customer.png"></div>
+            <div><h1>Total</h1></div>
+            <div> <h1 id="serviceCount"></h1></div>
+          </div> -->
+
+          <!-- <div class="countclass">
+            <div><p>Total</p></div>
+            <div> <p id="serviceCount"></p></div>
+          </div> -->
+
+        </div>
+          </div>
+
+          
+
+        <div class="maintwo">
+          <div class="tracking">
             <table>
               <tr>
-                <td>Service Providers with deactivated accounts:</td>
-                <td id="RejectedCount"></td>
+                <td>Service Providers with ongoing bookings</td>
+                <td style="width: 20%;"></td>
+                <td>:</td>
+                <td id='SerProOngoingBooking' style="text-align: right;"></td>
+              </tr>
+              <tr>
+                <td>Service Providers with no ongoing bookings</td>
+                <td style="width: 20%;"></td>
+                <td>:</td>
+                <td id="SerProNoOngoingBooking" style="text-align: right;"></td>
+              </tr>
+              <tr>
+                <td>Overall accepted orders</td>
+                <td style="width: 20%;"></td>
+                <td>:</td>
+                <td id='acceptedOrders' style="text-align: right;"></td>
+              </tr>
+              <tr>
+                <td>Overall rejected orders</td>
+                <td style="width: 20%;"></td>
+                <td>:</td>
+                <td id='rejectedOrders' style="text-align: right;"></td>
+              </tr>
+              <tr>
+                <td>Service Providers with deactivated accounts</td>
+                <td style="width: 20%;"></td>
+                <td>:</td>
+                <td id="RejectedCount" style="text-align: right;"></td>
               </tr>
             </table>
-            
-            
+              <!-- <table>
+                <tr>
+                  <td>Service Providers with deactivated accounts</td>
+                  <td>:</td>
+                  <td id="RejectedCount"></td>
+                </tr>
+              </table> -->
+              
+              
+          </div>
         </div>
-        </div>
-        
-      <div class="mainthree"> 
+
         <div class="authentication">
-            <h2>Authentication</h2>
-            <table>
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Service Provider Name</th>
-                    <th>Accept</th>
-                    <th>Reject</th>
-                  </tr>
-                </thead>
-                <tbody id="pendingList">
-                  <!-- The list of service provider cards will be inserted here -->
-                </tbody>
-              </table>
-            
-        </div>
-
-        
-            <div class="authentication">
-                <h2>List of all Service Providers</h2>
-                <table>
-                    <thead>
-                      <tr>
-                        <th>ID</th>
-                        <th>Service Provider Name</th>
-                        <th>Disable Account</th>
-                      </tr>
-                    </thead>
-                    <tbody id="serviceList">
-                      <!-- The list of service provider cards will be inserted here -->
-                    </tbody>
-                  </table>
-        </div>
-        </div>
-    </div>
-
+          <h2>Authentication</h2>
+          <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Service Provider Name</th>
+                  <th>Accept</th>
+                  <th>Reject</th>
+                </tr>
+              </thead>
+              <tbody id="pendingList">
+                
+                <!-- The list of service provider cards will be inserted here -->
+              </tbody>
+            </table>
+          
+      </div>
+      <div class="authentication">
+        <h2>List of all Service Providers</h2>
+        <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Service Provider Name</th>
+                <th>Disable Account</th>
+              </tr>
+            </thead>
+            <tbody id="serviceList">
+              <!-- The list of service provider cards will be inserted here -->
+            </tbody>
+          </table>
+      </div>
   </div>
+
+</div>
+          
+        
     
     
       
@@ -151,8 +192,11 @@ const displayContent = (providers) => {
       <tr>
         <td>${provider._id}</td>
         <td>${provider.name}</td>
-        <td><button class="verify-provider-button" onclick="acceptProvider(this)" data-id="${provider._id}" >Verify Provider</button></td>
-        <td><button class="reject-provider-button" onclick="rejectProvider(this)" data-id="${provider._id}" >Reject Provider</button></td>
+        <td><button class="verify-provider-button" onclick="acceptProvider(this)" data-id="${provider._id}" >Verify</button></td>
+        <td><button class="reject-provider-button" onclick="rejectProvider(this)" data-id="${provider._id}" >Reject</button></td>
+      </tr>
+      <tr>
+        <td colspan="4"><hr></td>
       </tr>
     `;
   });
@@ -236,15 +280,7 @@ try {
         // Handle the error, for example by showing an error message to the user
     }
 });
-
-
-
 */
-
-
-
-
-
 
 //function to get Verified users into table rows(authentication)
 const displayContentCustomer = (providers) => {
@@ -256,6 +292,9 @@ const displayContentCustomer = (providers) => {
         <td>${provider._id}</td>
         <td>${provider.name}</td>
         <td><button class="reject-provider-button" onclick="rejectProvider(this)" data-id="${provider._id}" >Reject Provider</button></td>
+      </tr>
+      <tr>
+        <td colspan="3"><hr></td>
       </tr>
     `;
   });
