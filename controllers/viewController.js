@@ -49,11 +49,11 @@ const search = async (req,res)=>{
     let providers
     if (filter){
       providers  = await ServiceProvider.find({expertise:`${filter}`})
-      console.log(providers)
+      
     }
     if (searchkey){
       providers = await ServiceProvider.find({username:new RegExp(`^${searchkey}`,"i")})
-      console.log(providers)
+      
     }
     res.render("search",{providers})
 }
@@ -162,7 +162,7 @@ const providerSchedule = async (req,res) =>{
             console.log(error)
         }else{
             const id = decodedtoken.id
-            const bookings = await Booking.find({s_id:id}).populate("c_id")
+            const bookings = await Booking.find({s_id:id}).sort({date:-1}).populate("c_id")
             res.render("service_provider_schedule", {
                 bookings:bookings
             })
@@ -177,8 +177,7 @@ const customerSchedule = async (req,res) =>{
             console.log(error)
         }else{
             const id = decodedtoken.id
-            const bookings = await Booking.find({c_id:id}).populate("s_id")
-            console.log(bookings)
+            const bookings = await Booking.find({c_id:id}).sort({date:-1}).populate("s_id")
             res.render("customer_schedule", {
                 bookings:bookings
             })

@@ -189,7 +189,7 @@ body{
 .main{
     display: grid;
     grid-template-columns: 20% 80%;
-    height: 250vh;
+    height: 270vh;
 }
 
 
@@ -251,7 +251,7 @@ body{
 .listproservtable{
     width: 850px;
     position: relative;
-    top: 70px;
+
     border-collapse: collapse;
     text-align: center;
 }
@@ -297,13 +297,16 @@ body{
 /*table design*/
 
 .authentication{
+
     position: relative;
     top: 100px;
-    left: 30px; 
-    height: 490px;
+    right: 30px;
+    margin: 100px;
+    height: fit-content;
     width: 1120px;
     background-color: white;
     border-radius: 20px;
+    padding: 1%;
 }
 
 .Auth{

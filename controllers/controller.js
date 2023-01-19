@@ -21,6 +21,7 @@ const customerSignIn = async (req,res) =>{
         const customer = await Customer.create({name,email,telephone,username,password})
         res.status(201).send({task:"succesful",user:customer})
     } catch (error) {
+        console.log(error)
         const errors = handleErrors(error);
         res.status(400).send({errors}) 
     }
@@ -107,6 +108,7 @@ const createComment = async (req,res) =>{
             else{ 
                 const c_id = decodeedToken.id
                 await Comment.create({s_id,c_id,rating,content})
+
             }
         })
     } catch (error) {

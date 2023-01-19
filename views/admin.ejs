@@ -91,7 +91,7 @@
         
       <div class="mainthree"> 
         <div class="authentication">
-            <h2 class="Auth">Authentication</h2>
+            <h2>Authentication</h2>
             <center><table class="listproservtable">
                 <thead>
                   <tr>
@@ -108,8 +108,8 @@
             
         </div>
         <div class="authentication">
-              <h2 class="Auth">List of all Service Providers</h2>
-                <center><table class="listproservtable sticky">
+              <h2 >List of all Service Providers</h2>
+                <center><table class="listproservtable">
                     <thead>
                       <tr>
                         <th>ID</th>
@@ -155,9 +155,7 @@ const displayContent = (providers) => {
         <td><button class="verify-provider-button" onclick="acceptProvider(this)" data-id="${provider._id}" >Verify</button></td>
         <td><button class="reject-provider-button" onclick="rejectProvider(this)" data-id="${provider._id}" >Reject</button></td>
       </tr>
-      <tr>
-        <td colspan="4"><hr></td>
-      </tr>
+ 
     `;
   });
 
@@ -253,9 +251,7 @@ const displayContentCustomer = (providers) => {
         <td>${provider.name}</td>
         <td><button class="reject-provider-button" onclick="rejectProvider(this)" data-id="${provider._id}" >Reject Provider</button></td>
       </tr>
-      <tr>
-        <td colspan="3"><hr></td>
-      </tr>
+  
     `;
   });
 

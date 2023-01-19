@@ -28,7 +28,6 @@ const customerSchema = new mongoose.Schema({
     password:{
         required:[true,"this field is required"],
         type:String,
-        minlength:[6 ,"minimum 6 characters required"]
     },
     profilepic:{
         type:Buffer,
