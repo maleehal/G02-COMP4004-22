@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="post"></div>
+        <!-- <div class="post"></div> -->
         <div class="heading">
             <div class="text">Please rate the Service Provider</div>
         </div>
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="btn">
-                    </a><button type="button">Next</button>
+                    </a><button type="button">Submit</button>
                 </div>
             </form>
         </div>
@@ -43,9 +43,9 @@
     <script>
         const param = window.location.href
         const require = param.split("/")
-        const s_id = require[require.length - 1]
+        // const s_id = require[require.length - 1]
         const btn = document.querySelector("button");
-        const widget = document.querySelector(".star-widget");
+        // const widget = document.querySelector(".star-widget");
         // const comments = document.querySelector(".post");
         const comment = document.getElementById("comment")
 
@@ -59,18 +59,15 @@
                      rating = radiobBtn.dataset.rate
                 }   
             });
-try {
-    const newComment = await axios.post("/api/v1/customer/comment", {rating, content,s_id})
-    
-} catch (error) {
-    console.log(error)
-    
-}
-            
+            try {
+                const newComment = await axios.post("/api/v1/customer/comment", {rating, content,s_id})
+                
+            } catch (error) {
+                console.log(error)
+            }
+            location.assign(`/customer_schedule`)      
         })
-
-
-
+        
     </script>
 </body>
 </html>

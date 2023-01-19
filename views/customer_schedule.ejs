@@ -71,7 +71,7 @@
                         <td><%= booking.event %></td>
                         <td><%= booking.date.toLocaleDateString(); %></td> 
                         <td><%= booking.date.toLocaleTimeString(); %></td> 
-                        <td><button id="rating"><a href="/rc/<%= booking.s_id._id %>">Rate</a></button></td>
+                        <td><button id="rating"><a id="link" href="/rc/<%= booking.s_id._id %>">Rate</a></button></td>
                     </tr>  
                 <% } %>
             <% }) %> 
