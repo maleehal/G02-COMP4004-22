@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken")
 const Customer = require("../models/customer");
-const serviceProvider = require("../models/service-provider");
 const ServiceProvider = require("../models/service-provider");
 
 
@@ -37,6 +36,24 @@ const serviceProviderAuth =  (req,res,next) =>{
         res.redirect("/startup")
     }
 }
+
+const AdminAuth =  (req,res,next) =>{
+    const token = req.cookies.jwt;
+    if (token){
+        jwt.verify(token,"Admin", async (err,decodeedToken)=>{
+            if(err){
+                res.redirect("/api/v1/service-provider/login")
+            }
+            else{
+                next()
+            }
+        })
+    }
+    else{
+        res.redirect("/startup")
+    }
+}
+
 
 
 const checkUser =  (req,res,next) =>{
