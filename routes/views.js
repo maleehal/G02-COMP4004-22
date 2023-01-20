@@ -1,6 +1,6 @@
 const express = require("express")
 
-const {checkUser, serviceProviderAuth, customerAuth} = require("../middleware/middleware")
+const {checkUser, serviceProviderAuth, customerAuth , AdminAuth} = require("../middleware/middleware")
 
 const  {
     displayStartup, displaySignupService, displayPending, displaySignupCustomer, 
@@ -23,7 +23,7 @@ router.route("/service_provider/:id").get(renderProfile)
 router.route("/service_provider_schedule").get(checkUser, serviceProviderAuth, providerSchedule)
 router.route("/booking/:id").get(checkUser,booking)
 router.route("/customer_schedule").get(checkUser, customerAuth, customerSchedule)
-router.route("/admin").get(displayAdmin)
+router.route("/admin").get(AdminAuth,displayAdmin)
 router.route("/admin-login").get(displayAdminLogin)
 
 module.exports = router

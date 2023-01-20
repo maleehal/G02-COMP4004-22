@@ -42,7 +42,7 @@ const AdminAuth =  (req,res,next) =>{
     if (token){
         jwt.verify(token,"Admin", async (err,decodeedToken)=>{
             if(err){
-                res.redirect("/api/v1/service-provider/login")
+                res.redirect("/admin-login")
             }
             else{
                 next()
@@ -50,7 +50,7 @@ const AdminAuth =  (req,res,next) =>{
         })
     }
     else{
-        res.redirect("/startup")
+        res.redirect("/admin-login")
     }
 }
 
@@ -97,4 +97,4 @@ const checkUser =  (req,res,next) =>{
 }
 
 
-module.exports = {serviceProviderAuth,customerAuth,checkUser}
+module.exports = {serviceProviderAuth,customerAuth,checkUser,AdminAuth}
