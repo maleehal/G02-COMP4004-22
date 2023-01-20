@@ -78,6 +78,17 @@ nav{
     height: auto;
 }
 
+.noCustomer img{
+    width: 50%;
+    margin-left: 130%;
+}
+
+.noCustomer h2{
+    width: 80%;
+    margin-left: 115%;
+    text-align: center;
+}
+
 .provider-name{
     font-size: 24px;
     font-weight: bolder;

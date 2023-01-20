@@ -2,7 +2,6 @@
 
 :root{
     --tcolor: #7D3C98;
-    --bshadow: 10px;
 }
 
 *{
@@ -54,7 +53,7 @@ body{
 
 .sp1{
     display: grid;
-    grid-template-columns: 5% 15% 60% 5% 5% 10%;
+    grid-template-columns: 5% 5% 15% 60% 5% 10%;
     align-items: center;
 }
 

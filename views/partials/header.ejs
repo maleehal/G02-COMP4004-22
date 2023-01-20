@@ -2,15 +2,11 @@
 <link rel="stylesheet" href="/stylesheets/general.css">
 
 <div class="sp1">
-    <div class="sp1-1">
-        
-        <button class="home"><a href="/"><img class="logo" src="/images/logo.png" alt="logo"></a></button></div>
+        <div class="sp1-1"><%- include('functions'); %></div>
+        <div class="sp1-1"><button class="home"><a href="/"><img class="logo" src="/images/logo.png" alt="logo"></a></button></div>
         <div class="sp1-1"><h1>Event Hustler</h1></div>
         <div class="sp1-1"></div>
-        <div class="sp1-1"></div>
-        <div class="sp1-1">
-        <button class="search-btn"><a href="/search"><img class="search1" src="/images/search.jpg" alt="search"></a></button>
-    </div>
+        <div class="sp1-1"><button class="search-btn"><a href="/search"><img class="search1" src="/images/search.jpg" alt="search"></a></button></div>
     <div class="sp1-1">
         <% if (flag === "sp") { %>
             <button class="item-4"><a href="/service_provider/<%= user._id %> "><img class="search1" src="/images/image 2.png" alt="profile"></a></button> 
@@ -19,6 +15,5 @@
         <% } %>
     </div>
 </div>
-
 <hr>
 

@@ -18,18 +18,9 @@
 
 <header>
     <%- include('partials/header'); %>
-    <%- include('partials/functions'); %>
 </header>
 
 <body>
-    
-    
-    <!-- <nav>
-        <div class="item-1"> <img src="/images/logo 1.png" alt=""></div>
-        <div class="item-2"><h1>Event Hustler</h1> </div>
-        <div class="item-3" ><button class="search-btn"><i class ="fa fa-search" style="font-size: 28px;"></i></button></div>
-        <div class="item-4"> <img src="/images/image 2.png" alt="" srcset=""></div>
-    </nav> -->
 
     <input type="text" name="" id="seach-bar" placeholder="Search...">
     <button id="search-btn" >search</button>
@@ -39,18 +30,12 @@
         <option value="Corporate">Corporate</option>
         <option value="Religous">Religous</option>
         <option value="Festive">Festive</option>
-       
     </select>
 
-    <div class="customer-list" id="customer-list">
-        
-        
-    </div>
-
-    
-    
+    <div class="customer-list" id="customer-list"></div>
     
 </body>
+
 <footer>
     <%- include('partials/footer'); %>
 </footer>
@@ -65,11 +50,10 @@
     
 
     filterBar.addEventListener("change",async () =>{
-        const filterKey= filterBar.value;
+        const filterKey = filterBar.value;
         if (filterKey === "all"){
             displayContent(serviceProviders)
             return
-
         }
         const filteredArray = serviceProviders.filter((provider) =>{
             if(provider.expertise.includes(filterKey)){
@@ -79,33 +63,35 @@
         displayContent(filteredArray)
         // location.assign(`/search?filter=${filterKey}`)
         // const response = await axios.get(`/search?filter=${filterKey}`)
-
-    
     })
 
     const displayContent = (array) =>{
         const filteredProviders = [...array]
-        let Content = filteredProviders.map((provider) =>{
+        let Content;
+        if (filteredProviders.length === 0 ){
+            Content =`
+                <div class="noCustomer">
+                    <img src="/images/noproviders.png" alt="no providers">
+                    <h2>Sorry!!! <br> We couldn't find any results</h2>
+                </div>`
+        }
+        else{
+            Content = filteredProviders.map((provider) =>{
             return content = `
-                          <div class="customer-cards">
-                           
-                            <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
-                            <div class="provider-info">
-                                <div class="provider-name">${provider.name}</div> 
-                                <div class="provider-email">${provider.email}</div>
-
-                                <button> <a href="/service_provider/${provider._id}">View provider</a></button>
-
-                            </div>
-                           
-                            <div class="rating"><span class="fa fa-star"></span>${provider.rating}</div> 
-
-                        </div>`
+                <div class="customer-cards">
+                
+                <div class="provider-profile"><img src="/images/image 2.png" alt=""></div>
+                <div class="provider-info">
+                    <div class="provider-name">${provider.name}</div> 
+                    <div class="provider-email">${provider.email}</div>
+                    <button> <a href="/service_provider/${provider._id}">View provider</a></button>
+                </div>
+                <div class="rating"><span class="fa fa-star"></span>${provider.rating}</div> 
+            </div>`
 
         }).join("")
+        }       
         customerList.innerHTML = Content
-
-
     }
 
 
@@ -113,10 +99,8 @@
     const getAllCustomers = async () =>{
         const {data:{providers}} = await axios.get("/api/v1/service-provider/getallproviders")
         serviceProviders = [...providers]
-        console.log(serviceProviders)
         displayContent(serviceProviders)
     }
-    
     getAllCustomers()
 
     searchBtn.addEventListener("click", async () =>{
@@ -126,9 +110,7 @@
             if(provider.name.toLowerCase().startsWith(searchKey)){
                 return provider
             }
-
         })
-       
         displayContent(searchResults)
         }
         // const response = await axios.get(`/api/v1/customer/search?searchkey=${searchKey}`)
