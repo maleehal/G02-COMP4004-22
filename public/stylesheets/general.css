@@ -131,6 +131,7 @@ span:hover {
     background: var(--tcolor);
     color: var(--color-white);
     height: 12rem;
+    width: 100%;
 }
 
 .foot{
@@ -155,6 +156,7 @@ span:hover {
 
 .foot-1 h1 {
     margin: 0;
+    color: var(--color-white);
 }
 
 .foot-2{
@@ -164,6 +166,7 @@ span:hover {
 
 .foot-2 ul li {
     padding-bottom: .3rem;
+    color: var(--color-white);
 }
 
 .foot-2 .number {

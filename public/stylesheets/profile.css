@@ -2,8 +2,15 @@
 
 :root{
     --tcolor: #9702B0;
+    --color-secondary: #C89DCC;
     --bshadow: 10px;
-    --rating-color: #FFE234;
+    --color-background: #FAF9F6;
+    --color-white: #fff;
+    --color-black: #000;
+    --color-grey: #CCCCCC;
+    --color-pink: #E4008D;
+    --color-star: #FFE234;
+
 }
 
 *{
@@ -70,11 +77,10 @@ border-radius: 10px;
 
 .sp3{
     display: grid;
-    grid-template-columns: 7% 7% 7% 7% 66% 7% 5% 7%;
+    grid-template-columns: 6rem 10rem auto;
     align-items: center;
-    padding-left: 5%;
-    padding-right: 5%;  
     font-size: 25px;  
+    padding: 0 0 0 5rem;
 }
 
 .sp3-1 p{
@@ -82,7 +88,7 @@ border-radius: 10px;
     background-color: var(--tcolor);
     color: white;
     border-radius: 24px;
-    text-align: center;
+    text-align: center; 
 }
 .item, #edit{
     background: none;
@@ -91,8 +97,8 @@ border-radius: 10px;
 
 
 .item img{
-    width: 80px;
-    height: auto;  
+    width: 5rem;
+    height: 5rem;  
 }
 
 .bt img{
@@ -195,33 +201,44 @@ border-radius: 10px;
     padding: 10px;
     transition: 0.3s;
     font-size: 20px;
-    border-radius: 10%;
+    border-radius: 12px;
     margin: 1%;  
 }
 
 .spb1 button:hover{
-    background-color: white;
-    color: var(--tcolor);
+    background-color: var(--color-pink);
+    color: var(--color-white);
 }
         
 .spb1 button.active{
-    background-color: white;
-    color: var(--tcolor);
-    border: var(--tcolor) 1px solid;
+    background-color: var(--color-pink);
+    color: var(--color-white);
 }
 
 .spb2 table{
-    border: var(--tcolor) 1px solid;
+    /* border: var(--tcolor) 1px solid; */
     width: 90%;
     height: auto;
     font-size: 20px;
     text-align: center;
     margin: auto;
+    border-collapse: collapse;
 }
 
-.spb2 table td, .spb2 table th{
-    border: var(--tcolor) 1px solid;
+.spb2 table, .spb2 tr {
+    border: 1px solid var(--color-secondary);
+  }
+
+.spb2 table th{
+    /* border: var(--tcolor) 1px solid; */
     padding: 7px;
+    background: var(--tcolor);
+    color: var(--color-white);
+}
+
+.spb2 table tr{
+    background: var(--color-background);
+    color: var(--color-black);
 }
 
 #accept, #complete{
@@ -304,11 +321,12 @@ border-radius: 10px;
     margin-left: 40%; 
 }
 #rating{
-    background-color: yellow;
+    background: var(--color-star);
     font-size: 15px;
     padding: 8px;
     border: none;
-    border-radius: 20px; 
+    border-radius: 12px; 
+    width: 4rem;
 }
 
 #comment-section{
