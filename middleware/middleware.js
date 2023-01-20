@@ -8,7 +8,7 @@ const customerAuth = (req,res,next) =>{
     if (token){
         jwt.verify(token,"Customer",(err,decodeedToken)=>{
             if(err){
-                res.redirect("/startup")
+                res.redirect("/login-customer")
             }
             else{
                 next()
@@ -25,7 +25,7 @@ const serviceProviderAuth =  (req,res,next) =>{
     if (token){
         jwt.verify(token,"ServiceProvider", async (err,decodeedToken)=>{
             if(err){
-                res.redirect("/api/v1/service-provider/login")
+                res.redirect("/login-service")
             }
             else{
                 next()
@@ -66,7 +66,7 @@ const checkUser =  (req,res,next) =>{
             if(err){
                 jwt.verify(token,"ServiceProvider",async(err,decodeedToken)=>{
                     if(err){
-                        res.redirect("/api/v1/customer/login")
+                        res.redirect("/startup")
                         res.locals.user = null;
                         res.locals.user= user;
                         next()
@@ -90,6 +90,7 @@ const checkUser =  (req,res,next) =>{
         })
     }
     else{
+        res.redirect("/startup")
         res.locals.user = null;
         next()
     } 
