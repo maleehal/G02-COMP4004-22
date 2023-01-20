@@ -70,13 +70,20 @@ border-radius: 10px;
 
 .sp3{
     display: grid;
-    grid-template-columns: 7% 7% 80% 7% 5% 7%;
+    grid-template-columns: 7% 7% 7% 7% 66% 7% 5% 7%;
     align-items: center;
     padding-left: 5%;
     padding-right: 5%;  
     font-size: 25px;  
 }
 
+.sp3-1 p{
+    font-size: 15px;
+    background-color: var(--tcolor);
+    color: white;
+    border-radius: 24px;
+    text-align: center;
+}
 .item, #edit{
     background: none;
     border: none;

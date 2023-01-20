@@ -17,7 +17,6 @@
 
 <header>
     <%- include('partials/header'); %>
-    <%- include('partials/functions'); %>
 </header>
 
 <body>
@@ -30,6 +29,11 @@
             <%= user.telephone %> 
         </div>
         <div class="sp3-1"></div>
+        <div class="sp3-1">
+            <% user.expertise.forEach(element => { %>
+             <p><%= element %> </p>
+            <% }) %>  
+        </div>
         <div class="sp3-1"></div>
         <div class="sp3-1">
             <div class="bt">
