@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="login-admin">
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="">
+
+        <label for="name">password:</label>
+        <input type="password" name="password" id="">
+
+        <button type="submit">submit</button>
+        <button type="reset">reset</button>
+        
+    </form>
+    
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+    const form = document.getElementById("login-admin")
+    form.addEventListener("submit",async (e) =>{
+        e.preventDefault()
+        const name = form.name.value;
+        const password = form.password.value;
+        console.log(name,password)
+        try {
+            const {data} = await axios.post("/api/v1/admin/login",{name,password})
+            if(data.admin){
+                location.assign("/admin")
+            }
+            if (data.errors){
+                
+                if (data.errors.verification === "Account not Verified"){
+                    console.log("came here")
+                    location.assign("/pending")
+                }
+                alert("Username or password is incorrect");
+            }           
+        } catch (error) {
+            console.log(error)
+            
+            
+        }
+
+    })
+
+
+</script>
+</html>

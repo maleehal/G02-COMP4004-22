@@ -8,6 +8,12 @@ const cookieParser = require("cookie-parser")
 const displayStartup = (req,res)=>{
     res.render("startup")
 }
+const search = (req,res) =>{
+    res.render("search")
+}
+const displayAdminLogin= (req,res)=>{
+    res.render("adminLogin")
+}
 
 const displaySignupService  = (req,res)=>{
     res.render("signup-service")
@@ -44,19 +50,7 @@ const displayHome = async (req,res)=>{
     }
 }
 
-const search = async (req,res)=>{
-    const {searchkey , filter} = req.query;
-    let providers
-    if (filter){
-      providers  = await ServiceProvider.find({expertise:`${filter}`})
-      
-    }
-    if (searchkey){
-      providers = await ServiceProvider.find({username:new RegExp(`^${searchkey}`,"i")})
-      
-    }
-    res.render("search",{providers})
-}
+
 
 const renderProfile = async (req,res) =>{
     const {id} = req.params
@@ -186,6 +180,7 @@ const customerSchedule = async (req,res) =>{
 }
 
 module.exports = {
+    displayAdminLogin,
     displayStartup, displaySignupService, displaySignupCustomer, displayLoginService, displayLoginCustomer, 
-    displayHome,  customerSchedule, search, booking, displayPending, viewRc, displayAdmin,renderProfile, providerSchedule
+    displayHome,search,  customerSchedule, booking, displayPending, viewRc, displayAdmin,renderProfile, providerSchedule
 }

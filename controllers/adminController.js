@@ -2,6 +2,19 @@
 const ServiceProvider = require("../models/service-provider")
 const Customer = require("../models/customer")
 const Booking = require("../models/booking")
+const Admin = require("../models/admin")
+const jwt = require("jsonwebtoken")
+const cookieParser = require("cookie-parser")
+
+const maxAge = 3 * 24  * 60 * 60
+
+
+const createToken = (id) => {
+    return jwt.sign({ id },"Admin",{
+        expiresIn:maxAge
+    })
+}
+
 
 
 
@@ -48,6 +61,42 @@ const getCounts = async (req,res) =>{
     }
 }
 
+const handleErrors = (error) =>{
+    let errors = { name: "",password : "" }
+    if(error.message === 'Incorrect username'){
+        errors.name = "that email is not registered"
+    }
+    if(error.message === 'Incorrect passsword'){
+        errors.password = "incorrect passsword"
+    }
+    if (error.code === 11000){
+        errors.name = 'This username has already been Registered'
+        return errors
+    }
+    if (error.message.includes("user validation failed")){
+        Object.values(error.errors).forEach(({properties}) => {
+            errors[properties.path] = properties.message;
+        })
+    }
+    return errors;
+}
+const AdminLogIn = async (req,res) =>{
+    console.log("admin")
+    const {name , password} = req.body
+    try {
+        const admin = await Admin.login(name,password)
+        console.log(admin)
+        const token = createToken(admin._id)
+        res.cookie("jwt",token,{httpOnly:true,maxAge:maxAge*1000})
+        res.status(200).send({admin:admin._id})  
+    } catch (error) {
+        console.log(error)
+        const errors = handleErrors(error)
+        res.status(400).send({errors}) 
+    }   
+}
+
+
 //status to rejected
 const rejectProvider = async (req,res) =>{
     const {id} = req.body
@@ -80,4 +129,4 @@ const getServiceProviderVerified = async (req,res) =>{
 
 
 
-module.exports = { rejectProvider ,getCounts , verifyProvider , getPendingProviders, getServiceProviderVerified }
+module.exports = { rejectProvider ,getCounts , verifyProvider , getPendingProviders, getServiceProviderVerified,AdminLogIn }
