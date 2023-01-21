@@ -123,7 +123,10 @@ const ratingStats = async (id) => {
         const fourstarPr = getPercentage(fourStar, totalRating)
         const fivestarPr = getPercentage(fiveStar, totalRating)
 
+        const date = await Comment.find({s_id:id}).select("date")
+
         const dpAvg = getAverage(oneStar, twoStar, threeStar, fourStar, fiveStar, totalRating)
+
 
         return [onestarPr, twostarPr, threestarPr, fourstarPr, fivestarPr, totalRating, oneStar, twoStar, threeStar, fourStar, fiveStar, dpAvg]
 

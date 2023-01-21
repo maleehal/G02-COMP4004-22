@@ -2,8 +2,18 @@
 
 :root{
     --tcolor: #9702B0;
-    --bshadow: 10px;
-    --rating-color: #FFE234;
+    --color-secondary: #C89DCC;
+    --bshadow: 8px 8px red;
+    --color-background: #FAF9F6;
+    --color-white: #fff;
+    --color-black: #000;
+    --color-grey: #CCCCCC;
+    --color-pink: #E4008D;
+    --color-star: #FFE234;
+    --color-green: #48C548;
+    --color-red: #CD4B4B;
+    
+
 }
 
 *{
@@ -40,9 +50,11 @@ border-radius: 10px;
 /* service provider */
 .sp2{
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    margin-left: 8%;
+    justify-items: center;
+    gap: 0.5rem;
+    margin: 0 5rem 0 5rem;
 }
 .sp2-1{
     padding: 10%;
@@ -57,6 +69,12 @@ border-radius: 10px;
     width: 30rem;
     border-radius: 24px;
     color: antiquewhite; 
+
+    box-shadow: 4px 4px #e0e0e0;
+}
+
+.sp2-1 .sp2head {
+    text-align: left;
 }
 
 #description, #about{
@@ -70,19 +88,21 @@ border-radius: 10px;
 
 .sp3{
     display: grid;
-    grid-template-columns: 7% 7% 7% 7% 66% 7% 5% 7%;
+    grid-template-columns: 6rem 12rem 8rem auto 5rem;
     align-items: center;
-    padding-left: 5%;
-    padding-right: 5%;  
     font-size: 25px;  
+    padding: 0 0 0 5rem;
 }
 
 .sp3-1 p{
     font-size: 15px;
     background-color: var(--tcolor);
     color: white;
-    border-radius: 24px;
-    text-align: center;
+    border-radius: 4px;
+    text-align: center; 
+    width: 6rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 .item, #edit{
     background: none;
@@ -91,8 +111,8 @@ border-radius: 10px;
 
 
 .item img{
-    width: 80px;
-    height: auto;  
+    width: 5rem;
+    height: 5rem;  
 }
 
 .bt img{
@@ -105,12 +125,19 @@ border-radius: 10px;
     text-align: center;
 }
 .sp2-11{ 
-    margin-left: 190px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 .sp2-11 button{
-    border-radius: 10%;
+    border-radius: 12px;
     border: none;
-    background-color: var(--tcolor);
+    background-color: var(--tcolor); 
+}
+
+.sp2-11 button:hover {
+    background: var(--color-pink);
+    cursor: pointer;
 }
 
 .sp2-11 button h2 {
@@ -136,16 +163,6 @@ border-radius: 10px;
 .pic img{
     width: 150px;
     
-}
-#comment-section{
-    background-color: white;
-    color: black;
-    border-radius: none;
-    overflow-y: scroll; 
-}
-
-.comment img{
-    width: 20%;
 }
 
 .pic img:hover{
@@ -195,97 +212,139 @@ border-radius: 10px;
     padding: 10px;
     transition: 0.3s;
     font-size: 20px;
-    border-radius: 10%;
+    border-radius: 12px;
     margin: 1%;  
 }
 
 .spb1 button:hover{
-    background-color: white;
-    color: var(--tcolor);
+    background-color: var(--color-pink);
+    color: var(--color-white);
 }
         
 .spb1 button.active{
-    background-color: white;
-    color: var(--tcolor);
-    border: var(--tcolor) 1px solid;
+    background-color: var(--color-pink);
+    color: var(--color-white);
 }
 
 .spb2 table{
-    border: var(--tcolor) 1px solid;
+    /* border: var(--tcolor) 1px solid; */
     width: 90%;
     height: auto;
     font-size: 20px;
     text-align: center;
     margin: auto;
+    border-collapse: collapse;
 }
 
-.spb2 table td, .spb2 table th{
-    border: var(--tcolor) 1px solid;
+.spb2 table, .spb2 tr {
+    border: 1px solid var(--color-secondary);
+  }
+
+.spb2 table th{
+    /* border: var(--tcolor) 1px solid; */
+    padding: 7px;
+    background: var(--tcolor);
+    color: var(--color-white);
+}
+
+.spb2 table tr{
+    background: var(--color-background);
+    color: var(--color-black);
+}
+
+.spb2 table tr td {
     padding: 7px;
 }
 
+
+
 #accept, #complete{
-    background-color: green;
+    background-color: var(--color-green);
     color: white;
     font-size: 15px;
     padding: 8px;
     border: none;
-    border-radius: 20px;  
+    border-radius: 24px;  
+    width: 5rem;
 }
 
 #accept:hover, #complete:hover{
-    font-size: 13px;
+    font-size: 14px;
     background-color: white;
-    color: green; 
-    border: green 1px solid;
+    color: var(--color-green); 
+    border: var(--color-green) 1px solid;
 }
 
 #reject{
-    background-color: red;
+    background-color: var(--color-red);
     color: white;
     font-size: 15px;
     padding: 8px;
     border: none;
-    border-radius: 20px;  
+    border-radius: 24px;  
+    width: 5rem;
 }
 
 #reject:hover{
     font-size: 13px;
     background-color: white;
-    color: red; 
-    border: red 1px solid;
+    color: var(--color-red); 
+    border: var(--color-red) 1px solid;
 }
 
 /* booking */
 #don{
-    width: 60%;
-    border: 2px solid var(--tcolor);
-    margin-left: 20%;
-    margin-right: 10%;
-    padding: 10px;
+    width: 40%;
+    height: auto;
+    border: 2px solid var(--color-secondary);
+    margin-left: auto;
+    margin-right: auto;
+    /* padding: 10px; */
     font-size: 20px;
+    background: var(--color-white);
+    border-radius: 24px;
 }
+
+#don h2 {
+    margin: 2rem 0 0 2rem;
+}
+
+#don .inputs {
+    margin: 1.5rem 0 0 25%;
+    display: flex;
+    flex-direction: column;
+}
+
 #don input[type=text], #don input[type=number], #don input[type=datetime-local]{
-    width: 100%;
+    width: 60%;
     padding: 12px;
-    border: 1px solid var(--tcolor);
+    border: 1px solid var(--color-secondary);
+    outline: 0;
     border-radius: 10px;
     box-sizing: border-box;
-    margin-top: 5px;
-    margin-bottom: 15px;    
-} comment
-
-#don #conf, #don #back{
-    padding: 12px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 15%;
-    font-size: 20px;
-    background-color: var(--tcolor);
-    color: white;
-    border: 1px solid aliceblue;
-    width: 30%;
+    margin-top: .8rem;
 }
+
+#don input[type=text]:focus, #don input[type=number]:focus, #don input[type=datetime-local]:focus {
+    border: 1px solid var(--color-pink);
+}
+
+#don input[type=text]::placeholder, #don input[type=number]::placeholder, #don input[type=datetime-local]::placeholder {
+    color: var(--color-grey);
+}
+
+#don .amt {
+    margin-top: 2rem;
+}
+
+.bottom {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 2rem;
+}
+
 #result{
     border: 2px black solid;
     border-style: dotted;
@@ -296,19 +355,37 @@ border-radius: 10px;
 
 #makeAppoinment{
     background-color: var(--tcolor);
-    border: none;
+    border: 1px solid var(--tcolor);
     color: white;
     padding: 2%;
     border-radius: 24px;
-    margin-top: 5px;
-    margin-left: 40%; 
 }
+
+#makeAppoinment:hover {
+    background-color: var(--color-white);
+    border: 1px solid var(--tcolor);
+    color: var(--tcolor);
+    cursor: pointer;
+}
+
 #rating{
-    background-color: yellow;
+    background: var(--color-star);
     font-size: 15px;
     padding: 8px;
-    border: none;
-    border-radius: 20px; 
+    border: 1px solid var(--color-star);
+    border-radius: 12px; 
+    height: 2rem;
+    width: 4rem;
+}
+
+#rating a {
+    text-decoration: none;
+}
+
+#rating:hover {
+    background: var(--color-white);
+    border: 1px solid var(--color-star);
+    transition: .5s all ease;
 }
 
 #comment-section{
@@ -319,13 +396,40 @@ border-radius: 10px;
 }
 
 .comment img{
-    width: 20%;
+    width: 4rem;
+    height: 4rem;
 }
 
 .comment-header{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: left;
+    gap: 16px;
+    width: 400px;
+    padding-left: 2rem;
+}
+
+.comment-header .comment-info{
+    text-align: left;
+}
+
+.comment-header .comment-info .username  {
+    padding-left: 10px;
+    margin: 0;
+    font-weight: 1200;
+}
+
+.comment-header .comment-info .date {
+    font-size: 1rem;
+}
+
+.comment-header .comment-info .date span {
+    color: var(--color-star);
+    font-size: 1.1rem;
+}
+
+.comment-content {
+    text-align: left;
 }
 
 /* width */
@@ -386,7 +490,7 @@ border-radius: 10px;
     line-height: 16px;
     color: #fff;
     text-align: center;
-    background-color: var(--rating-color);
+    background-color: var(--color-star);
     box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
     transition: width .6s ease;
 }
@@ -395,4 +499,22 @@ border-radius: 10px;
     display: none;
 }
 
+.date .rvalue {
+    padding-left: 4px;
+}
+
+.date .sep {
+    padding-left: 12px;
+}
+
+.date .rdate {
+    padding-left: 12px;
+}
+
+.date {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+}
 

@@ -3,46 +3,25 @@
 
 :root{
     --tcolor: #9702B0;
+    --color-secondary: #C89DCC;
+    --color-border: rgba(151, 2, 176, 20%);
+    --bshadow: 10px;
+    --color-background: #FAF9F6;
+    --color-white: #fff;
+    --color-black: #000;
+    --color-grey: #CCCCCC;
+    --color-star: #FFE234;
+    --color-btnHover: rgba(151, 2, 176, 60%);
 }
 
 *{
     font-family: "Raleway";
     font-weight: bolder;
 }
-nav{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 2px;
-    height:auto;
-    border-bottom: 2px solid black;
-}
-
-.item-3{
-    margin-left: auto;
-    width: fit-content;
-}
 
 a{
     color:white;
-}
-
-.item-2{
-    margin-left: 24px;
-}
-
-.item-1 img{
-    width: 100%;
-    height: auto;
-}
-
-.search-btn{
-    background-color: var(--tcolor);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    height: 50px;
-    width: 50px; 
+    text-decoration: none;
 }
 
 .box-container-2{
@@ -69,15 +48,6 @@ a{
     border-radius: 20px;
 }
 
-.providerprofile{
-    background-color: var(--tcolor);
-    border: none;
-    color: white;
-    padding: 4%;
-    border-radius: 24px;
-    font-size: 18px;
-}
-
 .heading-2{
     color: black;
     font-size: larger;
@@ -91,14 +61,8 @@ a{
 }
 
 /*section 2 css */
-
-.container-1 h1{
-    position: relative;
-    top:25px;
-}
   
 .container-sub-1{
-    border: 2px solid black;
     display:flex;
     justify-content: center;
     justify-content: space-around;
@@ -108,42 +72,63 @@ a{
 }
  
 .container-sub-1-1{
-padding: 1%;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-box-shadow: 4px 4px 4px 4px rgb(162, 170, 169);
-background: linear-gradient(to right,#ffffff 0%,#ffffff 50%,#000000 50%,#000000 100%,);
-width: 250px;
-height: 400px;
-border-radius: 20px;
-gap: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 4px 4px 4px 4px rgb(162, 170, 169);
+    background: var(--color-white);
+    width: 250px;
+    height: 400px;
+    border-radius: 24px;
 }
 
 .container-sub-1-1 img{
-width: 60%;
-height: auto;
+    width: 8rem;
+    height: auto;
+    padding-top: 3rem;
+
+}
+
+.container-sub-1-1 div span {
+    color: var(--color-star);
+    font-size: 1.5rem;
+}
+
+.providerprofile{
+    background-color: var(--tcolor);
+    width: 100%;
+    border: none;
+    color: white;
+    height: 4rem;
+    border-radius: 0 0 24px 24px;
+    font-size: 18px;
 }
 
 /*section 3 css*/
+.container {
+    background: var(--color-secondary);
+    overflow-y: hidden;
+}
+
 .container-sub{
     width: auto;
     height: 400px;
     display:flex;
-    background-color: palevioletred;
-    overflow:auto;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 2rem;
 }
 
 .container-sub div{
-   
-    padding: 3%;
-    border: 2px solid;
+    border: none;
     width: 500px;
     height: 300px;
+    padding-right: 2rem;
 }
 
 .partyimg{
     height: 300px; 
     width: 500px;
+    border-radius: 24px;
 }
