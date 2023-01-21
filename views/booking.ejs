@@ -23,22 +23,27 @@
     <form id="don" action="get">
         <h2>Appoinment</h2>
 
-        <label for="f_event">Event</label>
-        <input type="text" id="f_event" required name="f_event" size="50" maxlength="75">
-    
-        <br>
 
-        <label for="a_date">Date</label>
-        <input type="datetime-local" id="a_date" required name="a_date">
+        <div class="inputs">
+            <label for="f_event">Event</label>
+            <input type="text" id="f_event" required name="f_event" size="50" maxlength="75" placeholder="Enter event name...">  
+        </div>
 
-        <br>
+        <div class="inputs">
+            <label for="a_date">Date</label>
+            <input type="datetime-local" id="a_date" required name="a_date">
+        </div>
 
-        <label for="amount" style="color: red;">* 2000 LKR will be charged for the appoinment</label>
+        <div class="inputs">
+            <!-- <label class="amt" for="amount" style="color: red;">* 2000 LKR will be charged for the appoinment</label> -->
+            <label for="">Amount</label>
+            <input type="text" class="amt" value="Rs. 2000/=" readonly>
+        </div>
 
-        <br>
-        
-        <button id="makeAppoinment" type="submit">Make Appoinment</button>
-        
+        <div class="bottom">
+            <button id="makeAppoinment" type="submit">Make Appoinment</button>
+        </div>
+
     </form>
 </body>
 

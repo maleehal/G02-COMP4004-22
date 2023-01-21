@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
@@ -29,11 +30,6 @@
             <%= user.telephone %> 
         </div>
         <div class="sp3-1"></div>
-        <div class="sp3-1">
-            <% user.expertise.forEach(element => { %>
-             <p><%= element %> </p>
-            <% }) %>  
-        </div>
         <div class="sp3-1"></div>
         <div class="sp3-1">
             <div class="bt">
@@ -55,6 +51,12 @@
             <h2>About Provider</h2>
             <p id="about">
                 <%=user.about%>
+                <p class="sp2head"><%=user.name%> can plan events for:</p>
+                <div class="sp3-1">
+                    <% user.expertise.forEach(element => { %>
+                     <p><%= element %> </p>
+                    <% }) %>  
+                </div>
             </p>
         </div>
         <div class="sp2-1">
@@ -167,40 +169,27 @@
             <div class="comment">
                 <div class="comment-header">
                     <div> 
-                        <% if (flag === "sp") { %>
-                            <% comments.forEach(comment => { %>
-                                <% if (comments.length === 0) { %>
-                                    <div class="comment">
-                                        happy
+            
+                        <% comments.forEach(comment => { %>
+
+                            <div class="comment">
+                                <div class="comment-header">
+                                    <img src="/images/image 2.png" alt="">
+                                    <div class="comment-info">
+                                        <h2 class="username"><%= comment.c_id.username %> </h2> 
+                                        <h2 class="date"> 
+                                            <span class="fa fa-star"> </span> <p class="rvalue"><%= comment.rating  %></p> <p class="sep">|</p>  <p class="rdate"><%= comment.date.toLocaleDateString(); %></p>
+                                        </h2>
+                                        
                                     </div>
-                                <% } else { %>
-                                    <div class="comment">
-                                        <div class="comment-header">
-                                            <img src="/images/image 2.png" alt="">
-                                            <div><h2><%= comment.c_id.username %> </h2> 
-                                              <h2><%= comment.rating %> </h2>  
-                                            </div>
-                                        </div>
-                                        <div class="comment-content"><%= comment.content %> </div> <br>
-                                    </div>
-                                 
-                                <% } %>
-                                
-                            <% }) %>
-                        <% } else { %>
-                                <% comments.forEach(comment => { %>
-                                    <div class="comment">
-                                        <div class="comment-header">
-                                            <img src="/images/image 2.png" alt="">
-                                            <div><h2><%= comment.c_id.username %> </h2> 
-                                              <h2><%= comment.rating %> </h2>  
-                                            </div>
-                                        </div>
-                                        <div class="comment-content"><%= comment.content %> </div> <br>
-                                        <hr>
-                                    </div>
-                                <% }) %>
-                        <% } %>
+                                </div>
+                                <div class="comment-content"><%= comment.content %> </div> <br>
+                                <hr>
+                            </div>
+
+                        <% }) %>
+               
+
                     </div>
                 </div>
             </div>
@@ -230,6 +219,8 @@
 
     setWidth()
     overallRating()
+
+
 
 
     document.getElementById("edit").addEventListener("click", async() =>{
@@ -272,7 +263,6 @@
         three.style.width = three.dataset.width + "%";
         two.style.width = two.dataset.width + "%";
         one.style.width = one.dataset.width + "%";
-
 
     }
 
