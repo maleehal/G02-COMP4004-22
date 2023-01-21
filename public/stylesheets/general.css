@@ -58,7 +58,6 @@ span:hover {
 .sidenav a:hover {
     color: var(--color-white);
     text-decoration: underline;
-    background: var(--color-pink);
 }
 
 .sidenav .closebtn:hover {
@@ -128,16 +127,21 @@ span:hover {
 
 /* footer */
 
+.bigfoot{
+    background: var(--tcolor);
+}
+
 .footer {
     background: var(--tcolor);
     color: var(--color-white);
-    height: 12rem;
+    height: auto;
     width: 100%;
 }
 
 .foot{
     display: grid;
     grid-template-columns: auto auto auto;
+    /* grid-template-rows: auto auto; */
     padding-top: 2rem;
     align-items: center;  
 }
@@ -172,4 +176,11 @@ span:hover {
 
 .foot-2 .number {
     color: var(--color-grey);
+}
+
+.bigfoot p {
+    text-align: center;
+    margin-left: 5rem;
+    padding-bottom: 1rem;
+    color: var(--color-white);
 }

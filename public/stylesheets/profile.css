@@ -3,7 +3,7 @@
 :root{
     --tcolor: #9702B0;
     --color-secondary: #C89DCC;
-    --bshadow: 10px;
+    --bshadow: 8px 8px red;
     --color-background: #FAF9F6;
     --color-white: #fff;
     --color-black: #000;
@@ -12,7 +12,7 @@
     --color-star: #FFE234;
     --color-green: #48C548;
     --color-red: #CD4B4B;
-    ;
+    
 
 }
 
@@ -69,6 +69,8 @@ border-radius: 10px;
     width: 30rem;
     border-radius: 24px;
     color: antiquewhite; 
+
+    box-shadow: 4px 4px #e0e0e0;
 }
 
 .sp2-1 .sp2head {
@@ -250,6 +252,12 @@ border-radius: 10px;
     color: var(--color-black);
 }
 
+.spb2 table tr td {
+    padding: 7px;
+}
+
+
+
 #accept, #complete{
     background-color: var(--color-green);
     color: white;
@@ -366,6 +374,7 @@ border-radius: 10px;
     padding: 8px;
     border: 1px solid var(--color-star);
     border-radius: 12px; 
+    height: 2rem;
     width: 4rem;
 }
 
@@ -376,10 +385,7 @@ border-radius: 10px;
 #rating:hover {
     background: var(--color-white);
     border: 1px solid var(--color-star);
-}
-
-#rating a:hover {
-    color: var(--color-star);
+    transition: .5s all ease;
 }
 
 #comment-section{
@@ -405,11 +411,11 @@ border-radius: 10px;
 
 .comment-header .comment-info{
     text-align: left;
-    padding-bottom: 8px;
 }
 
 .comment-header .comment-info .username  {
     padding-left: 10px;
+    margin: 0;
     font-weight: 1200;
 }
 
@@ -493,4 +499,22 @@ border-radius: 10px;
     display: none;
 }
 
+.date .rvalue {
+    padding-left: 4px;
+}
+
+.date .sep {
+    padding-left: 12px;
+}
+
+.date .rdate {
+    padding-left: 12px;
+}
+
+.date {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+}
 
