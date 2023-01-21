@@ -8,6 +8,7 @@
     --color-white: #fff;
     --color-black: #000;
     --color-grey: #CCCCCC;
+    --color-pink: #E4008D;
 }
 
 *{
@@ -51,13 +52,13 @@ span:hover {
     font-size: 25px;
     color: var(--color-white);
     display: block;
-    transition: ease-in-out 0.3s;
+    transition: ease-in 0.1s;
 }
 
 .sidenav a:hover {
-    color: var(--color-black);
+    color: var(--color-white);
     text-decoration: underline;
-    background: var(--color-secondary);
+    background: var(--color-pink);
 }
 
 .sidenav .closebtn:hover {

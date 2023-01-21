@@ -30,6 +30,7 @@
             <%= user.telephone %> 
         </div>
         <div class="sp3-1"></div>
+        <div class="sp3-1"></div>
         <div class="sp3-1">
             <div class="bt">
                 <% if (flag === "sp") { %>
@@ -50,6 +51,7 @@
             <h2>About Provider</h2>
             <p id="about">
                 <%=user.about%>
+                <p class="sp2head"><%=user.name%> can plan events for:</p>
                 <div class="sp3-1">
                     <% user.expertise.forEach(element => { %>
                      <p><%= element %> </p>
