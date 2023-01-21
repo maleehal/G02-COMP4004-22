@@ -30,7 +30,7 @@ app.use('/api/v1/admin', adminRoute)
 
 const port = 3000
 
-
+// Defaultly reject unexcepted appoinments
 setInterval(defaultRejectAppoinment = async () => {
 
   const pendingDates = await Booking.find({status:"Pending"}).select("date")
@@ -49,7 +49,7 @@ setInterval(defaultRejectAppoinment = async () => {
   }
 }, 10000);
 
-
+// Defaultly reject not completed appoinments
 setInterval(defaultCompletedAppoinment = async () => {
   const ongoingDates = await Booking.find({status:"Ongoing"}).select("date")
   data = [...ongoingDates]

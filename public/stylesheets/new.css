@@ -36,7 +36,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 97vh;
     
 }
 
@@ -48,17 +48,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 97vh;
 }
 
 .flex-box-container{
   display: flex;
+  width: 50%;
   height:auto;
 }
 
 img{
   width: 50%;
   height: auto;
+  border-radius: 100%;
 }
 
 .button-container{
@@ -88,6 +90,7 @@ button {
   justify-content: center;
   flex-direction: column;
 }
+
 
 .form-section{
   flex: 68%;

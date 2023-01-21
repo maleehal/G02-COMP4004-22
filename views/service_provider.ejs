@@ -169,15 +169,23 @@
                     <div> 
                         <% if (flag === "sp") { %>
                             <% comments.forEach(comment => { %>
-                                <div class="comment">
-                                    <div class="comment-header">
-                                        <img src="/images/image 2.png" alt="">
-                                        <div><h2><%= comment.c_id.username %> </h2> 
-                                          <h2><%= comment.rating %> </h2>  
-                                        </div>
+                                <% if (comments.length === 0) { %>
+                                    <div class="comment">
+                                        happy
                                     </div>
-                                    <div class="comment-content"><%= comment.content %> </div> <br>
-                                </div>
+                                <% } else { %>
+                                    <div class="comment">
+                                        <div class="comment-header">
+                                            <img src="/images/image 2.png" alt="">
+                                            <div><h2><%= comment.c_id.username %> </h2> 
+                                              <h2><%= comment.rating %> </h2>  
+                                            </div>
+                                        </div>
+                                        <div class="comment-content"><%= comment.content %> </div> <br>
+                                    </div>
+                                 
+                                <% } %>
+                                
                             <% }) %>
                         <% } else { %>
                                 <% comments.forEach(comment => { %>

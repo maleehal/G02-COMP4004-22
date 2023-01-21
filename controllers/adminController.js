@@ -15,8 +15,7 @@ const createToken = (id) => {
     })
 }
 
-
-
+//getting the list of pending service providers
 
 const getPendingProviders = async (req,res) =>{
     
@@ -29,6 +28,8 @@ const getPendingProviders = async (req,res) =>{
         
     }
 }
+
+//Accepts a service provider and makes him available to serve customers
 
 const verifyProvider = async (req,res) =>{
     const {id} = req.body
@@ -60,6 +61,7 @@ const getCounts = async (req,res) =>{
         
     }
 }
+// A error handler to display backend errors to the front end
 
 const handleErrors = (error) =>{
     let errors = { name: "",password : "" }
@@ -80,6 +82,8 @@ const handleErrors = (error) =>{
     }
     return errors;
 }
+
+//Lets the admin login with his credentials and authroizes him
 const AdminLogIn = async (req,res) =>{
     console.log("admin")
     const {name , password} = req.body
@@ -96,7 +100,6 @@ const AdminLogIn = async (req,res) =>{
     }   
 }
 
-
 //status to rejected
 const rejectProvider = async (req,res) =>{
     const {id} = req.body
@@ -112,7 +115,6 @@ const rejectProvider = async (req,res) =>{
     }
 }
 
-
 //getting all status verified users
 const getServiceProviderVerified = async (req,res) =>{
     
@@ -126,7 +128,21 @@ const getServiceProviderVerified = async (req,res) =>{
     }
 }
 
+//logs the admin out 
 
+const LogoutUser = async (req,res)=>{
+    const token = req.cookies.jwt
+    jwt.verify(token,"Admin", (err,decodeedToken)=>{
+        if(err){
+            res.cookie("jwt","",{maxAge:1})
+            res.redirect("/startup")
+        }
+        else{
+            res.cookie("jwt","",{maxAge:1})
+            res.redirect("/admin-login")
+        }
+    })
+    
+}
 
-
-module.exports = { rejectProvider ,getCounts , verifyProvider , getPendingProviders, getServiceProviderVerified,AdminLogIn }
+module.exports = { rejectProvider ,getCounts , verifyProvider , getPendingProviders, getServiceProviderVerified, AdminLogIn, LogoutUser }

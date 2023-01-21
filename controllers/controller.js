@@ -29,17 +29,10 @@ const customerSignIn = async (req,res) =>{
 
 const LogoutUser = async (req,res)=>{
     const token = req.cookies.jwt
-    jwt.verify(token,"Customer", (err,decodeedToken)=>{
-        if(err){
-            res.cookie("jwt","",{maxAge:1})
-            res.redirect("/login-service")
-        }
-        else{
-            res.cookie("jwt","",{maxAge:1})
-            res.redirect("/login-customer")
-        }
-    })
-    
+    jwt.verify(token,"", (err,decodeedToken)=>{
+        res.cookie("jwt","",{maxAge:1})
+        res.redirect("/startup")
+    })  
 }
 
 const customerLogIn = async (req,res) =>{

@@ -22,24 +22,10 @@ body{
     --tcolor: #7D3C98;
     --bshadow: 10px;
 }
-body{
-    background: url(../images/admin.webp) ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 2% black;
-}
-
-
-
-
-
 
 .sidebar{
     height:100%;
 }
-
-
-
 
 .logo{
     display: flex;
@@ -65,13 +51,16 @@ body{
     position: relative;
     left: 65px;
     top:100px;
+    
 }
 
-.dashtxt{
+.dashtxt, .dashtxt a{
     position: relative;
     left: 10px;
     color: white;
+    text-decoration: none;
 }
+
 
 .material-symbols-sharp{
     position: relative;
@@ -138,9 +127,6 @@ body{
   display: flex;
 }
 
-
-
-
 .mainclass{
     display: flex;
     flex-direction: column;
@@ -161,26 +147,17 @@ body{
     width: 400px;
     background-color: white;
     border-radius: 20px;
-    
     display: inline-block;
     padding: 1%;
-    position: relative;
-    
+    position: relative;   
 }
-    
-    
 
 .customerprovidercount{
     display: flex;
     padding: 1%;
     text-align: center;
     position: relative;
-   
-
-     left: 180px;
-    /*
-     left: 20vh; */
-    
+    left: 180px;
 }
 
 
@@ -199,17 +176,16 @@ body{
 }
 
 /*2nd flex box*/
-.tracking{
-    
+.tracking{  
     height: 250px;
     width: 870px;
     background-color: white;
     border-radius: 20px;
     position: relative; 
-     left: 170px;  
-    top: 30px;
-    
+    left: 170px;  
+    top: 30px; 
 }
+
 .tracking table{
     border-spacing: 0 15px;
     padding-top: 3%;
@@ -240,18 +216,15 @@ body{
 #RejectedCount{
     position: relative;
     left: 350px;
-
 }
 
 
 
 /*table design*/
 
-
 .listproservtable{
     width: 850px;
     position: relative;
-
     border-collapse: collapse;
     text-align: center;
 }
@@ -263,15 +236,12 @@ body{
 
 .listproservtable thead tr{
     background-color: #9702B0;
-    color: white;
-    
+    color: white;    
 }
-
-
 
 .listproservtable, th, td {
     border-spacing: 0px;
-  }
+}
 
 .listproservtable tbody tr{
     background-color: #FAF9F6;
@@ -312,7 +282,7 @@ body{
 .Auth{
     position: relative;
     top: 30px;
-     left: 30px; 
+    left: 30px; 
 }
 
 .main-2{
@@ -325,10 +295,93 @@ background-color: #FAF9F6;
 
 .accountuser{
    position:relative;
-   /* left: 20px; */
 }
-
 
 .material-symbols-sharp{
     color: #FAF9F6;
+}
+
+/* Admin Log-In */
+.adminLogIn{
+
+    background-color: var(--tcolor);
+    background: url(../images/adminlogin.jpg) ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.container{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    width: 50%;
+    margin: auto;
+    margin-top: 190px;
+    padding: 10px;
+    border-radius: 24px;
+    
+}
+.container1{
+    text-align: center;
+    background-color: white;
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+    padding: 10px;
+    box-shadow: 5px 10px #EDD4FE;
+    
+}
+.container1 img{
+    border-radius: 100%;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+.container2{
+    padding: 20px;
+    padding-left: 30px;
+    background: rgba(255, 255, 255, 0.30);;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+    padding: 10px;
+    box-shadow: 5px 10px #EDD4FE;  
+}
+
+.container2 label, .container2 h1{
+    margin-left: 40px;  
+}
+
+#login-admin input[type=text], #login-admin input[type=password]{
+    width: 80%;
+    padding: 12px;
+    border: 1px solid var(--tcolor);
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-bottom: 15px;    
+    margin-left: 40px;
+    box-shadow: 4px 4px 4px 4px rgb(162, 170, 169);
+    background: linear-gradient(to right,#ffffff 0%,#ffffff 50%,#000000 50%,#000000 100%,); 
+}
+
+#login-admin button[type=submit]{
+    width: 80%;
+    padding: 12px;
+    font-size: 20px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-bottom: 15px;    
+    margin-left: 40px;
+    background-color: var(--tcolor);
+    color: white;
+    border: 1px solid aliceblue;
+    box-shadow: 4px 4px 4px 4px rgb(162, 170, 169);
+    background: linear-gradient(to right,#ffffff 0%,#ffffff 50%,#000000 50%,#000000 100%,);   
+}
+
+#login-admin button[type=submit]:hover{
+    background-color: white;
+    color: var(--tcolor);
+    border: 1px solid var(--tcolor);
 }

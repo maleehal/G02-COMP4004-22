@@ -14,11 +14,9 @@ const search = (req,res) =>{
 const displayAdminLogin= (req,res)=>{
     res.render("adminLogin")
 }
-
 const displaySignupService  = (req,res)=>{
     res.render("signup-service")
 }
-
 const displayLoginService = (req,res)=>{
     res.render("login-service")
 }
@@ -49,8 +47,6 @@ const displayHome = async (req,res)=>{
         console.log("error")
     }
 }
-
-
 
 const renderProfile = async (req,res) =>{
     const {id} = req.params
