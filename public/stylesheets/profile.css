@@ -123,7 +123,8 @@ border-radius: 10px;
     text-align: center;
 }
 .sp2-11{ 
-    margin-left: 190px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .sp2-11 button{
@@ -285,34 +286,57 @@ border-radius: 10px;
 
 /* booking */
 #don{
-    width: 60%;
-    border: 2px solid var(--tcolor);
-    margin-left: 20%;
-    margin-right: 10%;
-    padding: 10px;
+    width: 40%;
+    height: auto;
+    border: 2px solid var(--color-secondary);
+    margin-left: auto;
+    margin-right: auto;
+    /* padding: 10px; */
     font-size: 20px;
-}
-#don input[type=text], #don input[type=number], #don input[type=datetime-local]{
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--tcolor);
-    border-radius: 10px;
-    box-sizing: border-box;
-    margin-top: 5px;
-    margin-bottom: 15px;    
+    background: var(--color-white);
+    border-radius: 24px;
 }
 
-#don #conf, #don #back{
-    padding: 12px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 15%;
-    font-size: 20px;
-    background-color: var(--tcolor);
-    color: white;
-    border: 1px solid aliceblue;
-    width: 30%;
+#don h2 {
+    margin: 2rem 0 0 2rem;
 }
+
+#don .inputs {
+    margin: 1.5rem 0 0 25%;
+    display: flex;
+    flex-direction: column;
+}
+
+#don input[type=text], #don input[type=number], #don input[type=datetime-local]{
+    width: 60%;
+    padding: 12px;
+    border: 1px solid var(--color-secondary);
+    outline: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-top: .8rem;
+}
+
+#don input[type=text]:focus, #don input[type=number]:focus, #don input[type=datetime-local]:focus {
+    border: 1px solid var(--color-pink);
+}
+
+#don input[type=text]::placeholder, #don input[type=number]::placeholder, #don input[type=datetime-local]::placeholder {
+    color: var(--color-grey);
+}
+
+#don .amt {
+    margin-top: 2rem;
+}
+
+.bottom {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 2rem;
+}
+
 #result{
     border: 2px black solid;
     border-style: dotted;
@@ -323,20 +347,39 @@ border-radius: 10px;
 
 #makeAppoinment{
     background-color: var(--tcolor);
-    border: none;
+    border: 1px solid var(--tcolor);
     color: white;
     padding: 2%;
     border-radius: 24px;
-    margin-top: 5px;
-    margin-left: 40%; 
 }
+
+#makeAppoinment:hover {
+    background-color: var(--color-white);
+    border: 1px solid var(--tcolor);
+    color: var(--tcolor);
+    cursor: pointer;
+}
+
 #rating{
     background: var(--color-star);
     font-size: 15px;
     padding: 8px;
-    border: none;
+    border: 1px solid var(--color-star);
     border-radius: 12px; 
     width: 4rem;
+}
+
+#rating a {
+    text-decoration: none;
+}
+
+#rating:hover {
+    background: var(--color-white);
+    border: 1px solid var(--color-star);
+}
+
+#rating a:hover {
+    color: var(--color-star);
 }
 
 #comment-section{
