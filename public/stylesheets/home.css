@@ -69,12 +69,12 @@ a{
 .dot {
 height: 15px;
 width: 15px;
-/* margin: 0 2px; */
+margin: 0 2px;
 background-color: #bbb;
 border-radius: 50%;
 display: inline-block;
 transition: background-color 3s ease-in-out;
-transition-delay: 3s;
+transition-delay: 0.1s;
 }
 
 .active {
@@ -88,7 +88,7 @@ animation-duration: 3s;
 }
 
 @keyframes fade {
-from {opacity: .4} 
+from {opacity: .8} 
 to {opacity: 1}
 }
   
@@ -143,9 +143,8 @@ to {opacity: 1}
 
 .container h1{
     text-align: center;
-    
 }
 .container img{
-    margin-left: 25%;
+    margin-left: 24%;
     width: 50%;
 }
