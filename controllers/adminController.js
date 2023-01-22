@@ -85,11 +85,9 @@ const handleErrors = (error) =>{
 
 //Lets the admin login with his credentials and authroizes him
 const AdminLogIn = async (req,res) =>{
-    console.log("admin")
     const {name , password} = req.body
     try {
         const admin = await Admin.login(name,password)
-        console.log(admin)
         const token = createToken(admin._id)
         res.cookie("jwt",token,{httpOnly:true,maxAge:maxAge*1000})
         res.status(200).send({admin:admin._id})  
