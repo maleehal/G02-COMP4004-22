@@ -36,14 +36,6 @@ background: var(--tcolor);
 height: 20px;
 border-radius: 10px;
 }
-nav{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 2px;
-    height:auto;
-    border-bottom: 2px solid black;
-}
 
 .item-3{
     margin-left: auto;
@@ -55,51 +47,62 @@ a{
     text-decoration: none;
 }
 
-.box-container-2{
-    position: relative;
+/* Sildeshow */
+.slideshow-container img{
     width: 100%;
-    
+    height: 600px;
 }
-
-.box-container-2 img{
-    width: 100%;
-    height: 550px;
-    gap: 70%;
-}
-
-.heading{
-    color: black;
-    font-size: larger;
-    position:absolute;
+/* Caption text */
+.text {
+    color: white;
+    font-size: 70px;
+    position: absolute;
     text-align: left; 
-    top: 10%;
+    top:25%;
     width: 42%;
-    left: 3%;
-    background-color:rgb(209, 207, 207);
-    border-radius: 20px;
+    margin: 50px;
+    background: rgba(255, 255, 255, 0.20);
+}
+  
+  
+/* The dots/bullets/indicators */
+.dot {
+height: 15px;
+width: 15px;
+/* margin: 0 2px; */
+background-color: #bbb;
+border-radius: 50%;
+display: inline-block;
+transition: background-color 3s ease-in-out;
+transition-delay: 3s;
 }
 
-.heading-2{
-    color: black;
-    font-size: larger;
-    position:absolute;
-    text-align: left; 
-    top:28%;
-    width: 42%;
-    left: 3%;
-    background-color:rgb(209, 207, 207);
-    border-radius: 20px;
+.active {
+background-color: #717171;
 }
+
+/* Fading animation */
+.fade {
+animation-name: fade;
+animation-duration: 3s;
+}
+
+@keyframes fade {
+from {opacity: .4} 
+to {opacity: 1}
+}
+  
 
 /*section 2 css */
-  
+
 .container-sub-1{
     display:flex;
     justify-content: center;
     justify-content: space-around;
     gap: 60px;
     height:400px;
-    padding: 100px;
+    padding-bottom: 100px;
+    padding-top: 45px;
 }
  
 .container-sub-1-1{
@@ -137,29 +140,12 @@ a{
 }
 
 /*section 3 css*/
-.container {
-    background: var(--color-secondary);
-    overflow-y: hidden;
-}
 
-.container-sub{
-    width: auto;
-    height: 400px;
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-left: 2rem;
+.container h1{
+    text-align: center;
+    
 }
-
-.container-sub div{
-    border: none;
-    width: 500px;
-    height: 300px;
-    padding-right: 2rem;
-}
-
-.partyimg{
-    height: 300px; 
-    width: 500px;
-    border-radius: 24px;
+.container img{
+    margin-left: 25%;
+    width: 50%;
 }

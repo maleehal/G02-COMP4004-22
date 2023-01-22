@@ -31,3 +31,7 @@ button{
 #rating[disabled]{
     background-color: grey;
 }
+a{
+    color: white;
+    text-decoration: none;
+}

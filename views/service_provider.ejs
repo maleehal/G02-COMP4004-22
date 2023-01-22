@@ -171,7 +171,10 @@
                     <div> 
             
                         <% comments.forEach(comment => { %>
-
+                            <% if (comments.lenght === 0) { %>
+                                <% console.log(happy) %> 
+                             
+                            <% } %>
                             <div class="comment">
                                 <div class="comment-header">
                                     <img src="/images/image 2.png" alt="">

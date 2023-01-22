@@ -20,66 +20,118 @@
 </header>
 <body>
     <!--THE SECTION 1-->
-    <section class="main-img-container-class">
-        <div class="box-container">
-            <div class="box-container-2">
-                <img src="/images/mainimg.png" alt="image">
-                <div class="heading"><h2>WELCOME TO EVENT HUSTLER</h2></div>
-                <div class="heading-2">
-                    <p>
-                        Plan your special days to be beautiful and memorable
-                    </p>
-                </div>
-            </div>
+    <div class="slideshow-container">
+
+        <div class="mySlides fade">
+            <div class="text" style="margin-left: 850px;">WELCOME to EVENT HUSTLER <br> </div>
+          <img src="/images/mainimg.png">
+          
         </div>
-    </section>
+        
+        <div class="mySlides fade">
+          <img src="/images/e1.jpg">
+          <div class="text" >Make your special days memorable with the help of proffessionals</div>
+        </div>
+        
+        <div class="mySlides fade">
+          <img src="/images/e2.jpeg">
+          <div class="text" style="color: black;">Your perfect wedding, birthday or baby shower is right on your fingertips</div>
+        </div>
+
+        <div class="mySlides fade">
+            <img src="/images/e3.jpg">
+            <div class="text" style="margin-left: 850px; color: black;">Celebrate your tradition in the correct way</div>
+        </div>
+
+        <div class="mySlides fade">
+            <img src="/images/e4.jpg">
+            <div class="text">Plan your proffessional events like no other</div>
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="/images/e5.jpg">
+            <div class="text" style="margin-left: 450px; text-align: center;">Give your religion the place it deserves</div>
+        </div>
+        
+    </div>
+    <br>
+
+    <div style="text-align:center">
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span>
+    </div>
+
 
 <!--THE SECTION 2-->
 
-    <center><h1>Top Service Providers</h1></center>
-    <!--Main box for the content!-->
-    <div class="container-sub-1"> 
-        <% topThreeProviders.forEach((provider) => { %>
-            <div class ="container-sub-1-1">
-                <img class="profilepic" src="/images/image 2.png">
-                <div><%= provider.name %> </div>
-                <div><span class="fa fa-star"></span><%= provider.rating %> </div>
-                <button class="providerprofile"><a href="/service_provider/<%= provider._id %>"> View Provider</a></button>
-            </div>
-        <% }) %>
-        
-       
-        
-       
-    </div>
+<h1 style="text-align: center; margin-top: 55px;">Top 3 Service Providers</h1>
+<!--Main box for the content!-->
+<div class="container-sub-1"> 
+    <% topThreeProviders.forEach((provider) => { %>
+        <div class ="container-sub-1-1">
+            <img class="profilepic" src="/images/image 2.png">
+            <div><%= provider.name %> </div>
+            <div><span class="fa fa-star"></span><%= provider.rating %> </div>
+            <button class="providerprofile"><a href="/service_provider/<%= provider._id %>"> View Provider</a></button>
+        </div>
+    <% }) %>  
+</div>
 
 
 
 <!--THE SECTION 3-->
 
-    <section class="container">
-        <div class="container-sub">
-            <div>
-                <img class="partyimg" src="/images/image 4.png">
-            </div>
-            <div>
-                <img class="partyimg" src="/images/Rectangle.png">
-            </div>
-            <div>
-                <img class="partyimg" src="/images/religious 1.png">
-            </div>
-            <div>
-                <img class="partyimg" src="/images/conference.jpeg">
-            </div>
-            <div>
-                <img class="partyimg" src="/images/lantern.jpeg">
-            </div>
+<section class="container">
+    <h1>Get Started Now!!!</h1>
+    <img src="/images/processes.jpeg" alt="">
+    <!-- <div class="container-sub">
+
+        <div>
+            <img class="partyimg" src="/images/image 4.png">
         </div>
-    </section>
+        <div>
+            <img class="partyimg" src="/images/Rectangle.png">
+        </div>
+        <div>
+            <img class="partyimg" src="/images/religious 1.png">
+        </div>
+        <div>
+            <img class="partyimg" src="/images/conference.jpeg">
+        </div>
+        <div>
+            <img class="partyimg" src="/images/lantern.jpeg">
+        </div>
+    </div> -->
+</section>
 </body>
 <footer>
     <%- include('partials/footer'); %>
 </footer>
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 5000); // Change image every 2 seconds
+}
+</script>
 </html>
 
 
