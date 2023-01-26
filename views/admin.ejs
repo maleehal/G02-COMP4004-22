@@ -182,7 +182,6 @@ axios.get('/api/v1/admin/getallpendingproviders')
 const acceptProvider = async (clickedElement) =>{
 
   const id = clickedElement.dataset.id;
-  console.log(id)
   try {
     const update = await axios.patch("/api/v1/admin/verify",{id})
     const row = clickedElement.parentElement.parentElement
@@ -217,7 +216,6 @@ try {
 const rejectProvider = async (clickedElement) =>{
 
 const id = clickedElement.dataset.id;
-console.log(id)
 try {
   const update = await axios.patch("/api/v1/admin/reject",{id})
   const row = clickedElement.parentElement.parentElement
@@ -288,7 +286,7 @@ async function getTotalCount(){
   document.getElementById('SerProOngoingBooking').innerHTML =  SerProOngoingBooking
   document.getElementById('SerProNoOngoingBooking').innerHTML =  SerProNoOngoingBooking
 }
-getTotalCount()
+getTotalCount() 
 
 
 

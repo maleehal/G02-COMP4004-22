@@ -20,7 +20,6 @@ const AdminSchema = new mongoose.Schema({
 
 AdminSchema.statics.login = async function(name , password){
     const admin = await this.findOne({name});
-    console.log(admin)
     if (admin){
       if(admin.password === password){
         return admin

@@ -62,9 +62,7 @@ a{
     width: 42%;
     margin: 50px;
     background: rgba(255, 255, 255, 0.20);
-}
-  
-  
+} 
 /* The dots/bullets/indicators */
 .dot {
 height: 15px;
@@ -145,6 +143,6 @@ to {opacity: 1}
     text-align: center;
 }
 .container img{
-    margin-left: 24%;
+    margin-left: 26%;
     width: 50%;
 }

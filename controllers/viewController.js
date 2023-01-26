@@ -52,6 +52,7 @@ const renderProfile = async (req,res) =>{
     const {id} = req.params
     const token = req.cookies.jwt;
     jwt.verify(token,"ServiceProvider",async (error,decodedtoken)=>{
+        // if the token belongs to a customer
         if (error){
             const serviceProvider = await ServiceProvider.findById(id)
             const comments = await Comment.find({s_id:id}).populate("c_id")
@@ -65,7 +66,7 @@ const renderProfile = async (req,res) =>{
             })    
         }
         else{
-            
+            // if the service provider view his profile
             if(typeof id == undefined){
                 const serviceProvider = await ServiceProvider.findById(decodedtoken.id)
                 const comments = await Comment.find({s_id:decodedtoken.id}).populate("c_id")
@@ -76,6 +77,7 @@ const renderProfile = async (req,res) =>{
               
             }
 
+            // if the service provider views his own profile from search
             else if(decodedtoken.id === id){
                 const serviceProvider = await ServiceProvider.findById(id)
                 const comments = await Comment.find({s_id:id}).populate("c_id")
@@ -89,6 +91,7 @@ const renderProfile = async (req,res) =>{
                 })
                 
             }
+            // if the service provider views on another profile
             else{
                 const serviceProvider = await ServiceProvider.findById(id)
                 const comments = await Comment.find({s_id:id}).populate("c_id")
